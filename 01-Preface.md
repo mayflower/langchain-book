@@ -6,16 +6,16 @@ Harrison Chase startete das LangChain-Projekt im Oktober 2022 und während ich d
 
 Das GitHub-Repository für die Beispiele in diesem Buch ist https://github.com/mark-watson/langchain-book-examples.git.
 
-Obwohl die Dokumentation und die Online-Beispiele für LangChain und LlamaIndex exzellent sind, bin ich immer noch bestrebt, dieses Buch zu schreiben, um interessante Probleme zu lösen, an denen ich gerne arbeite. Diese sind: Information Retrieval, natürliche Sprachverarbeitung (natural language processing, NLP), Dialogsysteme (dialog agents) und semantisch verknüpfte Datenfelder. Ich hoffe, dass Sie, liebe Leserin, lieber Leser, von diesen Beispielen begeistert sein werden und dass zumindest manche von diesen Ihre zukünftigen Projekte inspirieren werden.
+Obwohl die Dokumentation und die Online-Beispiele für LangChain und LlamaIndex exzellent sind, bin ich immer noch bestrebt, dieses Buch zu schreiben, um interessante Probleme zu lösen, an denen ich gerne arbeite. Diese sind: Information Retrieval, natürliche Sprachverarbeitung (natural language processing, NLP), Dialogsysteme (dialog agents) und semantisch verknüpfte Datenfelder. Ich hoffe, dass du, liebe Leserin, lieber Leser, von diesen Beispielen begeistert sein wirst und dass zumindest manche von diesen deine zukünftigen Projekte inspirieren werden.
 
 [^1]: https://github.com/hwchase17/langchain
 [^2]: https://github.com/jerryjliu/gpt_index
 
 ## Über den Autor
 
-Ich habe mehr als 20 Bücher geschrieben, halte über 50 US-Patente und habe bei so interessanten Unternehmen wie Google, Capital One, SAIC, Mind AI und anderen gearbeitet. Auf meiner Webseite https://markwatson.com finden Sie Links, um die meisten meiner aktuellen Bücher kostenlos zu lesen. Wenn ich meine Karriere kurz zusammenfassen müsste, würde ich sagen, dass ich eine Menge Spaß hatte und meine Arbeit sehr genossen habe. Ich hoffe, dass das, was Sie hier lernen, Ihnen sowohl Spaß machen, als auch dass es Ihnen bei Ihrer Arbeit hilfreich sein wird.
+Ich habe mehr als 20 Bücher geschrieben, halte über 50 US-Patente und habe bei so interessanten Unternehmen wie Google, Capital One, SAIC, Mind AI und anderen gearbeitet. Auf meiner Webseite https://markwatson.com findest du Links, um die meisten meiner aktuellen Bücher kostenlos zu lesen. Wenn ich meine Karriere kurz zusammenfassen müsste, würde ich sagen, dass ich eine Menge Spaß hatte und meine Arbeit sehr genossen habe. Ich hoffe, dass das, was du hier lernst, dir sowohl Spaß machen, als auch dass es dir bei deiner Arbeit hilfreich sein wird.
 
-Wenn Sie meine Arbeit unterstützen möchten, können Sie meine Bücher auf Leanpub[^3] kaufen und meine Git-Repositories, die Sie nützlich finden, auf GitHub[^4] bewerten. Sie können mich auch in den sozialen Medien über Mastodon[^5] und Twitter[^6] finden. Ich stehe auch als Berater zur Verfügung: https://markwatson.com.
+Wenn du meine Arbeit unterstützen möchtest, kannst du meine Bücher auf Leanpub[^3] kaufen und meine Git-Repositories, die du nützlich findest, auf GitHub[^4] bewerten. Du kannst mich auch in den sozialen Medien über Mastodon[^5] und Twitter[^6] finden. Ich stehe auch als Berater zur Verfügung: https://markwatson.com.
 
 [^3]: https://leanpub.com/u/markwatson
 [^4]: https://github.com/mark-watson?tab=repositories&q=&type=public
@@ -38,17 +38,17 @@ Ich möchte mich auch bei den folgenden Lesern bedanken, die Fehler oder Rechtsc
 
 ## Voraussetzungen für das Ausführen und Ändern der Beispiele im Buch
 
-Ich präsentiere den vollständigen Quellcode sowie zahlreiche Beispiele für jedes im Buch aufgeführte Szenario. Falls Sie also keine Zugriffsrechte auf bestimmte APIs haben möchten, ermöglicht Ihnen das Buch dennoch, Schritt für Schritt mitzugehen.
+Ich präsentiere den vollständigen Quellcode sowie zahlreiche Beispiele für jedes im Buch aufgeführte Szenario. Falls du also keine Zugriffsrechte auf bestimmte APIs haben möchtest, ermöglicht dir das Buch dennoch, Schritt für Schritt mitzugehen.
 
-Um OpenAIs GPT-3- und ChatGPT-Modelle zu nutzen, müssen Sie sich für einen API-Schlüssel (kostenlose Version ist ausreichend) unter https://openai.com/api/ anmelden und die Umgebungsvariable **OPENAI_API_KEY** auf Ihren Key-Value setzen.
+Um OpenAIs GPT-3- und ChatGPT-Modelle zu nutzen, musst du sich für einen API-Schlüssel (kostenlose Version ist ausreichend) unter https://openai.com/api/ anmelden und die Umgebungsvariable **OPENAI_API_KEY** auf deinen Key-Value setzen.
 
-Sie benötigen einen API-Schlüssel für Beispiele, die **Googles Knowledge Graph APIs** verwenden.
+Du benötigst einen API-Schlüssel für Beispiele, die **Googles Knowledge Graph APIs** verwenden.
 
 Referenz: Google Knowledge Graph APIs[^7]. 
 
-Die Beispielprogramme, die die Knowledge Graph APIs von Google verwenden, setzen voraus, dass Sie die Datei **~/.google_api_key** in Ihrem Home-Verzeichnis haben, die den Schlüssel von https://console.cloud.google.com/apis enthält.
+Die Beispielprogramme, die die Knowledge Graph APIs von Google verwenden, setzen voraus, dass du die Datei **~/.google_api_key** in deinem Home-Verzeichnis hast, die den Schlüssel von https://console.cloud.google.com/apis enthält.
 
-Für die Beispiele, die die Websuche integrieren, müssen Sie auch **SerpApi installieren**:
+Für die Beispiele, die die Websuche integrieren, musst du auch **SerpApi installieren**:
 
 
 >REVIEW: in Version 2023-05-10 nicht mehr enthalten
@@ -56,11 +56,11 @@ Für die Beispiele, die die Websuche integrieren, müssen Sie auch **SerpApi ins
 1    pip install google-search-results
 ```
 
-Siehe PyPi-Projektseite[^8]. Sie können sich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/Monat mit einer E-Mail-Adresse und Telefonnummer unter https://serpapi.com/users/welcome anmelden.
+Siehe PyPi-Projektseite[^8]. Du kannst dich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/Monat mit einer E-Mail-Adresse und Telefonnummer unter https://serpapi.com/users/welcome anmelden.
 
-Für die GMail und Google Calendar Beispiele benötigen Sie außerdem ein Zapier-Konto[^9].
+Für die GMail und Google Calendar Beispiele benötigst du außerdem ein Zapier-Konto[^9].
 
-Nachdem Sie dieses Buch durchgelesen haben, können Sie sich die Webseite LangChainHub[^10] ansehen, die Prompts, Chains und Agents enthält, die für die Erstellung von LLM-Anwendungen nützlich sind.
+Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite LangChainHub[^10] ansehen, die Prompts, Chains und Agents enthält, die für die Erstellung von LLM-Anwendungen nützlich sind.
 
 [^7]: https://cloud.google.com/enterprise-knowledge-graph/docs/search-api
 [^8]: https://pypi.org/project/google-search-results/
