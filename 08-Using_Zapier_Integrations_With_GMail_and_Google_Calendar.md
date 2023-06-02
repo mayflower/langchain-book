@@ -48,7 +48,7 @@ Hier ist die Beispielausgabe:
 5 I need to use the Gmail: Send Email tool
 6 Action:Gmail:SendEmail
 7 ActionInput:SendanemailtoTEST_EMAIL_ADDRESSwithth\
-8 esubject"PitchforHiringMarkWatsonasaConsultantf
+8 esubject"Pitch for Hiring MarkWatsonasaConsultantf
 9 orDeepLearningandLargeLanguageModels"andthebody
 10 "DearMarkWatson,Iamwritingtoyoutopitchtheidea
 11 ofhiringyouasaconsultantfordeeplearningandlarge
