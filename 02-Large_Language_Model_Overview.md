@@ -1,15 +1,26 @@
 # Übersicht über Large Language Models 
 
-Large Language Models sind eine Untermenge der künstlichen Intelligenz, die Deep Learning und neuronale Netzwerke zur Verarbeitung natürlicher Sprache einsetzt. Transformer sind eine Art der Architektur neuronaler Netzwerke, die Kontext in sequenziellen Daten lernen können und dazu Selbstaufmerksamkeitsmechanismen verwenden. Sie wurden im Jahr 2017 von einem Team bei Google Brain eingeführt und haben seitdem einige Beliebtheit bei der Erforschung von LLM erlangt. Einige Beispiele von transformerbasierten LLMS sind BERT, GPT-3, T5 und Megatron-LM.
+Large Language Models[^1] (LLM) sind eine Untermenge der künstlichen Intelligenz, die Deep Learning und neuronale Netzwerke zur Verarbeitung natürlicher Sprache einsetzt. Transformers[^2] stellen eine spezielle Art von neuronaler Netzwerkarchitektur dar, die mithilfe von selbstbeobachtenden Mechanismen Kontext in sequenziellen Daten erlernen können. Sie wurden im Jahr 2017 von einem Team bei Google Brain eingeführt und haben seitdem Beliebtheit bei der Erforschung von LLM erlangt. Einige Beispiele von transformerbasierten[^3] LLMs sind BERT, GPT-3, T5 und Megatron-LM[^4].
 
 Die Hauptpunkte, die wir in diesem Buch behandeln wollen, sind:
--	LLMS sind Deep Learning Algorithmen die Auf Basis massiver Datenmengen natürliche Sprache verstehen und generieren können.
--	LMS nutzen Techniken wie Selbstaufmerksamkeit Maskierung und Feinabstimmung, um komplexe Muster und Zusammenhänge in der Sprache zu lernen. LLMS können natürliche Sprache verstehen und erzeugen, weil sie Transformermodelle verwenden, die eine Art neuronaler Netzwerke sind, die sequenzielle Daten wie Text mittels Aufmerksamkeitsmechanismen verarbeiten können. Aufmerksamkeitsmechanismen erlauben dem Modell, die wichtigen Teile von Ein- und Ausgabe in den Fokus zu nehmen und gleichzeitig die unwichtigen zu ignorieren.
--	LM können verschiedene Aufgaben der natürlichen Sprachverarbeitung (Natural Language Processing - NLP) und natürlichen Spracherzeugung (Natural Language Generation – NLG) wie Zusammenfassung Übersetzung Vorhersage Klassifikation und Fragenbeantwortung ausführen.
--	Auch wenn LLMS ursprünglich für Anwendungen des NLP entwickelt wurden, haben sie doch auch ihr Potential in anderen Bereichen wie computerbasiertes Sehen und Bioinformatik gezeigt, indem sie ihr verallgemeinerbares wissen und ihre Fähigkeit zum Transferlernen nutzbar gemacht haben.
 
-BERT-Modelle waren unter den ersten Transformer-Modellen, die breite Nutzung gefunden haben. BERT wurde von Google AI Language im Jahr 2018 entwickelt. BERT-Modelle stellen eine Gruppe maskierter Sprachmodelle dar, die Transformerarchitektur benutzen, um bidirektionale Repräsentationen natürlicher Sprache zu lernen. BERT-Models können die Bedeutung mehrdeutiger Worte verstehen, indem sie den umgebenden Text als Kontext benutzen. Der „Zaubertrick“ hier ist, dass die Trainingsdaten quasi gratis mitgeliefert werden
+-	LLMs sind Deep Learning Algorithmen die auf Basis massiver Datenmengen natürliche Sprache verstehen und generieren können.
+-	LLMs nutzen Techniken wie Selbstaufmerksamkeit, Maskierung und Feinabstimmung, um komplexe Muster und Zusammenhänge in der Sprache zu erlernen. LLMs auf Grundlage von Transformern können die natürliche Sprache verstehen und generieren. Diese Modelle nutzen neuronale Netzwerkarchitekturen, die sequenzielle Daten wie Text mithilfe von Aufmerksamkeitsmechanismen verarbeiten können. Aufmerksamkeitsmechanismen erlauben dem Modell, die wichtigen Teile von Ein- und Ausgabe in den Fokus zu nehmen und gleichzeitig die unwichtigen zu ignorieren.
+-	LLMs können verschiedene Aufgaben der natürlichen Sprachverarbeitung (Natural Language Processing - NLP) und natürlichen Spracherzeugung (Natural Language Generation – NLG) wie Zusammenfassung, Übersetzung, Vorhersage, Klassifikation und Fragenbeantwortung ausführen.
+-	Auch wenn LLMs ursprünglich für Anwendungen des NLP entwickelt wurden, haben sie doch auch ihr Potential in anderen Bereichen wie computerbasiertes Sehen und Bioinformatik gezeigt, indem sie ihr verallgemeinerbares Wissen und ihre Fähigkeit zum Transferlernen nutzbar gemacht haben.
 
+BERT-Modelle[^5] waren unter den ersten Transformer-Modellen, die breite Nutzung gefunden haben. BERT wurde von Google AI Language im Jahr 2018 entwickelt. BERT-Modelle stellen eine Gruppe maskierter Sprachmodelle dar, die Transformer-Architektur benutzen, um bidirektionale Repräsentationen natürlicher Sprache zu erlernen. BERT-Modelle können die Bedeutung mehrdeutiger Worte verstehen, indem sie den umgebenden Text als Kontext benutzen. Der *Zaubertrick* besteht darin, dass die Trainingsdaten praktisch kostenlos mitgeliefert werden. Man ersetzt ein fehlendes Wort-Token und trainiert das Modell darauf, die fehlenden Wörter vorherzusagen. Dieser Vorgang wird mit riesigen Mengen an Trainingsdaten aus dem Internet, Büchern und anderen Quellen wiederholt.
+
+Hier sind einige "Papers with Code"-Links für BERT (Links sind für Code, Paper-Links in den Code-Repositories):
+
+- https://github.com/allenai/scibert
+- https://github.com/google-research/bert
+
+[^1]: https://blogs.nvidia.com/blog/2022/10/10/llms-ai-horizon/
+[^2]: https://www.linkedin.com/pulse/chatgpt-tip-iceberg-paul-golding
+[^3]: https://factored.ai/transformer-based-language-models/
+[^4]: https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)
+[^5]: https://en.wikipedia.org/wiki/BERT_(Language_model)
 
 ## Big Tech Businesses vs. Small Startups nutzen Large Language Models
 
