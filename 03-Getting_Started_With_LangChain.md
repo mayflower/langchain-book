@@ -2,17 +2,17 @@
 
 >>>Hier fehlt der Absatz über Harrison Chase<<<
 
-LangChain (1) ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (LLMs) durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datengestützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Chains, Agents und Memory sowie Integrationsmöglichkeiten mit anderen Tools und End-to-End-Beispielen bietet. Wir beziehen uns auf " Chains " als Sequenzen von Aufrufen (zu einem LLM und verschiedenen Programm-Utilities, Cloud-Services, usw.), die über einen einzigen LLM-API-Aufruf hinausgehen. LangChain bietet eine Standardschnittstelle für Chains, viele Integrationen mit anderen Tools und End-to-End Chains für gängige Anwendungen. Oft finden Sie bereits existierende Chains, die die Anforderungen Ihrer Anwendungen erfüllen.
+LangChain[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (LLMs) durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datengestützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Chains, Agents und Memory, sowie Integrationsmöglichkeiten mit anderen Tools und End-to-End-Beispielen bietet. Wir beziehen uns auf "Chains" als Sequenzen von Aufrufen (zu einem LLM und verschiedenen Programm-Utilities, Cloud-Services, usw.), die über einen einzigen LLM-API-Aufruf hinausgehen. LangChain bietet eine Standardschnittstelle für Chains, viele Integrationen mit anderen Tools und End-to-End Chains für gängige Anwendungen. Oft findest du bereits existierende Chains, die die Anforderungen deiner Anwendungen erfüllen.
 
-(1) https://langchain.readthedocs.io/en/latest/index.html
+[^1]: https://langchain.readthedocs.io/en/latest/index.html
 
 So kann zum Beispiel eine Chain erstellt werden, die Benutzereingaben entgegennimmt, sie mit einem PromptTemplate formatiert und dann die formatierte Antwort zur Verarbeitung an ein Large Language Model (LLM) weitergibt.
 
 LLMs sind sehr allgemein gehalten, was bedeutet, dass sie zwar viele Aufgaben effektiv ausführen können, aber oft nicht direkt spezifische Antworten auf Fragen oder Aufgaben geben können. Dieses erfordert tiefes Fachwissen oder Expertise. LangChain bietet eine Standardschnittstelle für Agents, eine Bibliothek von Agents aus der man wählen kann, und Beispiele für End-to-End-Agents.
 
-LangChain Memory ist das Konzept der Persistenz des Zustands zwischen Aufrufen einer Chain oder eines Agenten. LangChain bietet eine Standardschnittstelle für Chains, eine Sammlung von Speicherimplementierungen und Beispiele für Chains/Agenten, die Speicher verwenden (2). LangChain bietet eine große Sammlung von allgemeinen Werkzeugen, die Sie in Ihrer Anwendung verwenden können. Chains gehen über einen einzelnen LLM-Aufruf hinaus und sind Sequenzen von Aufrufen (ob zu einem LLM oder einem anderen Dienstprogramm). LangChain bietet eine Standardschnittstelle für Chains, viele Integrationen mit anderen Tools und End-to-End-Chains für gängige Anwendungen.
+LangChain Memory ist das Konzept, den Zustand zwischen Aufrufen einer Kette oder eines Agenten beizubehalten. LangChain bietet eine standardisierte Schnittstelle für den Speicher, eine Sammlung von Speicherimplementierungen sowie Beispiele für Ketten/Agenten, die den Speicher verwenden[^2]. LangChain bietet eine große Sammlung von allgemeinen Werkzeugen, die du in deiner Anwendung verwenden kannst. Chains gehen über einen einzelnen LLM-Aufruf hinaus und sind Sequenzen von Aufrufen (ob zu einem LLM oder einem anderen Dienstprogramm). LangChain bietet ebenfalls eine Standardschnittstelle für Chains, viele Integrationen mit anderen Werkzeugen sowie End-to-End-Chains für gängige Anwendungen.
 
-LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, etc. integriert werden. LangChain kann für ausführliche Frage-und-Antwort-Chat-Sitzungen, API-Interaktion oder die Durchführung von Aktionen verwendet werden. LangChain kann über eine natürlichsprachliche API-Schnittstelle in die Zapier-Plattform integriert werden (wir haben ein ganzes Kapitel den Zapier-Integrationen gewidmet).
+LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, etc. integriert werden. Es kann für ausführliche Frage-und-Antwort-Chat-Sitzungen, API-Interaktion oder die Durchführung von Aktionen verwendet werden. Über eine natürlichsprachliche API-Schnittstelle kann LangChain in die Zapier-Plattform integriert werden (wir haben ein ganzes Kapitel den Zapier-Integrationen gewidmet).
 
 ## Installation der erforderlichen Pakete
 
@@ -41,7 +41,8 @@ Sie müssen ein LLM auswählen, das Sie verwenden werden. In der Regel wählen w
 ```
 
 Sowohl die Bibliotheken openai als auch langchain werden nach dieser Umgebungsvariablen suchen und sie verwenden. Wir werden uns ein paar einfache Beispiele in einer Python-REPL ansehen. Wir beginnen mit der Verwendung der Textvorhersage-API von OpenAI:
-(2) https://platform.openai.com/account/api-keys
+
+[^2]: https://platform.openai.com/account/api-keys
 
 ```
 1 $python
