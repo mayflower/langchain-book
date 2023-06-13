@@ -67,11 +67,10 @@ Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite LangChainHu
 [^9]: https://zapier.com/
 [^10]: https://github.com/hwchase17/langchain-hub
 
->REVIEW fehlende Übersetzung
-## Issues and Workarounds for Using the Material in this Book
+## Probleme und Workarounds zur Verwendung der Materialien in diesem Buch
 
-The libraries that I use in this book are frequently updated and sometimes the documentation or code links change, invalidating links in this book. I will try to keep everything up to date. Please report broken links to me.
+Die Bibliotheken, die ich in diesem Buch verwende, werden häufig aktualisiert und manchmal ändert sich die Dokumentation oder der Link zum Code, wodurch diese in diesem Buch ungültig werden. Ich werde versuchen, alles auf dem neuesten Stand zu halten. Bitte meldet mir defekte Links.
 
-In some cases you will need to use specific versions or libraries for some of the code examples.
+In manchen Fällen wirst du spezielle Versionen oder Bibliotheken für einige der Code-Beispiele verwenden müssen.
 
-Because the Python code listings use colorized text you may find that copying code from this eBook may drop space characters. All of the code listings are in the GitHub repository for this book so you should clone the repository to experiment with the example code.
+Da die Python-Code-Beispiele farbigen Text verwenden, kann es vorkommen, dass beim Kopieren von Code aus diesem E-Book Leerzeichen verloren gehen. Alle Code-Beispiele befinden sich im GitHub-Repository für dieses Buch, daher solltest du das Repository klonen, um mit den Codebeispielen zu experimentieren.
