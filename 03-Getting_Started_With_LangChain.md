@@ -18,7 +18,7 @@ LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, et
 
 Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
 
-```
+```shell
 1    pip install langchain llama_index openai
 2    pip install kor pydrive pandas rdflib
 3    pip install google-search-results SPARQLWrapper
@@ -32,78 +32,82 @@ Einfache LangChain-Projekte bestehen oft nur aus einer einfachen Python-Skriptda
 
 ## Grundlegende Anwendung und Beispiele
 
-Während ich versuche, das Material in diesem Buch so zu gestalten, dass Sie es unabhängig und ohne externe Referenzen genießen können, sollten Sie auch die ausgezeichnete [Dokumentation] (Langchain Quickstart Guide) und die einzelnen detaillierten Anleitungen für Prompts, Chat, document loading, Indizes usw. nutzen.
-Während wir einige Beispiele durchgehen, beachten Sie bitte, wie die ChatGPT-Webanwendung arbeitet: Sie geben Text ein und erhalten Antworten. Die Art und Weise, wie Sie ChatGPT auffordern, ist offensichtlich wichtig, wenn Sie nützliche Antworten erhalten wollen. In Codebeispielen automatisieren und formalisieren wir diesen manuellen Prozess.
-Sie müssen ein LLM auswählen, das Sie verwenden werden. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Sie müssen sich für einen API-Schlüssel anmelden (2) und ihn als Umgebungsvariable festlegen:
+Während ich versuche, das Material in diesem Buch so zu gestalten, dass du es unabhängig und ohne externe Referenzen genießen kannst, solltest du auch die ausgezeichnete [Dokumentation](https://python.langchain.com/en/latest/getting_started/getting_started.html) und die einzelnen detaillierten Anleitungen für Prompts, Chat, document loading, Indizes usw. nutzen.
 
-```
-1    exportOPENAI_API_KEY="YOURKEYGOESHERE"
+Während wir einige Beispiele durchgehen, beachte bitte, wie die ChatGPT-Webanwendung arbeitet: Du gibst Text ein und erhältst Antworten. Die Art und Weise, wie du ChatGPT aufforderst, ist offensichtlich wichtig, wenn du nützliche Antworten erhalten möchtest. In Code-Beispielen automatisieren und formalisieren wir diesen manuellen Prozess.
+
+Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich für einen API-Schlüssel anmelden[^2] und diesen als Umgebungsvariable festlegen:
+
+```shell
+1    export OPENAI_API_KEY="YOUR KEY GOES HERE"
 ```
 
-Sowohl die Bibliotheken openai als auch langchain werden nach dieser Umgebungsvariablen suchen und sie verwenden. Wir werden uns ein paar einfache Beispiele in einer Python-REPL ansehen. Wir beginnen mit der Verwendung der Textvorhersage-API von OpenAI:
+Sowohl die Bibliotheken **openai** als auch **langchain** werden nach dieser Umgebungsvariablen suchen und diese verwenden. Wir werden uns ein paar einfache Beispiele in einer Python-REPL ansehen. Wir beginnen mit der Verwendung der Textvorhersage-API von OpenAI:
 
 [^2]: https://platform.openai.com/account/api-keys
 
-```
-1 $python
-2    >>>fromlangchain.llmsimportOpenAI
-3    >>>llm=OpenAI(temperature=0.8)
-4    >>>s=llm("John got into his new sportscar, and he dro\
+```shell
+1    $python
+2    >>> from langchain.llms import OpenAI
+3    >>> llm = OpenAI(temperature=0.8)
+4    >>> s = llm("John got into his new sportscar, and he dro\
 5    ve it")
-6    >>>s
+6    >>> s
 7    'to work\n\nJohn started up his new sportscar and drove\
 8    it to work. He had a huge smile on his face as he drove,
-9    excited to show off his new car to his colleagues. The w
+9    excited to show off his new car to his colleagues. The w\
 10    ind blowing through his hair, and the sun on his skin, he
 11    felt a sense of freedom and joy as he cruised along the
-12    road. He arrived at work in no time, feeling refreshed an
+12    road. He arrived at work in no time, feeling refreshed an\
 13    d energized.'
-14    >>>s=llm("John got into his new sportscar, and he dro\
+14    >>> s = llm("John got into his new sportscar, and he dro\
 15    ve it")
-16    >>>s
+16    >>> s
 17    "around town\n\nJohn drove his new sportscar around tow\
-18    n, enjoying the feeling of the wind in his hair. He stopp
-19    ed to admire the view froma scenic lookout, and then spe
-20    d off to the mall to do some shopping. On the way home, h
+18    n, enjoying the feeling of the wind in his hair. He stopp\
+19    ed to admire the view froma scenic lookout, and then spe\
+20    d off to the mall to do some shopping. On the way home, h\
 21    e took a detour down a winding country road, admiring the
-22    scenery and enjoying the feel of the car's powerful engi
+22    scenery and enjoying the feel of the car's powerful engi\
 23    ne. By the time he arrived back home, he had a huge smile
 24    on his face."
 ```
 
-Beachten Sie, dass wir unterschiedliche Ergebnisse erhalten, wenn wir dieselbe Texteingabe-Aufforderung zweimal ausführen. Wenn Sie die Temperatur in Zeile 3 auf einen höheren Wert einstellen, erhöht sich die Zufälligkeit.
-Unser nächstes Beispiel befindet sich in der Quelldatei **directions_template.py** und verwendet die Klasse **PromptTemplate**. Eine Prompt-Vorlage ist ein reproduzierbarer Weg, um eine Eingabeaufforderung zu erzeugen. Sie enthält einen Textstring ("die Vorlage"), der eine Reihe von Parametern des Endbenutzers aufnehmen und einen Prompt erzeugen kann. Die Prompt-Vorlage kann Anweisungen für das Sprachmodell, Beispiele zur Verbesserung der Antwort des Modells oder spezifische Fragen enthalten, die das Modell beantworten soll.
+Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabetextes unterschiedliche Ergebnisse erhalten. Durch das Erhöhen der Temperatur in Zeile 3 wird die Zufälligkeit erhöht.
 
-```
-1    fromlangchain.promptsimportPromptTemplate
-2    fromlangchain.llmsimportOpenAI
-3    llm=OpenAI(temperature=0.9)
+Unser nächstes Beispiel befindet sich in der Quelldatei **directions_template.py** und verwendet die Klasse **PromptTemplate**. Eine Prompt-Vorlage ist eine reproduzierbare Methode zur Generierung einer Eingabeaufforderung. Es enthält einen Textstring ("die Vorlage"), der eine Reihe von Parametern des Endbenutzers entgegennehmen und einen Prompt erzeugen kann. Die Prompt-Vorlage kann Anweisungen für das Sprachmodell, Beispiele zur Verbesserung der Antwort des Modells oder spezifische Fragen enthalten, die das Modell beantworten soll.
+
+```python
+1    from langchain.prompts import PromptTemplate
+2    from langchain.llms import OpenAI
+3    llm = OpenAI(temperature=0.9)
 4
-5    defget_directions(thing_to_do):
+5    def get_directions(thing_to_do):
 6        prompt = PromptTemplate(
 7            input_variables=["thing_to_do"],
 8            template="How do I {thing_to_do}?",
 9        )
-10    prompt_text = prompt.format(thing_to_do=thing_to_do)
-11        print(f"\n{prompt_text}:")
-12        return llm(prompt_text)
+10       prompt_text = prompt.format(thing_to_do=thing_to_do)
+11       print(f"\n{prompt_text}:")
+12       return llm(prompt_text)
 13   
-14    print(get_directions("gettothestore"))
-15    print(get_directions("hangapictureonthewall"))
+14    print(get_directions("get to the store"))
+15    print(get_directions("hang a picture on the wall"))
 ```
 
-Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um eine Eingabeaufforderung zu erstellen, aber die Verwendung der Utility-Klasse PromptTemplate ist besser lesbar und funktioniert mit einer beliebigen Anzahl von Eingabevariablen.
+Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um eine Eingabeaufforderung zu erstellen, aber die Verwendung der Utility-Klasse **PromptTemplate** ist besser lesbar und funktioniert mit einer beliebigen Anzahl von Eingabevariablen.
+
 Das Ergebnis ist:
 
-```
-1    $pythondirections_template.py
+```shell
+1    $python directions_template.py
 2
 3    How do I get to the store?:
 4
 5    To get to the store, you will need to use a mode of trans\
-6    portation such as walking, driving, biking, or taking pub
-7    lic transportation. Depending on the location of the stor
-8    e, you may need to look up directions or maps to determin
+6    portation such as walking, driving, biking, or taking pub\
+7    lic transportation. Depending on the location of the stor\
+8    e, you may need to look up directions or maps to determin\
 9    e the best route to take.
 10
 11    How do I hang a picture on the wall?:
@@ -117,21 +121,21 @@ Das Ergebnis ist:
 19    5.Hang the picture on the picture hanger.
 ```
 
-Das nächste Beispiel in der Datei **country_information.py** ist von einem Beispiel in der LangChain-Dokumentation abgeleitet. In diesem Beispiel verwenden wir **PromptTemplate**, welches das Muster enthält, das der LLM bei der Rückgabe einer Antwort verwenden soll.
+Das nächste Beispiel in der Datei **country_information.py** ist von einem Beispiel in der LangChain-Dokumentation abgeleitet. In diesem Beispiel verwenden wir die **PromptTemplate**, welche das gewünschte Muster enthält, um dem LLM zu ermöglichen, eine Antwort zu generieren.
 
-```
-1    fromlangchain.promptsimportPromptTemplate
-2    fromlangchain.llmsimportOpenAI
-3    llm=OpenAI(temperature=0.9)
+```python
+1    from langchain.prompts import PromptTemplate
+2    from langchain.llms import OpenAI
+3    llm = OpenAI(temperature=0.9)
 4
 5    def get_country_information(country_name):
 6        print(f"\nProcessing {country_name}:")
 7        global prompt
 8        if "prompt" not in globals():
 9            print("Creating prompt...")
-10            prompt = PromptTemplate(
-11                input_variables=["country_name"],
-12                template = """
+10           prompt = PromptTemplate(
+11              input_variables=["country_name"],
+12              template = """
 13    Predict the capital and population of a country.
 14
 15    Country:{country_name}
@@ -145,10 +149,11 @@ Das nächste Beispiel in der Datei **country_information.py** ist von einem Beis
 23    print(get_country_information("Germany"))
 ```
 
-Sie können die ChatGPT-Weboberfläche verwenden, um mit Prompts zu experimentieren, und wenn Sie ein Muster gefunden haben, das gut funktioniert, schreiben Sie ein Python-Skript wie im letzten Beispiel, ändern aber die Daten, die Sie in der **PromptTemplate**-Instanz angeben.
+Du kannst die ChatGPT-Weboberfläche verwenden, um mit Prompts zu experimentieren. Wenn du ein Muster gefunden hast, das gut funktioniert, schreibe es in ein Python-Skript wie im letzten Beispiel, ändere aber die Daten, die du in der **PromptTemplate**-Instanz angibst.
+
 Die Ausgabe des letzten Beispiels ist:
 
-```
+```shell
 1    $ python country_information.py
 2
 3    Processing Canada:
@@ -158,7 +163,7 @@ Die Ausgabe des letzten Beispiels ist:
 7
 8    Country: Canada
 9    Capital:
-10    Population:
+10   Population:
 11
 12
 13    Capital: Ottawa
