@@ -28,7 +28,7 @@ Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- gett
 
 ## Ein neues LangChain-Projekt anlegen
 
-Einfache LangChain-Projekte bestehen oft nur aus einer einfachen Python-Skriptdatei. Wenn Ihnen beim Lesen dieses Buches ein Beispiel interessant oder nützlich erscheint, schlage ich vor, die requirements.txt und die Python-Quelldateien in ein neues Verzeichnis zu kopieren und Ihr eigenes privates GitHub-Repository anzulegen, in dem Sie arbeiten können. Bitte machen Sie die Beispiele in diesem Buch zu "Ihrem Code", d. h. verwenden Sie jeden Code oder jede Idee, die Sie hier finden, frei weiter.
+Einfache LangChain-Projekte bestehen oft nur aus einer einfachen Python-Skriptdatei. Wenn dir beim Lesen dieses Buches ein Beispiel interessant oder nützlich erscheint, schlage ich vor, die requirements.txt und die Python-Quelldateien in ein neues Verzeichnis zu kopieren und dein eigenes privates GitHub-Repository anzulegen, in dem du arbeiten kannst. Bitte nutze die Beispiele in diesem Buch als "deinen Code", d.h. verwende frei jeden Code oder jede Idee, die du hier findest.
 
 ## Grundlegende Anwendung und Beispiele
 
