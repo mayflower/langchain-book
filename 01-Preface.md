@@ -38,27 +38,21 @@ Ich möchte mich auch bei den folgenden Lesern bedanken, die Fehler oder Rechtsc
 
 ## Voraussetzungen für das Ausführen und Ändern der Beispiele im Buch
 
-Ich präsentiere den vollständigen Quellcode sowie zahlreiche Beispiele für jedes im Buch aufgeführte Szenario. Falls du also keine Zugriffsrechte auf bestimmte APIs haben möchtest, ermöglicht dir das Buch dennoch, Schritt für Schritt mitzugehen.
+Ich präsentiere den vollständigen Quellcode sowie zahlreiche Beispiele für jedes im Buch aufgeführte Szenario. Falls du also keinen Zugriff auf bestimmte APIs haben möchtest, ermöglicht dir das Buch dennoch, Schritt für Schritt mitzugehen.
 
-Um OpenAIs GPT-3- und ChatGPT-Modelle zu nutzen, musst du sich für einen API-Schlüssel (kostenlose Version ist ausreichend) unter https://openai.com/api/ anmelden und die Umgebungsvariable **OPENAI_API_KEY** auf deinen Key-Value setzen.
+Um OpenAIs GPT-3- und ChatGPT-Modelle zu nutzen, musst du dich für einen API-Schlüssel (kostenlose Version ist ausreichend) unter https://openai.com/api/ anmelden und die Umgebungsvariable **OPENAI_API_KEY** auf deinen Key-Value setzen.
 
 Du benötigst einen API-Schlüssel für Beispiele, die **Googles Knowledge Graph APIs** verwenden.
 
 Referenz: [Google Knowledge Graph APIs](https://cloud.google.com/enterprise-knowledge-graph/docs/search-api)[^7]. 
 
-Die Beispielprogramme, die die Knowledge Graph APIs von Google verwenden, setzen voraus, dass du die Datei **~/.google_api_key** in deinem Home-Verzeichnis hast, die den Schlüssel von https://console.cloud.google.com/apis enthält.
+Die Beispielprogramme, die die Knowledge Graph APIs von Google verwenden, setzen voraus, dass sich die Datei **~/.google_api_key** in deinem Home-Verzeichnis befindet und den Schlüssel von https://console.cloud.google.com/apis enthält.
 
-Für die Beispiele, die die Websuche integrieren, musst du auch **SerpApi installieren**:
+Für die Beispiele, die die Websuche integrieren, musst du **SerpApi installieren**. Siehe [PyPi-Projektseite](https://pypi.org/project/google-search-results/)[^8]. 
 
+Du kannst dich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/Monat mit einer E-Mail-Adresse und Telefonnummer bei https://serpapi.com/users/welcome anmelden.
 
->REVIEW: in Version 2023-05-10 nicht mehr enthalten
-```
-1    pip install google-search-results
-```
-
-Siehe [PyPi-Projektseite](https://pypi.org/project/google-search-results/)[^8]. Du kannst dich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/Monat mit einer E-Mail-Adresse und Telefonnummer unter https://serpapi.com/users/welcome anmelden.
-
-Für die GMail und Google Calendar Beispiele benötigst du außerdem ein [Zapier](https://zapier.com/)-Konto[^9].
+Für die GMail- und Google Calendar-Beispiele benötigst du außerdem ein [Zapier](https://zapier.com/)-Konto[^9].
 
 Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite [LangChainHub](https://github.com/hwchase17/langchain-hub)[^10] ansehen, die Prompts, Chains und Agents enthält, die für die Erstellung von LLM-Anwendungen nützlich sind.
 
