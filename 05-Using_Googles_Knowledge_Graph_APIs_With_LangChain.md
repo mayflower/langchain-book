@@ -9,23 +9,25 @@ Im nächsten Kapitel benutzen wir auch DBPedia und Wikidata aus dem öffentliche
 
 ## Den Zugriff auf Google Knowledge Graph-APIs einrichten
 
-Um einen API Key für Google Knowledge Graph Search API zu bekommen, musst Du Google API Console gehen, die Google Knowledge Graph Search API aktivieren und einen API Key für Dein Projekt erstellen. Dann kannst du mit diesem API Key Anfragen an die Knowledge Graph Search API stellen.
+Um einen API Key für die Google Knowledge Graph Search API zu bekommen, musst Du zur Google API Console gehen, die Google Knowledge Graph Search API aktivieren und einen API Key für dein Projekt erstellen. Dann kannst du mit diesem API Key Anfragen an die Knowledge Graph Search API stellen.
 Mit diesen Schritten generierst Du den API Key:
 
-*Gehe zur API Console
+* Gehe zur API Console
 * Wähle ein Projekt aus der Projektliste oder erstelle ein neues.
-* Falls die Seite APIs & services noch nicht geöffnet ist, öffne das Menü auf der linken Seite und wähle APIs & services aus
-* Wähle links Credentials aus
+* Falls die Seite APIs & services noch nicht geöffnet ist, öffne das Menü auf der linken Seite und wähle APIs & services aus.
+* Wähle links Credentials aus.
 * Klicke Create credentials und wähle dann API Key aus.
 
-Daach kannst Du diesen API Key für Anfragen an die Knowledge Graph Search API verwenden.
-Wenn ich Googles APIs verwende, setze ich den Access key auf ~/.google_api_key und lese den Key so ein:
+Danach kannst Du diesen API Key für Anfragen an die Knowledge Graph Search API verwenden.
+Wenn ich Googles APIs verwende, setze ich den Access Key in **~/.google_api_key** und lese den Key so ein:
 
- api_key=open(str(Path.home())+"/.google_api_key").read()
- 
-Du kannst auch Umgebungsvariablen zum Speichern von Access Keys nutzen.  Hier ein Codeschnipsel für einen API-Aufruf, der Informationen über mich holt:
+´´´ 
+1 api_key=open(str(Path.home())+"/.google_api_key").read()
+´´´
 
-```
+Du kannst auch Umgebungsvariablen zum Speichern von Access Keys nutzen. Hier ein Codeschnipsel für einen API-Aufruf, der Informationen über mich einholt:
+
+```python
 1   import json
 2   from urllib.parse import urlencode
 3   from urllib.request import urlopen
@@ -72,66 +74,65 @@ Die Ausgabe von JSON-LD würde so aussehen:
 19                       'resultScore': 43}]}
 ```
 
-Damit der Code zum Abrufen von Entitätsinformationen von Google KG nicht wiederholt werden muss, habe ich die Utility **Google_KG_helper.py** geschrieben, die den vorhergehenden Code einschließt und in eine Mini-Library generalisiert:
+Damit der Code zum Abrufen von Entitätsinformationen von Google KG nicht wiederholt werden muss, habe ich das Dienstprogramm **Google_KG_helper.py** geschrieben, das den vorhergehenden Code einschließt und in eine Mini-Library generalisiert:
 
-```
-1   """Python client for calling Knowledge Graph Search API."\
-2   ""
-3
-4   import json
-5   from urllib.parse import urlencode
-6   from urllib.request import urlopen
-7   from pathlib import Path
-8   from pprint import pprint
-9
-10   api_key =
-11       open(str(Path.home()) + "/.google_api_key").read()
-12
-13   # use Google search API to get information
-14   # about a named entity:
-15
-16   def get_entity_info(entity_name):
-17       service_url =
-18         "https://kgsearch.googleapis.com/v1/entities:search"
-19       params = {
-20           "query": entity_name,
-21           "limit": 1,
-22           "indent": True,
-23           "key": api_key,
-24       }
-25       url = service_url + "?" + urlencode(params)
-26       response = json.loads(urlopen(url).read())
-27       return response
-28
-29   def tree_traverse(a_dict):
-30       ret = []
-31       def recur(dict_2, a_list):
-32           if isinstance(dict_2, dict):
-33               for key, value in dict_2.items():
-34                   if key in ['name', 'description',
-35                              'articleBody']:
-36                       a_list += [value]
-37                   recur(value, a_list)
-38           if isinstance(dict_2, list):
-39               for x in dict_2:
-40                   recur(x, a_list)
-41       recur(a_dict, ret)
-42       return ret
+```python
+1 """Client for calling Knowledge Graph Search API."""
+2
+3  import json
+4  from urllib.parse import urlencode
+5  from urllib.request import urlopen
+6  from pathlib import Path
+7  from pprint import pprint
+8
+9  api_key =
+10       open(str(Path.home()) + "/.google_api_key").read()
+11
+12   # use Google search API to get information
+13   # about a named entity:
+14
+15   def get_entity_info(entity_name):
+16       service_url =
+17         "https://kgsearch.googleapis.com/v1/entities:search"
+18       params = {
+19           "query": entity_name,
+20           "limit": 1,
+21           "indent": True,
+22           "key": api_key,
+23       }
+24       url = service_url + "?" + urlencode(params)
+25       response = json.loads(urlopen(url).read())
+26       return response
+27
+28   def tree_traverse(a_dict):
+29       ret = []
+30       def recur(dict_2, a_list):
+31           if isinstance(dict_2, dict):
+32               for key, value in dict_2.items():
+33                   if key in ['name', 'description',
+34                              'articleBody']:
+35                       a_list += [value]
+36                   recur(value, a_list)
+37           if isinstance(dict_2, list):
+38               for x in dict_2:
+39                   recur(x, a_list)
+40       recur(a_dict, ret)
+41       return ret
+42
 43
-44
-45   def get_context_text(entity_name):
-46       json_data = get_entity_info(entity_name)
-47       return ' '.join(tree_traverse(json_data))
-48
-49   if __name__ == "__main__":
-50       get_context_text("Bill Clinton")
+44   def get_context_text(entity_name):
+45       json_data = get_entity_info(entity_name)
+46       return ' '.join(tree_traverse(json_data))
+47
+48   if __name__ == "__main__":
+49       get_context_text("Bill Clinton")
 ```
 
-Das Haupttestskript ist in der Datei  **Google_Knowledge_Graph_Search.py**:
+Das Haupttestskript ist in der Datei **Google_Knowledge_Graph_Search.py**:
 
-```
+```python
 1   """Example of Python client calling the
-2   Knowledge Graph Search API."""
+2      Knowledge Graph Search API."""
 3
 4   from llama_index import GPTListIndex, Document
 5
@@ -175,4 +176,4 @@ Die Ausgabe für das Beispiel ist:
 14  Bill Clinton was president from 1993 to 2001.
 ```
 
-Der Zugriff auf Knowledge Graphs von Google, DBPedia und Wikidata ermöglicht es Dir, Fakten und Wissen aus der realen Welt in Deine Anwendungen zu integrieren. Ich arbeite zwar hauptsächlich im Bereich des Deep Learning, benutze aber auch häufig Knowledge Graphs in meiner Arbeit und in meiner persönlichen Recherche. Ich denke, dass Du, werter Leser, den Zugriff auf hochstrukturierte Daten in KGs zuerlässiger und in vielen Fällen einfacher finden wirst als Web Scraping.
+Der Zugriff auf Knowledge Graphs von Google, DBPedia und Wikidata ermöglicht es dir, Fakten und Wissen aus der realen Welt in Deine Anwendungen zu integrieren. Ich arbeite zwar hauptsächlich im Bereich des Deep Learning, benutze aber auch häufig Knowledge Graphs in meiner Arbeit und für meine persönlichen Recherche. Ich denke, dass du, werter Leser, den Zugriff auf hochstrukturierte Daten in KGs zuerlässiger und in vielen Fällen einfacher finden wirst als Web Scraping.
