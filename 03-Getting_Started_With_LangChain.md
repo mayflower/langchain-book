@@ -184,9 +184,11 @@ Die Ausgabe des letzten Beispiels ist:
 
 ## Embeddings erstellen
 
-Als Referenz hier die [LangChain embeddings documentation](https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html). Mit einer Python REPL können wir verstehen, wie text to vektor space embeddings aussehen könnten:
+Als Referenz hier die LangChain embeddings documentation[^3]. Mit einer Python REPL können wir verstehen, wie Text- zu Vektorraum-Einbettungen aussehen könnten:
 
-```
+[^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
+
+```shell
 1  $ python
 2  Python 3.10.8 (main, Nov 24 2022, 08:08:27) [Clang 14.0.6\
 3   ] on darwin
@@ -215,13 +217,13 @@ Als Referenz hier die [LangChain embeddings documentation](https://langchain.rea
 26 >>>
 ```
 
-(3) https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
+[^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
 
 Beachte, dass das **doc_embeddings** eine Liste ist, bei der jedes Listenelement das Embedding für ein einzugebendes Textdokument ist.
-Das **query_embedding** ist ein einzelnes Embedding. Lies Dir bitte die oben verlinkte Embedding Dokumentation durch. 
 
-Wir werden Vektorstores nutzen, um berechnete Embeddings für zukünftigen Gebrauch zu speichern.
-Im nächsten Kapitel werden wir ein Beispiel einer Dokumentendatenbanksuche mit LangChain und Llama-Index anschauen. 
+Das **query_embedding** ist ein einzelnes Embedding. Lies dir bitte die oben verlinkte Dokumentation zu Embeddings durch. 
+
+Wir werden Vektor-Speicher verwenden, um berechnete Embeddings für zukünftige Verwendungszwecke zu speichern. Im nächsten Kapitel werden wir ein Beispiel einer Dokumentendatenbank-Suche mit LangChain und Llama-Index betrachten. 
 
 ## Verwendung von LangChain-Vektor-Stores zum Durchsuchen von Dokumenten
 
