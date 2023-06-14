@@ -2,7 +2,7 @@
 
 Harrison Chase begann das LangChain Projekt im Oktober 2022. Während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für LangChain https://github.com/hwchase17/langchain 171 Beitragende.
 
-LangChain[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (LLMs) durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datengestützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Chains, Agents und Memory, sowie Integrationsmöglichkeiten mit anderen Tools und End-to-End-Beispielen bietet. Wir beziehen uns auf "Chains" als Sequenzen von Aufrufen (zu einem LLM und verschiedenen Programm-Utilities, Cloud-Services, usw.), die über einen einzigen LLM-API-Aufruf hinausgehen. LangChain bietet eine Standardschnittstelle für Chains, viele Integrationen mit anderen Tools und End-to-End Chains für gängige Anwendungen. Oft findest du bereits existierende Chains, die die Anforderungen deiner Anwendungen erfüllen.
+[LangChain](https://langchain.readthedocs.io/en/latest/index.html)[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (LLMs) durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datengestützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Chains, Agents und Memory, sowie Integrationsmöglichkeiten mit anderen Tools und End-to-End-Beispielen bietet. Wir beziehen uns auf "Chains" als Sequenzen von Aufrufen (zu einem LLM und verschiedenen Programm-Utilities, Cloud-Services, usw.), die über einen einzigen LLM-API-Aufruf hinausgehen. LangChain bietet eine Standardschnittstelle für Chains, viele Integrationen mit anderen Tools und End-to-End Chains für gängige Anwendungen. Oft findest du bereits existierende Chains, die die Anforderungen deiner Anwendungen erfüllen.
 
 [^1]: https://langchain.readthedocs.io/en/latest/index.html
 
@@ -10,7 +10,7 @@ So kann zum Beispiel eine Chain erstellt werden, die Benutzereingaben entgegenni
 
 LLMs sind sehr allgemein gehalten, was bedeutet, dass sie zwar viele Aufgaben effektiv ausführen können, aber oft nicht direkt spezifische Antworten auf Fragen oder Aufgaben geben können. Dieses erfordert tiefes Fachwissen oder Expertise. LangChain bietet eine Standardschnittstelle für Agents, eine Bibliothek von Agents aus der man wählen kann, und Beispiele für End-to-End-Agents.
 
-LangChain Memory ist das Konzept, den Zustand zwischen Aufrufen einer Kette oder eines Agenten beizubehalten. LangChain bietet eine standardisierte Schnittstelle für den Speicher, eine Sammlung von Speicherimplementierungen sowie Beispiele für Ketten/Agenten, die den Speicher verwenden[^2]. LangChain bietet eine große Sammlung von allgemeinen Werkzeugen, die du in deiner Anwendung verwenden kannst. Chains gehen über einen einzelnen LLM-Aufruf hinaus und sind Sequenzen von Aufrufen (ob zu einem LLM oder einem anderen Dienstprogramm). LangChain bietet ebenfalls eine Standardschnittstelle für Chains, viele Integrationen mit anderen Werkzeugen sowie End-to-End-Chains für gängige Anwendungen.
+LangChain Memory ist das Konzept, den Zustand zwischen Aufrufen einer Kette oder eines Agenten beizubehalten. LangChain bietet eine standardisierte Schnittstelle für den Speicher, eine Sammlung von Speicherimplementierungen sowie Beispiele für Ketten/Agenten, die den Speicher verwenden[^?]. LangChain bietet eine große Sammlung von allgemeinen Werkzeugen, die du in deiner Anwendung verwenden kannst. Chains gehen über einen einzelnen LLM-Aufruf hinaus und sind Sequenzen von Aufrufen (ob zu einem LLM oder einem anderen Dienstprogramm). LangChain bietet ebenfalls eine Standardschnittstelle für Chains, viele Integrationen mit anderen Werkzeugen sowie End-to-End-Chains für gängige Anwendungen.
 
 LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, etc. integriert werden. Es kann für ausführliche Frage-und-Antwort-Chat-Sitzungen, API-Interaktion oder die Durchführung von Aktionen verwendet werden. Über eine natürlichsprachliche API-Schnittstelle kann LangChain in die Zapier-Plattform integriert werden (wir haben ein ganzes Kapitel den Zapier-Integrationen gewidmet).
 
@@ -229,15 +229,15 @@ Wir werden Vektor-Speicher verwenden, um berechnete Embeddings für zukünftige 
 
 Als Referenz hier die Dokumentation von [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html)[^4]. Du musst ein paar Bibliotheken installieren:
 
-```
-1 pipinstallchroma
-2 pipinstallchromadb
-3 pipinstallunstructured
+```shell
+1 pip install chroma
+2 pip install chromadb
+3 pip install unstructured
 ```
 
 Das Beispielskript ist **doc_search.py**:
 
-``` python
+```python
 1 from langchain.text_splitter import CharacterTextSplitter
 2 from langchain.vectorstores import Chroma
 3 from langchain.embeddings import OpenAIEmbeddings
@@ -270,9 +270,10 @@ Das Beispielskript ist **doc_search.py**:
 ```
 
 Die Klasse DirectoryLoader ist hilfreich für das Laden eines Verzeichnisses voller Eingabedokumente. In diesem Beispiel haben wir festgelegt, dass wir nur Textdateien verarbeiten wollen, aber das Pattern für den Dateiabgleich hätte auch PDF-Dateien usw. enthalten können.
+
 Das Ergebnis ist:
 
-```
+```shell
 1 $ python doc_search.py
 2 Created a chunk of size 1055, which is longer than the sp\
 3 ecified 1000
@@ -319,7 +320,8 @@ Das Ergebnis ist:
 ## Zusammenfassung LangChain 
 
 Für den Rest dieses Buches werden wir weiter LangChain verwenden, wie auch die LlamaIndex-Bibliothek, die wir im nächsten Kapitel vorstellen.
+
 Ich behandle in diesem Buch nur die Teilmenge von LangChain, die ich in meinen eigenen Projekten verwende. Lies unbedingt auch die LangChain-Dokumentation und schau dir die LangChain-Chains an, die Benutzer auf
 [Langchain-hub](https://github.com/hwchase17/langchain-hub)[^5] geschrieben haben.
 
-[^5]https://github.com/hwchase17/langchain-hub
+[^5]: https://github.com/hwchase17/langchain-hub
