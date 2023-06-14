@@ -184,7 +184,7 @@ Die Ausgabe des letzten Beispiels ist:
 
 ## Embeddings erstellen
 
-Als Referenz hier die LangChain Embeddings Dokumentation[^3]. Mit einer Python REPL können wir verstehen, wie Text- zu Vektorraum-Einbettungen aussehen könnten:
+Als Referenz hier die [LangChain Embeddings Dokumentation](https://python.langchain.com/en/latest/reference/modules/embeddings.html)[^3]. Mit einer Python REPL können wir verstehen, wie Text- zu Vektorraum-Einbettungen aussehen könnten:
 
 [^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
 
@@ -225,100 +225,9 @@ Das **query_embedding** ist ein einzelnes Embedding. Lies dir bitte die oben ver
 
 Wir werden Vektor-Speicher verwenden, um berechnete Embeddings für zukünftige Verwendungszwecke zu speichern. Im nächsten Kapitel werden wir ein Beispiel einer Dokumentendatenbank-Suche mit LangChain und Llama-Index betrachten. 
 
-## Verwendung von LangChain-Vektor-Stores zum Durchsuchen von Dokumenten
+## Verwendung von LangChain-Vektor-Speichern zum Durchsuchen von Dokumenten
 
-Wir verweisen auf die Dokumentation von LangChain Vector Stores (4). Du musst dafür ein paar Bibliotheken installieren:
-
-```
-1 pipinstallchroma
-2 pipinstallchromadb
-3 pipinstallunstructured
-```
-
-Das Beispielskript ist **doc_search.py**:
-
-```
-1 from langchain.text_splitter import CharacterTextSplitter
-2 from langchain.vectorstores import Chroma
-3 from langchain.embeddings import OpenAIEmbeddings
-4 from langchain.document_loaders import DirectoryLoader
-5 from langchain import OpenAI, VectorDBQA
-6
-7 embeddings = OpenAIEmbeddings() 8
-9 loader=DirectoryLoader('../data/', glob="**/*.txt")
-10 documents = loader.load()
-11 text_splitter = CharacterTextSplitter(chunk_size=2500, ch\
-12 unk_overlap=0)
-13
-14 texts = text_splitter.split_documents(documents)
-15
-16 docsearch = Chroma.from_documents(texts, embeddings)
-17
-18 qa = VectorDBQA.from_chain_type(llm=OpenAI(),
-19                                 chain_type="stuff",
-20                                 vectorstore=docsearch)
-21
-22 def query(q):
-23     print(f"Query: {q}")
-24     print(f"Answer: {qa.run(q)}")
-25
-26 query("What kinds of equipment are in a chemistry laborat\
-27 ory?")
-28 query("What is Austrian School of Economics?")
-29 query("Why do people engage in sports?")
-30 query("What is the effect of bodychemistry on exercise?")
-```
-
-Die Klasse DirectoryLoader ist nützlich, um ein Verzeichnis voller Eingabedokumente zu laden. In diesem Beispiel haben wir festgelegt, dass wir nur Textdateien verarbeiten wollen, aber das Muster für den Dateiabgleich hätte auch PDF-Dateien usw. enthalten können.
-Das Ergebnis ist:
-
-```
-1 $ python doc_search.py
-2 Created a chunk of size 1055, which is longer than the sp\
-3 ecified 1000
-4 Running Chroma using direct local API.
-5 Using DuckDB in-memory for database. Data will be transie\
-6 nt.
-7 Query: What kinds of equipment are in a chemistry laborat\
-8 ory?
-9 Answer: A chemistry lab would typically include glasswar\
-10 e, such as beakers, flasks, and testtubes, as well as ot
-11 her equipment such as scales, Bunsenburners, and thermom
-12 eters.
-13 Query: What is Austrian School of Economics?
-14 Answer: The Austrian School is a school of economic thou\
-15 ght that emphasizes the spontaneous organizing power of t
-16 he price mechanism. Austrians hold that the complexity of
-17 subjective human choices makes mathematical modelling of
-18 the evolving market extremely difficult and advocate a "
-19 laissezfaire" approach to the economy. Austrian School e
-20 conomists advocate the strict enforcement of voluntary co
-21 ntractual agreements between economic agents, and hold th
-22 at commercial transactions should be subject to the small
-23 est possible imposition of forces they consider to be (in
-24 particular the smallest possible amount of government in
-25 tervention). The Austrian School derives its name from it
-26 s predominantly Austrian founders and early supporters, i
-27 ncluding Carl Menger, Eugen von Bohm-Bawerk and Ludwig vo
-28 n Mises.
-29 Query: Why do people engage in sports?
-30 Answer: People engage in sports for leisure and entertai\
-31 nment, as well as for physical exercise and athleticism.
-32 Query: What is the effect of bodychemistry on exercise?
-33 Answer: Body chemistry can affect the body's response to\
-34 exercise, as certain hormones and enzymes produced by th
-35 e body can affect the energy levels and muscleperformanc
-36 e. Chemicals in the body, such as adenosinetriphosphate
-37 (ATP) and urea, can affect the body's energy production a
-38 nd muscle metabolism during exercise. Additionally,the b
-39 ody's levels of electrolytes, vitamins, and minerals can
-40 affect exercise performance.
-41 Exiting: Cleaning up .chroma directory
-```
-
-## Verwendung von LangChain-Vektor-Stores zum Durchsuchen von Dokumenten
-
-Wir verweisen auf die Dokumentation von LangChain Vector Stores (4). Du musst dafür ein paar Bibliotheken installieren:
+Als Referenz hier die Dokumentation von [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html)[^4]. Du musst ein paar Bibliotheken installieren:
 
 ```
 1 pipinstallchroma
@@ -360,7 +269,7 @@ Das Beispielskript ist **doc_search.py**:
 30 query("What is the effect of bodychemistry on exercise?")
 ```
 
-Die Klasse DirectoryLoader ist nützlich, um ein Verzeichnis voller Eingabedokumente zu laden. In diesem Beispiel haben wir festgelegt, dass wir nur Textdateien verarbeiten wollen, aber das Muster für den Dateiabgleich hätte auch PDF-Dateien usw. enthalten können.
+Die Klasse DirectoryLoader ist hilfreich für das Laden eines Verzeichnisses voller Eingabedokumente. In diesem Beispiel haben wir festgelegt, dass wir nur Textdateien verarbeiten wollen, aber das Pattern für den Dateiabgleich hätte auch PDF-Dateien usw. enthalten können.
 Das Ergebnis ist:
 
 ```
@@ -409,8 +318,8 @@ Das Ergebnis ist:
 
 ## Zusammenfassung LangChain 
 
-Für den Rest dieses Buches werden wir LangChain verwenden, genauso wie die LlamaIndex-Bibliothek, die wir im nächsten Kapitel vorstellen.
+Für den Rest dieses Buches werden wir weiter LangChain verwenden, wie auch die LlamaIndex-Bibliothek, die wir im nächsten Kapitel vorstellen.
 Ich behandle in diesem Buch nur die Teilmenge von LangChain, die ich in meinen eigenen Projekten verwende. Lies unbedingt auch die LangChain-Dokumentation und schau dir die LangChain-Chains an, die Benutzer auf
-[Langchain-hub](https://github.com/hwchase17/langchain-hub)⁵ veröffentlicht haben.
+[Langchain-hub](https://github.com/hwchase17/langchain-hub)[^5] geschrieben haben.
 
-(5) https://github.com/hwchase17/langchain-hub
+[^5]https://github.com/hwchase17/langchain-hub
