@@ -237,7 +237,7 @@ Als Referenz hier die Dokumentation von [LangChain Vector Stores](https://python
 
 Das Beispielskript ist **doc_search.py**:
 
-```
+``` python
 1 from langchain.text_splitter import CharacterTextSplitter
 2 from langchain.vectorstores import Chroma
 3 from langchain.embeddings import OpenAIEmbeddings
