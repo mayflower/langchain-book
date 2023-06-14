@@ -184,7 +184,7 @@ Die Ausgabe des letzten Beispiels ist:
 
 ## Embeddings erstellen
 
-Als Referenz hier die LangChain embeddings documentation[^3]. Mit einer Python REPL können wir verstehen, wie Text- zu Vektorraum-Einbettungen aussehen könnten:
+Als Referenz hier die LangChain Embeddings Dokumentation[^3]. Mit einer Python REPL können wir verstehen, wie Text- zu Vektorraum-Einbettungen aussehen könnten:
 
 [^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
 
