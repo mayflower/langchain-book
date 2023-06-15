@@ -22,7 +22,7 @@ Hier sind einige "Papers with Code"-Links für BERT (Links sind für Code, Paper
 [^4]: https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)
 [^5]: https://en.wikipedia.org/wiki/BERT_(Language_model)
 
-## Big Tech Businesses vs. Small Startups nutzen Large Language Models
+## Big Tech Businesses vs. Small Startups bei der Verwendung von Large Language Models
 
 Sowohl Microsoft als auch Google haben Interessen auf beiden Seiten: Einerseits möchten sie Cloud-LLM-Dienste an Entwickler und kleine Start-up-Unternehmen verkaufen. Andererseits streben sie danach, ihre Dienste wie Office 365, Google Docs, Sheets usw. zu etablieren und die Nutzer an diese zu binden.
 
