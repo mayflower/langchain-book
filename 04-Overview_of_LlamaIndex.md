@@ -38,52 +38,59 @@ Wir werden uns zuerst ein kurzes Beispiel aus der LllamaIndex-Dokumentation ansc
 Das folgende Beispiel ähnelt dem letzten Beispiel im Überblickskapitel zu LangChain. In Zeile 8 verwenden wir eine Hilfsfunktion zum Laden von Daten, die von LlamaIndex bereitgestellt wird, um Dokumente aus einem Eingabeordner zu lesen. Zur Demonstration speichern wir den Index (bestehend aus Document Embeddings) auf der Festplatte und laden ihn erneut. Diese Vorgehensweise ist nützlich, wenn man eine große Anzahl von statischen Dokumenten hat, wodurch der Indizierungsvorgang eine Weile dauern und viele OpenAI-API-Aufrufe erfordern kann. Man kann zum Beispiel viele Gigabytes an Firmendokumentation haben, die sich nicht oft ändert, sodass es sinnvoll ist, den Index nur gelegentlich neu zu erstellen.
 
 ```python
-1 # Derived from a documentation example at:
-2 # https://github.com/jerryjliu/gpt_index
-3
-4 # make sure you set the following environment variable
-5 # is set: OPENAI_API_KEY
-6
-7 from llama_index import GPTSimpleVectorIndex,
-8                         SimpleDirectoryReader
-9 documents = SimpleDirectoryReader('../data').load_data()
-10 index = GPTSimpleVectorIndex(documents)
-11
-12 # save to disk
-13 index.save_to_disk('index.json')
-14 # load from disk
-15 index = GPTSimpleVectorIndex.load_from_disk('index.json')
-16
-17 # search for a document
-18 r = index.query("effect of body chemistry on exercise?")
-19 print(r)
+1 # make sure you set the following environment variable is\
+2  set:
+3 # OPENAI_API_KEY
+4
+5 from llama_index import GPTVectorStoreIndex, SimpleDirect\
+6 oryReader
+7 from llama_index import StorageContext, load_index_from_s\
+8 torage
+9
+10 documents = SimpleDirectoryReader('../data').load_data()
+11 # index = GPTListIndex(documents) # llama_index < 0.5
+12 index = GPTVectorStoreIndex.from_documents(documents)
+13 engine = index.as_query_engine()
+14 print(engine.query("what are key economic indicators?"))
+15
+16 # save to disk
+17 index.storage_context.persist(persist_dir='./cache')
+18
+19 # load from disk
+20 storage_context = StorageContext.from_defaults(persist_di\
+21 r='./cache')
+22 index = load_index_from_storage(storage_context)
+23 engine = index.as_query_engine()
+24
+25 # search for a document
+26 print(engine.query("effect of body chemistry on exercise?\
+27 "))
 ```
 
 Du hast sicherlich bemerkt, dass die in Zeile 17 definierte Abfrage dieselbe ist, die wir im vorigen Kapitel verwendet haben.
 
->REVIEW: vollständig andere Ausgabe in Version 2023-10-05
-
 ```
-1 INFO:root:> [build_index_from_documents] Total LLM token\
-2 usage: 0 tokens
-3 INFO:root:> [build_index_from_documents] Total embedding\
-4 token usage: 2272 tokens
-5 INFO:root:> [query] Total LLM token usage: 1018 tokens
-6 INFO:root:> [query] Total embedding token usage: 7 tokens
-7
-8 The effect of body chemistry on exercise can vary dependi\
-9 ng on the individual. Factors such as hydration levels, e
-10 lectrolyte balance, and the availability of energy-storin
-11 g molecules such as adenosine triphosphate (ATP) can all
-12 affect the bodys ability to perform exercise. Additionall
-13 y, hormones such as adrenaline and cortisol can influence
-14 the bodys response to exercise, as can the presence of c
-15 ertain nutrients and minerals.
+1 $ python test_from_docs.py
+2
+3 Key economic indicators are measures of economic activity\
+4 that are used to assess the health of an economy. Exampl
+5 es of key economic indicators include gross domestic prod
+6 uct (GDP), unemployment rate, inflation rate, consumer pr
+7 ice index (CPI), balance of trade, and industrial product
+8 ion.
+9
+10 The effect of body chemistry on exercise depends on the t\
+11 ype of exercise being performed. For aerobic exercise, th
+12 e body needs to be able to produce enough energy to susta
+13 in the activity. This requires the body to have adequate
+14 levels of oxygen, glucose, and other nutrients in the blo
+15 odstream. For anaerobic exercise, the body needs to be ab
+16 le to produce energy without relying on oxygen. This requ
+17 ires the body to have adequate levels of lactic acid, cre
+18 atine phosphate, and other energy-producing molecules. In
+19 both cases, the body's chemistry must be balanced in ord
+20 er for the exercise to be effective.
 ```
-
->REVIEW: nächster Absatz nicht mehr in Version 2023-10-05 enthalten
-
-Beachten Sie, dass im Allgemeinen viele organische Chemikalien als Antwort auf die "Abfrage effect of body chemistry on exercise?" aufgelistet werden könnten, dass aber nur Adenosintriphosphat (ATP) in dem Testdokument in der Datei data/chemistry.txt erwähnt wurde.
 
 ## Verwendung von LlamaIndex zur Beantwortung von Fragen aus einer Liste von Webseiten
 
