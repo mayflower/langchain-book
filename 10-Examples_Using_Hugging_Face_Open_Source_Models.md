@@ -44,7 +44,7 @@ Durch das Verändern von wenigen Zeilen Code kannst Du viele der Beispiele in di
 
 Die LangChain-Dokumentation enthält den Quellcode für einen Wrapper zur Nutzung lokaler Hugging Face-Einbettungen [hier](https://langchain.readthedocs.io/en/latest/_modules/langchain/embeddings/self_hosted_hugging_face.html)[^2].
 
-## Eine eigene LlamaIndex Hugging Face LLM Wrapper Klasse erstellen, die auf Deinem Laptop läuft
+## Eine eigene LlamaIndex Hugging Face LLM Wrapper Klasse erstellen, die auf deinem Laptop läuft
 
 Wir laden das Hugging Face-Modell **facebook/opt-iml-1.3b** herunter, eine 2,6 Gigabyte große Datei. Dieses Modell wird bei der ersten Anfrage heruntergeladen und dann in **~/.cache/huggingface/hub** zur späteren Verwendung zwischengespeichert.
 

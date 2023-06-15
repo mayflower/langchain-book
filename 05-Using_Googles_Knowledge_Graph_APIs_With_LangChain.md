@@ -12,7 +12,7 @@ Im nächsten Kapitel benutzen wir auch DBPedia und Wikidata aus dem öffentliche
 
 Um einen API Key für die Google Knowledge Graph Search API zu bekommen, musst Du zur Google API Console gehen, die Google Knowledge Graph Search API aktivieren und einen API Key für dein Projekt erstellen. Dann kannst du mit diesem API Key Anfragen an die Knowledge Graph Search API stellen.
 
-Mit diesen Schritten generierst Du den API Key:
+Mit diesen Schritten generierst du den API Key:
 
 * gehe zur API Console
 * wähle ein Projekt aus der Projektliste oder erstelle ein neues
@@ -20,7 +20,7 @@ Mit diesen Schritten generierst Du den API Key:
 * wähle links "Anmeldedaten" aus
 * klicke "Anmeldedaten erstellen" und wähle dann API Key aus
 
-Danach kannst Du diesen API Key für Anfragen an die Knowledge Graph Search API verwenden.
+Danach kannst du diesen API Key für Anfragen an die Knowledge Graph Search API verwenden.
 
 Wenn ich Googles APIs verwende, setze ich den Access Key in **~/.google_api_key** und lese den Key so ein:
 
@@ -179,4 +179,4 @@ Die Ausgabe für das Beispiel ist:
 14  Bill Clinton was president from 1993 to 2001.
 ```
 
-Der Zugriff auf Knowledge Graphs von Google, DBPedia und Wikidata ermöglicht es dir, Fakten und Wissen aus der realen Welt in Deine Anwendungen zu integrieren. Ich arbeite zwar hauptsächlich im Bereich des Deep Learning, benutze aber auch häufig Knowledge Graphs in meiner Arbeit und für meine persönlichen Recherche. Ich denke, dass du, werter Leser, den Zugriff auf hochstrukturierte Daten in KGs zuerlässiger und in vielen Fällen einfacher finden wirst als Web Scraping.
+Der Zugriff auf Knowledge Graphs von Google, DBPedia und Wikidata ermöglicht es dir, Fakten und Wissen aus der realen Welt in deine Anwendungen zu integrieren. Ich arbeite zwar hauptsächlich im Bereich des Deep Learning, benutze aber auch häufig Knowledge Graphs in meiner Arbeit und für meine persönlichen Recherche. Ich denke, dass du, werter Leser, den Zugriff auf hochstrukturierte Daten in KGs zuerlässiger und in vielen Fällen einfacher finden wirst als Web Scraping.
