@@ -41,18 +41,17 @@ Wir beginnen mit einem einfachen Beispiel, das den Support für Prompt-Text in L
 Durch das Verändern von wenigen Zeilen Code kannst Du viele der Beispiele in diesem Buch mit Hugging Face-APIs statt mit OpenAi-APIs nutzen.
 Die LangChain-Dokumentation enthält den Quellcode für einen Wrapper zur Nutzung lokaler Hugging Face-Einbettungen [hier](https://langchain.readthedocs.io/en/latest/_modules/langchain/embeddings/self_hosted_hugging_face.html)[^2].
 
-## Eine maßgeschneiderte LlamaIndex Hugging Face LLM Wrapper Klasse erstellen, die auf Deinem Laptop läuft
-Wir werden das Hugging Face Modell **facebook/opt-iml-1.3b** herunterladen, eine 2,6 Gigabyte große Datei. Diese Modell wird bei der ersten Anfrage heruntergeladen und dann in **~/.cache/huggingface/hub** für spätere Wiederverwendung gecacht.
-Dieses Beispiel ist die Abwandlung eines Beispiels für benutzerdefinierte LLMs aus der [LlamaIndex-Dokumentation](https://github.com/jerryjliu/llama_index/blob/main/docs/how_to/customization/custom_llms.md#example-using-a-custom-llm-model) (3). Beachte, dass ich in diesem Beispiel ein viel kleineres
-Modell verwendet und die Größe des Prompts und der Textausgabe reduziert habe.
+## Eine eigene LlamaIndex Hugging Face LLM Wrapper Klasse erstellen, die auf Deinem Laptop läuft
+Wir laden das Hugging Face-Modell **facebook/opt-iml-1.3b** herunter, eine 2,6 Gigabyte große Datei. Dieses Modell wird bei der ersten Anfrage heruntergeladen und dann in **~/.cache/huggingface/hub** zur späteren Verwendung zwischengespeichert.
+Dieses Beispiel ist die Abwandlung eines Beispiels für eigene LLMs aus der [LlamaIndex-Dokumentation](https://github.com/jerryjliu/llama_index/blob/main/docs/how_to/customization/custom_llms.md#example-using-a-custom-llm-model)[^3]. Beachte, dass ich in diesem Beispiel ein viel kleineres Modell verwendet und die Größe des Prompts und der Textausgabe reduziert habe.
 
-(2) https://langchain.readthedocs.io/en/latest/_modules/langchain/embeddings/self_hosted_hugging_face.html
-(3) https://github.com/jerryjliu/llama_index/blob/main/docs/how_to/customization/custom_llms.md#example-using-a-custom-llm-model
-
-```
+[^2]https://langchain.readthedocs.io/en/latest/_modules/langchain/embeddings/self_hosted_hugging_face.html
+[^3]https://github.com/jerryjliu/llama_index/blob/main/docs/how_to/customization/custom_llms.md#example-using-a-custom-llm-model
 
 ```
-Wenn ich das auf einem M1 MacBook Pro nur mit der CPU laufen lasse (ohne GPU oder NeuralEngine Konfiguration), können wir das Modell schnell von der Festplatte lesen, aber es dauert eine Weile, die Anfragen zu verarbeiten:
+
+```
+Wenn ich das auf einem M1 MacBook Pro nur mit der CPU laufen lasse (ohne GPU oder NeuralEngine-Konfiguration), können wir das Modell schnell von der Festplatte lesen, aber die Verarbeitung der Anfrage dauert eine Weile:
 
 ```
 
@@ -67,7 +66,6 @@ Lass uns das letzte Beispiel auf Colab wiederholen:
 
 ```
 
-Mit einer Standard Colab GPU ist die Zeit für 
-Abfrage/Vorhersage viel schneller. Hier ein [Link zu meinem Colab Notebook](https://colab.research.google.com/drive/1Ecg-0iid3AD05zM4HgPXTVHcgkGxyi3q?usp=sharing) (4), falls du dieses Beispiel lieber auf Colab als auf deinem Laptop laufen lassen möchtest.
+Mit einer Standard Colab GPU ist die Zeit für Abfrage/Vorhersage viel schneller. Hier ein [Link zu meinem Colab Notebook](https://colab.research.google.com/drive/1Ecg-0iid3AD05zM4HgPXTVHcgkGxyi3q?usp=sharing)[^4], falls du dieses Beispiel lieber auf Colab als auf deinem Laptop laufen lassen möchtest.
 
-(4) https://colab.research.google.com/drive/1Ecg-0iid3AD05zM4HgPXTVHcgkGxyi3q?usp=sharing 
+[^4]https://colab.research.google.com/drive/1Ecg-0iid3AD05zM4HgPXTVHcgkGxyi3q?usp=sharing 
