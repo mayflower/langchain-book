@@ -1,22 +1,27 @@
 # Die Nutzung von Googles Knowledge Graph APIs mit LangChain
 
 Googles Knowledge Graph (KG) ist eine Wissensbasis, mit deren Hilfe Google relevante Informationen in einer Infobox neben den Suchergebnissen anzeigt. Sie ermöglicht es dem Nutzer, die Antwort mit einem Blick zu sehen, wie eine sofortige Antwort. Die Daten werden automatisch aus einer Vielzahl von Quellen ermittelt, die Orte, Personen, Unternehmen und mehr enthalten. Ich arbeitete 2013 in einem Projekt bei Google, das den eigenen KG für ein internes Projekt nutzte.
+
 Mit der öffentlichen Knowledge Graph Search API von Google kannst du Entitäten im Google Knowledge Graph finden. Die API verwendet standardmäßige schema.org-Typen und ist konform mit der JSON-LD-Spezifikation. Sie unterstützt das Suchen und Nachschlagen von Entitäten.
+
 Du kannst die Knowledge Graph Search API zur Erstellung von Anwendungen nutzen, die Google Knowledge Graph verwenden. Zum Beispiel kannst Du die API verwenden, um eine Suchmaschine zu bauen, die Ergebnisse auf der Grundlage der Entitäten im Knowledge Graph ausgibt.
+
 Im nächsten Kapitel benutzen wir auch DBPedia und Wikidata aus dem öffentlichen KG. Eine Begrenzung von Googles KP API ist, dass sie zum Nachschlagen von Entitäten (Menschen, Orte, Organisationen, etc.) designt ist. DBPedia und Wikidata ermöglichen es, mit der SPARQL Query Language eine größere Bandbreite von Informationen zu finden, wie z.B. Beziehungen zwischen Entitäten. Du kannst mit der Google KP API einige Beziehungen zwischen Entitäten finden, z.B. alle Filme eines bestimmten Regisseurs oder alle Bücher eines bestimmten Autors. Du kannst mit der API auch Informationen finden wie etwa alle Menschen, die an einem bestimmten Film mitgewirkt haben, oder alle Schauspieler, die in einer bestimmten TV Show aufgetreten sind.
 
 ## Den Zugriff auf Google Knowledge Graph-APIs einrichten
 
 Um einen API Key für die Google Knowledge Graph Search API zu bekommen, musst Du zur Google API Console gehen, die Google Knowledge Graph Search API aktivieren und einen API Key für dein Projekt erstellen. Dann kannst du mit diesem API Key Anfragen an die Knowledge Graph Search API stellen.
+
 Mit diesen Schritten generierst Du den API Key:
 
-* Gehe zur API Console
-* Wähle ein Projekt aus der Projektliste oder erstelle ein neues.
-* Falls die Seite APIs & services noch nicht geöffnet ist, öffne das Menü auf der linken Seite und wähle APIs & services aus.
-* Wähle links Credentials aus.
-* Klicke Create credentials und wähle dann API Key aus.
+* gehe zur API Console
+* wähle ein Projekt aus der Projektliste oder erstelle ein neues
+* falls die Seite "APIs & Services" noch nicht geöffnet ist, öffne das Menü auf der linken Seite und wähle "APIs & Services" aus
+* wähle links "Anmeldedaten" aus
+* klicke "Anmeldedaten erstellen" und wähle dann API Key aus
 
 Danach kannst Du diesen API Key für Anfragen an die Knowledge Graph Search API verwenden.
+
 Wenn ich Googles APIs verwende, setze ich den Access Key in **~/.google_api_key** und lese den Key so ein:
 
 ´´´ 
