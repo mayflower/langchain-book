@@ -16,17 +16,18 @@ Du musst zuerst auf **Erweitert** und dann auf den Link **Gehe zu GoogleAPIExamp
 
 Du musst ein Credential unter https://console.cloud.google.com/cloud-resource-manager erstellen (kopiert aus der [PyDrive-Dokumentation](https://pythonhosted.org/PyDrive/quickstart.html)[^1], wobei der Anwendungstyp auf "Desktop" geändert werden muss):
 
->>>REVIEW: die Anleitung lässt sich so nicht nachvollziehen
+>>>REVIEW: die Anleitung lässt sich so nicht nachvollziehen: die Punkte mit localhost bekomme ich nicht
 
 - suche nach "Google Drive API", wähle den Eintrag und klicke auf "Aktivieren"
-- wähle "Credentials" aus dem linken Menü, klicke "Create Credentials", wähle "OAuth client ID"
-- lege Produktname und Berechtigungsbildschirm fest -> klicke auf "Configure consent screen" und folge den Anweisungen. Sobald du fertig bist:
-- wähle als "Anwendungstyp" eine Desktop-Anwendung
+- wähle "Anmeldedaten" aus dem linken Menü, klicke "Anmeldedaten erstellen", wähle "OAuth-Client ID"
+- lege Produktname und Berechtigungsbildschirm fest ⇾ klicke auf "Zustimmungsbildschirm konfigurieren" und folge den Anweisungen. Sobald du fertig bist:
+- wiederhole Schritt 2
+- wähle als "Anwendungstyp" eine Desktopanwendung
 - gib einen geeigneten Namen ein
-- gib http://localhost:8080 für "Authorized JavaScript origins" ein
-- gib http://localhost:8080/ für "Authorized redirect URIs" ein
+- >gib http://localhost:8080 für "Authorized JavaScript origins" ein
+- >gib http://localhost:8080/ für "Authorized redirect URIs" ein
 - klicke auf "Speichern"
-- klicke auf "JSON herunterladen" auf der rechten Seite der Client-ID, um client_secret_.json herunterzuladen. Kopiere die heruntergeladene JSON-Anmeldedatei in das Beispielverzeichnis **google_drive_llm** für dieses Kapitel.
+- klicke auf "JSON herunterladen" auf der rechten Seite der Client-ID, um client_secret_.json herunterzuladen. Kopiere die heruntergeladene JSON-Anmeldedatei in das Beispielverzeichnis **google_drive_llm** für dieses Kapitel
 
 [^1]: https://pythonhosted.org/PyDrive/quickstart.html
 
