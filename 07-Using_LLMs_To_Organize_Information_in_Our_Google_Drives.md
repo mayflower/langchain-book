@@ -142,6 +142,6 @@ Es ist interessant zu sehen, wie das Ergebnis der Abfrage in eine schöne Form u
 
 ## Zusammenfassung Google Drive Beispiele
 
-Wenn Du Google Drive bereits zum Speichern deiner Arbeitsnotizen und anderer Dokumente verwendest, dann magst du vielleicht das einfache Beispiel in diesem Kapitel erweitern, um dein eigenes Abfragesystem für Dokumente zu erstellen. Zusätzlich zu Google Drive nutze ich auch Microsoft 365 und OneDrive für meine Arbeit und persönlichen Projekte.
+Wenn du Google Drive bereits zum Speichern deiner Arbeitsnotizen und anderer Dokumente verwendest, dann magst du vielleicht das einfache Beispiel in diesem Kapitel erweitern, um dein eigenes Abfragesystem für Dokumente zu erstellen. Zusätzlich zu Google Drive nutze ich auch Microsoft 365 und OneDrive für meine Arbeit und persönlichen Projekte.
 
 Ich habe noch keine eigenen Konnektoren für OneDrive geschrieben, aber das ist auf meiner persönlichen Todo-Liste, unter Verwendung der Microsoft Library https://github.com/OneDrive/onedrive-sdk-python.
