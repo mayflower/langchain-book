@@ -108,58 +108,57 @@ Das folgende Codebeispiel zeigt die Datei **web_page_QA.py**:
 7 from llama_index import GPTListIndex
 8 from llama_index import TrafilaturaWebReader
 9
-10 def query_website(url_list,*questions):
-11     documents = TrafilaturaWebReader().load_data(url_list)
-12    index = GPTListIndex(documents)
-13    for question in questions:
-14        print(f"\n== QUESTION: {question}\n")
-15        response = index.query(question)
-16        print(f"== RESPONSE: {response}")
-17
-18 if __name__ == "__main__":
-19    url_list = ["https://markwatson.com"]
-20    query_website(url_list, "What programming languages doe\
-21 s Markuse?",
-22    "How many books has Mark writte\
-23 n?",
-24    "What musical instruments does \
-25 Mark play?")
+10 def query_website(url_list, *questions):
+11 documents = TrafilaturaWebReader().load_data(url_list)
+12 # index = GPTListIndex(documents) # llama_index < 0.5
+13 index = GPTListIndex.from_documents(documents)
+14 engine = index.as_query_engine()
+15 for question in questions:
+16 print(f"\n== QUESTION: {question}\n")
+17 response = engine.query(question)
+18 print(f"== RESPONSE: {response}")
+19
+20 if __name__ == "__main__":
+21 url_list = ["https://markwatson.com"]
+22 query_website(url_list, "How many patents does Mark hav\
+23 e?",
+24 "How many books has Mark writte\
+25 n?")
 ```
 
 Dieses Beispiel ist nicht effizient, weil wir für jede Webseite, die wir durchsuchen wollen, einen neuen Index erstellen. Dennoch bietet es (das von einem Beispiel in der LlamaIndex-Dokumentation abgeleitet wurde) ein Muster, das du beispielsweise verwenden kannst, um einen wiederverwendbaren Index für die Website deines Unternehmens zu erstellen und eine Web-Suchanwendung für Endbenutzer zu entwickeln.
 
 Die Ergebnisse für diese drei Testfragen im letzten Codebeispiel lauten:
 
->REVIEW: in neuer Version völlig andere Ausgabe
-
 ```shell
-1 INFO:root:> [build_index_from_documents] Total LLM token\
-2 usage: 0 tokens
-3 INFO:root:> [build_index_from_documents] Total embedding\
-4 token usage: 0 tokens
-5
-6 == QUESTION: What programming languages does Mark use?
-7
-8 INFO:root:> [query] Total LLM token usage: 2210 tokens
-9 INFO:root:> [query] Total embedding token usage: 0 tokens
-10 ==RESPONSE:
-11 Mark uses a variety of programming languages, including H\
-12 askell, Ruby, Clojure, JavaScript, Java, Common Lisp, Pyt
-13 hon, and Smalltalk.
-14
-15 ==QUESTION: How many books has Mark written?
-16
-17 INFO:root:> [query] Total LLM token usage: 2189 tokens
-18 INFO:root:> [query]Total embedding token usage: 0 tokens
-19 ==RESPONSE:
-20 Mark has written 20+ books.
+1 $ python web_page_QA.py
+2 documents:
+3 [Document(text='Mark Watson’s Artificial Intelligence Boo\
+4 ks and Blog\n'
+5 'Author of 20+ books on AI and I have 50+ \
+6 US patents. Here I '
+7 'talk about both technology and provide li\
+8 nks to read my '
+9 'published books online.\n'
+10 "By registering you agree to Substack's Te\
+11 rms of Service, our "
+12 'Privacy Policy, and our Information Colle\
+13 ction Notice',
+14 doc_id='c6ed3ddd-b160-472b-9c7d-fd0446762cc8',
+15 embedding=None,
+16 doc_hash='126a335ed76d5d79ad94470dd4dd06ab5556b\
+17 9f1347e5be25ecc595e0290ab57',
+18 extra_info=None)]
+19
+20 == QUESTION: How many patents does Mark have?
 21
-22 ==QUESTION: What musical instruments does Markp lay?
-23
-24 INFO:root:> [query] Total LLM token usage: 2197 tokens
-25 INFO:root:> [query] Total embedding token usage: 0 tokens
-26 ==RESPONSE:
-27 Mark plays guitar, didgeridoo,and American Indian flute.
+22 == RESPONSE:
+23 Mark Watson has 50+ US patents.
+24
+25 == QUESTION: How many books has Mark written?
+26
+27 == RESPONSE:
+28 Mark has written 20+ books on AI.
 ```
 
 ## Zusammenfassung der LlamaIndex/ GPT-Index-Fallstudie
