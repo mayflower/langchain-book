@@ -58,4 +58,4 @@ Kochen ist eine meiner Lieblingsbeschäftigungen (neben dem Wandern, Kajakfahren
 
 Als ich mit generativen Modellen experimentieren wollte, um Rezepte auf Basis meiner persönlichen Rezeptdaten zu erstellen, war das Experiment einfach aufzusetzen und durchzuführen, weil ich Rezeptdaten aus meinem vorherigen Projekt und Tools wie OpenAI-APIs und LangChain zur Verfügung hatte. Es ist ein durchgängiges Thema in diesem Buch, dass es heutzutage relativ einfach ist, persönliche Projekte auf der Grundlage unserer Daten und Interessen zu erstellen.
 
-[^1] http://cookingspace.com/
+[^1]: http://cookingspace.com/

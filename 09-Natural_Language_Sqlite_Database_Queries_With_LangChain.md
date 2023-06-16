@@ -6,9 +6,9 @@ Ich habe langjährige Erfahrung im Schreiben von Schnittstellen für relationale
 
 Wir werden die SQlite-Beispieldatenbank von der SQLite-Tutorial-Webseite verwenden:
 
-´´´
+```
 1 https://www.sqlitetutorial.net/sqlite-sample-database/
-´´´
+```
 
 Diese Datenbank hat 11 Tabellen. Unter der obigen URL findest du die Dokumentation zu dieser Datenbank. Bitte nimm dir eine Minute Zeit und betrachte das [Diagramm des Tabellenschemas und die Textbeschreibung](https://www.sqlitetutorial.net/sqlite-sample-database)[^1].
 

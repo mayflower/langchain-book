@@ -36,7 +36,7 @@ Während ich versuche, das Material in diesem Buch so zu gestalten, dass du es u
 
 Während wir einige Beispiele durchgehen, beachte bitte, wie die ChatGPT-Webanwendung arbeitet: Du gibst Text ein und erhältst Antworten. Die Art und Weise, wie du ChatGPT aufforderst, ist offensichtlich wichtig, wenn du nützliche Antworten erhalten möchtest. In Code-Beispielen automatisieren und formalisieren wir diesen manuellen Prozess.
 
-Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich für einen API-Schlüssel anmelden[^2] und diesen als Umgebungsvariable festlegen:
+Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich für einen [API-Schlüssel anmelden](https://platform.openai.com/account/api-keys)[^2] und diesen als Umgebungsvariable festlegen:
 
 ```shell
 1    export OPENAI_API_KEY="YOUR KEY GOES HERE"
@@ -186,7 +186,7 @@ Die Ausgabe des letzten Beispiels ist:
 
 Als Referenz hier die [LangChain Embeddings Dokumentation](https://python.langchain.com/en/latest/reference/modules/embeddings.html)[^3]. Mit einer Python REPL können wir verstehen, wie Text- zu Vektorraum-Einbettungen aussehen könnten:
 
-[^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
+[^3]: https://python.langchain.com/en/latest/reference/modules/embeddings.html
 
 ```shell
 1  $ python
@@ -228,6 +228,8 @@ Wir werden Vektor-Speicher verwenden, um berechnete Embeddings für zukünftige 
 ## Verwendung von LangChain-Vektor-Speichern zum Durchsuchen von Dokumenten
 
 Als Referenz hier die Dokumentation von [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html)[^4]. Du musst ein paar Bibliotheken installieren:
+
+[^4]: https://python.langchain.com/en/latest/reference/modules/vectorstores.html
 
 ```shell
 1 pip install chroma

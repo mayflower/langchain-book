@@ -24,9 +24,9 @@ Danach kannst du diesen API Key für Anfragen an die Knowledge Graph Search API 
 
 Wenn ich Googles APIs verwende, setze ich den Access Key in **~/.google_api_key** und lese den Key so ein:
 
-´´´ 
+```
 1 api_key=open(str(Path.home())+"/.google_api_key").read()
-´´´
+```
 
 Du kannst auch Umgebungsvariablen zum Speichern von Access Keys nutzen. Hier ein Codeschnipsel für einen API-Aufruf, der Informationen über mich einholt:
 
