@@ -1,70 +1,82 @@
-# Vorwort
+# The Basics
 
-Ich arbeite seit 1982 auf dem Gebiet der künstlichen Intelligenz und ohne Zweifel sind Large Language Models (LLMs) wie GPT-3 und Infrastrukturprojekte wie LangChain die größten technologischen Durchbrüche, die ich erlebt habe. In dieser Publikation werden die Projekte [LangChain](https://github.com/hwchase17/langchain)[^1] und [GPT Index (LlamaIndex)](https://github.com/jerryjliu/gpt_index)[^2] zusammen mit den OpenAI GPT-3 und ChatGPT APIs verwendet, um eine Reihe von interessanten Problemen zu lösen.
+Welcome to the Leanpub Browser book writing editor! This page is where you will be writing your book. This file is a working, real example of how to write a book chapter in plain text with Markdown formatting (which we'll explain briefly below).
 
-Harrison Chase startete das LangChain-Projekt im Oktober 2022 und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für [LangChain](https://github.com/hwchase17/langchain)[^1] 171 Mitwirkende. Jerry Liu startete das GPT-Index-Projekt (kürzlich umbenannt in LlamaIndex) Ende 2022 und das GitHub-Repository für [LlamaIndex](https://github.com/jerryjliu/gpt_index)[^2] hat derzeit vierundfünfzig Mitwirkende.
+This is a paragraph. You just write.
 
-Das GitHub-Repository für die Beispiele in diesem Buch ist https://github.com/mark-watson/langchain-book-examples.git.
+Blank lines are used to separate paragraphs.
 
-Obwohl die Dokumentation und die Online-Beispiele für LangChain und LlamaIndex exzellent sind, bin ich immer noch bestrebt, dieses Buch zu schreiben, um interessante Probleme zu lösen, an denen ich gerne arbeite. Diese sind: Information Retrieval, natürliche Sprachverarbeitung (natural language processing, NLP), Dialogsysteme (dialog agents) und semantisch verknüpfte Datenfelder. Ich hoffe, dass du, liebe Leserin, lieber Leser, von diesen Beispielen begeistert sein wirst und dass zumindest manche von diesen deine zukünftigen Projekte inspirieren werden.
+To make *italic text* you surround it with single asterisks. To make **bold text** you surround it with double asterisks.
 
-[^1]: https://github.com/hwchase17/langchain
-[^2]: https://github.com/jerryjliu/gpt_index
+Creating ebook files from this manuscript is really easy to do! Just click on the **Versions** tab in the menu at the top of the page, to go to the Preview page. You can then click the **Create Preview** button to preview your book.
 
-## Über den Autor
+*(Yes, these instructions are not just help text: they are also a book manuscript!)*
 
-Ich habe mehr als 20 Bücher geschrieben, halte über 50 US-Patente und habe bei so interessanten Unternehmen wie Google, Capital One, SAIC, Mind AI und anderen gearbeitet. Auf meiner Webseite https://markwatson.com findest du Links, um die meisten meiner aktuellen Bücher kostenlos zu lesen. Wenn ich meine Karriere kurz zusammenfassen müsste, würde ich sagen, dass ich eine Menge Spaß hatte und meine Arbeit sehr genossen habe. Ich hoffe, dass das, was du hier lernst, dir sowohl Spaß machen, als auch dass es dir bei deiner Arbeit hilfreich sein wird.
+Once the book has been generated, you can download it in PDF or EPUB format to see what it looks like.
 
-Wenn du meine Arbeit unterstützen möchtest, kannst du meine Bücher auf [Leanpub](https://leanpub.com/u/markwatson)[^3] kaufen und meine Git-Repositories, die du nützlich findest, auf [GitHub](https://github.com/mark-watson?tab=repositories&q=&type=public)[^4] bewerten. Du kannst mich auch in den sozialen Medien über [Mastodon](https://mastodon.social/@mark_watson)[^5] und [Twitter](https://twitter.com/mark_l_watson)[^6] finden. Ich stehe auch als Berater zur Verfügung: https://markwatson.com.
+You can start new chapters by starting a line with a # sign and a space, and then typing your chapter title, just like you can see at the top of this page, where you see # The Basics on a line by itself.
 
-[^3]: https://leanpub.com/u/markwatson
-[^4]: https://github.com/mark-watson?tab=repositories&q=&type=public
-[^5]: https://mastodon.social/@mark_watson
-[^6]: https://twitter.com/mark_l_watson
+You can create multiple chapters in one file, but we recommend one chapter per file. This way, your manuscript files will be easier to navigate. So, for example, this chapter is contained in the file named "The Basics" that you can see listed under the "Manuscript" menu to the left. "The Basics" is in bold in the menu, because it is the file that is currently selected.
 
-## Buchumschlag
+(If you start typing in here, the Manuscript menu and all the other menus will go away, so that you can relax and focus on your writing! Just click outside of this text area, and all the menus will come back.)
 
-Ich lebe in Sedona, Arizona. Das Foto auf dem Buchdeckel habe ich im Januar 2023 von der Straße aus aufgenommen, in der ich wohne.
+You can make a thematic break with three asterisks, like this:
 
-## Danksagung
+* * *
 
->BILD FEHLT
+By the way, the above formatting is actually *all* you need to know to write a typical novel using Markdown formatting! To write a technical book, however, you'll need to know a bit more Markdown, and learn a bit about Markua.
 
-![Mark und Carol Watson](marcandcarolwatson.jpg)
+## Markdown and Markua
 
-Dieses Bild zeigt mich und meine Frau Carol, die mir bei der Buchproduktion und -bearbeitung hilft.
+The dialect of Markdown used at Leanpub is called Markua.
 
-Ich möchte mich auch bei den folgenden Lesern bedanken, die Fehler oder Rechtschreibfehler in diesem Buch gemeldet haben: Armando Flores  und Peter Solimine.
+Markdown is great, but it doesn't have support for certain things that many books need. These include index entries, crosslinks, endnotes, external code samples, etc. So, we've added these to Markdown, by extending Markdown in an open specification called Markua.
 
-## Voraussetzungen für das Ausführen und Ändern der Beispiele im Buch
+The Markua spec is [here](http://markua.com).
 
-Ich präsentiere den vollständigen Quellcode sowie zahlreiche Beispiele für jedes im Buch aufgeführte Szenario. Falls du also keinen Zugriff auf bestimmte APIs haben möchtest, ermöglicht dir das Buch dennoch, Schritt für Schritt mitzugehen.
+However, that spec is really long, and there are a few advanced things in the spec which aren't fully supported in Leanpub yet.
 
-Um OpenAIs GPT-3- und ChatGPT-Modelle zu nutzen, musst du dich für einen API-Schlüssel (kostenlose Version ist ausreichend) unter https://openai.com/api/ anmelden und die Umgebungsvariable **OPENAI_API_KEY** auf deinen Key-Value setzen.
+So, if you want to learn how to get started writing in Markua on Leanpub, see the next chapter, **Writing in Markua**, by clicking the Writing in Markua chapter under the Manuscript menu to the left.
 
-Du benötigst einen API-Schlüssel für Beispiele, die **Googles Knowledge Graph APIs** verwenden.
+This chapter will show you everything you need to know about how to use all the important parts of Markdown and Markua to create a technical book, including how to use...
 
-Referenz: [Google Knowledge Graph APIs](https://cloud.google.com/enterprise-knowledge-graph/docs/search-api)[^7]. 
+   * lists
+   * images
+   * code samples
+   * tables
+   * math
+   * resource attributes
+   * document settings
+   * asides and blurbs
+   * index entries
+   * crosslinks
 
-Die Beispielprogramme, die die Knowledge Graph APIs von Google verwenden, setzen voraus, dass sich die Datei **~/.google_api_key** in deinem Home-Verzeichnis befindet und den Schlüssel von https://console.cloud.google.com/apis enthält.
+Seriously, unless you already know everything about Markua, you should strongly consider looking at that chapter. It may save you a bunch of time!
 
-Für die Beispiele, die die Websuche integrieren, musst du **SerpApi installieren**. Siehe [PyPi-Projektseite](https://pypi.org/project/google-search-results/)[^8]. 
+## Generate a preview version of your book
 
-Du kannst dich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/Monat mit einer E-Mail-Adresse und Telefonnummer bei https://serpapi.com/users/welcome anmelden.
+You should probably generate a preview of this version of your book next, to save a copy of these helpful instructions. (The **Writing in Markua** chapter can come in handy!)
 
-Für die GMail- und Google Calendar-Beispiele benötigst du außerdem ein [Zapier](https://zapier.com/)-Konto[^9].
+Click on the Versions tab above to go to the Preview page, and then click Create Preview to do that.
 
-Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite [LangChainHub](https://github.com/hwchase17/langchain-hub)[^10] ansehen, die Prompts, Chains und Agents enthält, die für die Erstellung von LLM-Anwendungen nützlich sind.
+## Either read a tutorial, or just go for it!
 
-[^7]: https://cloud.google.com/enterprise-knowledge-graph/docs/search-api
-[^8]: https://pypi.org/project/google-search-results/
-[^9]: https://zapier.com/
-[^10]: https://github.com/hwchase17/langchain-hub
+At this point, there are two good ways to proceed. You can either read a tutorial and follow along, or you can just go for it!
 
-## Probleme und Workarounds zur Verwendung der Materialien in diesem Buch
+(If you're feeling adventurous, just go for it. The tutorial is linked on the Help > Getting Started page, so you can always read it later...)
 
-Die Bibliotheken, die ich in diesem Buch verwende, werden häufig aktualisiert und manchmal ändert sich die Dokumentation oder der Link zum Code, wodurch diese in diesem Buch ungültig werden. Ich werde versuchen, alles auf dem neuesten Stand zu halten. Bitte meldet mir defekte Links.
+### Read the tutorial...
 
-In manchen Fällen wirst du spezielle Versionen oder Bibliotheken für einige der Code-Beispiele verwenden müssen.
+If this is your first time writing a Leanpub book in our Browser writing mode, after you've read the Writing in Markua we recommend you read our full tutorial [here](https://bit.ly/3lAaI3I). That tutorial will guide you through every step, including previewing versions for your review, and even publishing the first version of your book when you're ready!
 
-Da die Python-Code-Beispiele farbigen Text verwenden, kann es vorkommen, dass beim Kopieren von Code aus diesem E-Book Leerzeichen verloren gehen. Alle Code-Beispiele befinden sich im GitHub-Repository für dieses Buch, daher solltest du das Repository klonen, um mit den Codebeispielen zu experimentieren.
+### ...or just go for it!
+
+Once you're ready to start writing your book, simply select all the text in this file, delete it, and then start writing!
+
+Start with # Your Chapter Name and then a blank line, and then write your first paragraph.
+
+You can create new files by clicking the + button in the menu on the left, and you can delete the other chapter files by mousing over them, clicking the settings gear icon, and clicking the red Delete File button.
+
+## Thanks for being a Leanpub author!
+
+On behalf of everyone at Leanpub, we really hope that you enjoy the experience of writing and publishing in-progress books on Leanpub. We are a bootstrapped startup which is entirely supported by our authors, and we're really grateful that you have chosen to write your book using Leanpub...
