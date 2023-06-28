@@ -18,8 +18,8 @@ LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, et
 
 Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
 
-{format: shell}
-![](code/install_langchain.sh)
+{format: guess}
+![](code/03/03-install_langchain.sh)
 
 Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_-study** im GitHub-Repository für dieses Buch verwenden.
 
@@ -43,32 +43,8 @@ Sowohl die Bibliotheken **openai** als auch **langchain** werden nach dieser Umg
 
 [^2]: https://platform.openai.com/account/api-keys
 
-```shell
-1    $python
-2    >>> from langchain.llms import OpenAI
-3    >>> llm = OpenAI(temperature=0.8)
-4    >>> s = llm("John got into his new sportscar, and he dro\
-5    ve it")
-6    >>> s
-7    'to work\n\nJohn started up his new sportscar and drove\
-8    it to work. He had a huge smile on his face as he drove,
-9    excited to show off his new car to his colleagues. The w\
-10    ind blowing through his hair, and the sun on his skin, he
-11    felt a sense of freedom and joy as he cruised along the
-12    road. He arrived at work in no time, feeling refreshed an\
-13    d energized.'
-14    >>> s = llm("John got into his new sportscar, and he dro\
-15    ve it")
-16    >>> s
-17    "around town\n\nJohn drove his new sportscar around tow\
-18    n, enjoying the feeling of the wind in his hair. He stopp\
-19    ed to admire the view froma scenic lookout, and then spe\
-20    d off to the mall to do some shopping. On the way home, h\
-21    e took a detour down a winding country road, admiring the
-22    scenery and enjoying the feel of the car's powerful engi\
-23    ne. By the time he arrived back home, he had a huge smile
-24    on his face."
-```
+{format: guess}
+![](code/03/03-example_repl)
 
 Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabetextes unterschiedliche Ergebnisse erhalten. Durch das Erhöhen der Temperatur in Zeile 3 wird die Zufälligkeit erhöht.
 
