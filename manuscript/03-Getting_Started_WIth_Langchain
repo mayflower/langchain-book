@@ -18,7 +18,7 @@ LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, et
 
 Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
 
-{format: guess}
+{format: text}
 ![](code/03/03-install_langchain.sh)
 
 Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_-study** im GitHub-Repository für dieses Buch verwenden.
@@ -43,7 +43,7 @@ Sowohl die Bibliotheken **openai** als auch **langchain** werden nach dieser Umg
 
 [^2]: https://platform.openai.com/account/api-keys
 
-{format: guess}
+{format: console}
 ![](code/03/03-example_repl)
 
 Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabetextes unterschiedliche Ergebnisse erhalten. Durch das Erhöhen der Temperatur in Zeile 3 wird die Zufälligkeit erhöht.
@@ -51,7 +51,7 @@ Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabetextes unterschi
 Unser nächstes Beispiel befindet sich in der Quelldatei **directions_template.py** und verwendet die Klasse **PromptTemplate**. Eine Prompt-Vorlage ist eine reproduzierbare Methode zur Generierung einer Eingabeaufforderung. Es enthält einen Textstring ("die Vorlage"), der eine Reihe von Parametern des Endbenutzers entgegennehmen und einen Prompt erzeugen kann. Die Prompt-Vorlage kann Anweisungen für das Sprachmodell, Beispiele zur Verbesserung der Antwort des Modells oder spezifische Fragen enthalten, die das Modell beantworten soll.
 
 {format: python}
-![](code/03-first.py)
+![](code/03/03-first.py)
 
 Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um eine Eingabeaufforderung zu erstellen, aber die Verwendung der Utility-Klasse **PromptTemplate** ist besser lesbar und funktioniert mit einer beliebigen Anzahl von Eingabevariablen.
 
