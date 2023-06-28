@@ -18,8 +18,13 @@ LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, et
 
 Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
 
-{format: text}
-![](code/03/03-install_langchain.sh)
+{format: console}
+```
+pip install langchain llama_index openai
+pip install kor pydrive pandas rdflib
+pip install google-search-results SPARQLWrapper
+```
+
 
 Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_-study** im GitHub-Repository für dieses Buch verwenden.
 
@@ -44,36 +49,39 @@ Sowohl die Bibliotheken **openai** als auch **langchain** werden nach dieser Umg
 [^2]: https://platform.openai.com/account/api-keys
 
 {format: console}
-![](code/03/03-example_repl)
+```
+$python
+>>> from langchain.llms import OpenAI
+>>> llm = OpenAI(temperature=0.8)
+>>> s = llm("John got into his new sportscar, and he drove it")
+>>> s'to work\n\nJohn started up his new sportscar and drove it to work. He had a huge smile on his face as he drove, excited to show off his new car to his colleagues. The wind blowing through his hair, and the sun on his skin, he felt a sense of freedom and joy as he cruised along the road. He arrived at work in no time, feeling refreshed and energized.'
+>>> s = llm("John got into his new sportscar, and he drove it")
+>>> s"around town\n\nJohn drove his new sportscar around town, enjoying the feeling of the wind in his hair. He stopped to admire the view froma scenic lookout, and then sped off to the mall to do some shopping. On the way home, he took a detour down a winding country road, admiring the scenery and enjoying the feel of the car's powerful engine. By the time he arrived back home, he had a huge smile on his face."
+```
 
 Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabetextes unterschiedliche Ergebnisse erhalten. Durch das Erhöhen der Temperatur in Zeile 3 wird die Zufälligkeit erhöht.
 
 Unser nächstes Beispiel befindet sich in der Quelldatei **directions_template.py** und verwendet die Klasse **PromptTemplate**. Eine Prompt-Vorlage ist eine reproduzierbare Methode zur Generierung einer Eingabeaufforderung. Es enthält einen Textstring ("die Vorlage"), der eine Reihe von Parametern des Endbenutzers entgegennehmen und einen Prompt erzeugen kann. Die Prompt-Vorlage kann Anweisungen für das Sprachmodell, Beispiele zur Verbesserung der Antwort des Modells oder spezifische Fragen enthalten, die das Modell beantworten soll.
 
 {format: python}
-![](code/03/03-first.py)
+![](code/03/03-directions_template.py)
 
 Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um eine Eingabeaufforderung zu erstellen, aber die Verwendung der Utility-Klasse **PromptTemplate** ist besser lesbar und funktioniert mit einer beliebigen Anzahl von Eingabevariablen.
 
 Das Ergebnis ist:
 
-```shell
+{format: console}
+```
 $python directions_template.py
 
     How do I get to the store?:
 
-    To get to the store, you will need to use a mode of trans\
-    portation such as walking, driving, biking, or taking pub\
-    lic transportation. Depending on the location of the stor\
-    e, you may need to look up directions or maps to determin\
-    e the best route to take.
+    To get to the store, you will need to use a mode of transportation such as walking, driving, biking, or taking public transportation. Depending on the location of the store, you may need to look up directions or maps to determine the best route to take.
 
     How do I hang a picture on the wall?:
 
-    1. Find a stud in the wall, or use two or three wall anch\
-    ors for heavier pictures.
-    2. Measure and mark the wall where the picture hanger wil\
-    l go.
+    1. Find a stud in the wall, or use two or three wall anchors for heavier pictures.
+    2. Measure and mark the wall where the picture hanger will go.
     3.Pre-drill the holes and place wall anchors if needed.
     4.Hammer the picture hanger into the holes.
     5.Hang the picture on the picture hanger.
@@ -81,63 +89,39 @@ $python directions_template.py
 
 Das nächste Beispiel in der Datei **country_information.py** ist von einem Beispiel in der LangChain-Dokumentation abgeleitet. In diesem Beispiel verwenden wir die **PromptTemplate**, welche das gewünschte Muster enthält, um dem LLM zu ermöglichen, eine Antwort zu generieren.
 
-```python
-from langchain.prompts import PromptTemplate
-from langchain.llms import OpenAI
-llm = OpenAI(temperature=0.9)
-
-def get_country_information(country_name):
-    print(f"\nProcessing {country_name}:")
-    global prompt
-    if "prompt" not in globals():
-        print("Creating prompt...")
-        prompt = PromptTemplate(
-        input_variables=["country_name"],
-        template = """
-            Predict the capital and population of a country.
-
-            Country:{country_name}
-            Capital: Population:""",
-        )
-    prompt_text = prompt.format(country_name=country_name)
-    print(prompt_text)
-    return llm(prompt_text)
-
-print(get_country_information("Canada"))
-print(get_country_information("Germany"))
-```
+{format: python}
+![](code/03/03-country_information.py)
 
 Du kannst die ChatGPT-Weboberfläche verwenden, um mit Prompts zu experimentieren. Wenn du ein Muster gefunden hast, das gut funktioniert, schreibe es in ein Python-Skript wie im letzten Beispiel, ändere aber die Daten, die du in der **PromptTemplate**-Instanz angibst.
 
 Die Ausgabe des letzten Beispiels ist:
 
-```shell
-1    $ python country_information.py
-2
-3    Processing Canada:
-4    Creating prompt...
-5
-6    Predict the capital and population of a country.
-7
-8    Country: Canada
-9    Capital:
-10   Population:
-11
-12
-13    Capital: Ottawa
-14    Population: 37.058.856 (as of July 2020)
-15
-16    Processing Germany:
-17
-18    Predict the capital and population of a country.
-19
-20    Country: Germany
-21    Capital:
-22    Population:
-23
-24
-25    Capital: Berlin
-26    Population: 83,02 million (est.2019)
+{format: console}
+```
+$ python country_information.py
+
+    Processing Canada:
+    Creating prompt...
+
+    Predict the capital and population of a country.
+
+    Country: Canada
+    Capital:
+    Population:
+
+    Capital: Ottawa
+    Population: 37.058.856 (as of July 2020)
+
+    Processing Germany:
+
+    Predict the capital and population of a country.
+
+    Country: Germany
+    Capital:
+    Population:
+
+    Capital: Berlin
+    Population: 83,02 million (est.2019)
 ```
 
 ## Embeddings erstellen

@@ -1,7 +1,0 @@
-$python
->>> from langchain.llms import OpenAI
->>> llm = OpenAI(temperature=0.8)
->>> s = llm("John got into his new sportscar, and he drove it")
->>> s'to work\n\nJohn started up his new sportscar and drove it to work. He had a huge smile on his face as he drove, excited to show off his new car to his colleagues. The wind blowing through his hair, and the sun on his skin, he felt a sense of freedom and joy as he cruised along the road. He arrived at work in no time, feeling refreshed and energized.'
->>> s = llm("John got into his new sportscar, and he drove it")
->>> s"around town\n\nJohn drove his new sportscar around town, enjoying the feeling of the wind in his hair. He stopped to admire the view froma scenic lookout, and then sped off to the mall to do some shopping. On the way home, he took a detour down a winding country road, admiring the scenery and enjoying the feel of the car's powerful engine. By the time he arrived back home, he had a huge smile on his face."
