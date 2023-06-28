@@ -35,8 +35,8 @@ Während wir einige Beispiele durchgehen, beachte bitte, wie die ChatGPT-Webanwe
 
 Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich für einen [API-Schlüssel anmelden](https://platform.openai.com/account/api-keys)[^2] und diesen als Umgebungsvariable festlegen:
 
-```shell
-1    export OPENAI_API_KEY="YOUR KEY GOES HERE"
+```console
+export OPENAI_API_KEY="YOUR KEY GOES HERE"
 ```
 
 Sowohl die Bibliotheken **openai** als auch **langchain** werden nach dieser Umgebungsvariablen suchen und diese verwenden. Wir werden uns ein paar einfache Beispiele in einer Python-REPL ansehen. Wir beginnen mit der Verwendung der Textvorhersage-API von OpenAI:
@@ -58,25 +58,25 @@ Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um
 Das Ergebnis ist:
 
 ```shell
-1    $python directions_template.py
-2
-3    How do I get to the store?:
-4
-5    To get to the store, you will need to use a mode of trans\
-6    portation such as walking, driving, biking, or taking pub\
-7    lic transportation. Depending on the location of the stor\
-8    e, you may need to look up directions or maps to determin\
-9    e the best route to take.
-10
-11    How do I hang a picture on the wall?:
-12
-13    1. Find a stud in the wall, or use two or three wall anch\
-14    ors for heavier pictures.
-15    2. Measure and mark the wall where the picture hanger wil\
-16    l go.
-17    3.Pre-drill the holes and place wall anchors if needed.
-18    4.Hammer the picture hanger into the holes.
-19    5.Hang the picture on the picture hanger.
+$python directions_template.py
+
+    How do I get to the store?:
+
+    To get to the store, you will need to use a mode of trans\
+    portation such as walking, driving, biking, or taking pub\
+    lic transportation. Depending on the location of the stor\
+    e, you may need to look up directions or maps to determin\
+    e the best route to take.
+
+    How do I hang a picture on the wall?:
+
+    1. Find a stud in the wall, or use two or three wall anch\
+    ors for heavier pictures.
+    2. Measure and mark the wall where the picture hanger wil\
+    l go.
+    3.Pre-drill the holes and place wall anchors if needed.
+    4.Hammer the picture hanger into the holes.
+    5.Hang the picture on the picture hanger.
 ```
 
 Das nächste Beispiel in der Datei **country_information.py** ist von einem Beispiel in der LangChain-Dokumentation abgeleitet. In diesem Beispiel verwenden wir die **PromptTemplate**, welche das gewünschte Muster enthält, um dem LLM zu ermöglichen, eine Antwort zu generieren.
