@@ -30,8 +30,6 @@ Ich lebe in Sedona, Arizona. Das Foto auf dem Buchdeckel habe ich im Januar 2023
 
 >BILD FEHLT
 
-![Mark und Carol Watson](marcandcarolwatson.jpg)
-
 Dieses Bild zeigt mich und meine Frau Carol, die mir bei der Buchproduktion und -bearbeitung hilft.
 
 Ich möchte mich auch bei den folgenden Lesern bedanken, die Fehler oder Rechtschreibfehler in diesem Buch gemeldet haben: Armando Flores  und Peter Solimine.
