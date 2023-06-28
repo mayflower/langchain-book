@@ -130,33 +130,19 @@ Als Referenz hier die [LangChain Embeddings Dokumentation](https://python.langch
 
 [^3]: https://python.langchain.com/en/latest/reference/modules/embeddings.html
 
-```shell
-1  $ python
-2  Python 3.10.8 (main, Nov 24 2022, 08:08:27) [Clang 14.0.6\
-3   ] on darwin
-4  Type "help", "copyright", "credits" or "license" for more\
-5   information.
-6  >>> from langchain.embeddings import OpenAIEmbeddings
-7  >>> embeddings = OpenAIEmbeddings()
-8  >>> text = "Mary has blond hair and John has brown hair. \
-9  Mary lives in town and John lives in the country."
-10 >>> doc_embeddings = embeddings.embed_documents([text])
-11 >>> doc_embeddings
-12 [[0.007727328687906265, 0.0009025644976645708, -0.0033224\
-13 383369088173, -0.01794492080807686, -0.017969949170947075
-14 , 0.028506645932793617, -0.013414892368018627, 0.00466768
-15 16418766975, -0.0024965214543044567, -0.02662956342101097
-16 ,
-17 ...]]
-18 >>> query_embedding = embeddings.embed_query("Does John l\
-19 ive in the city?")
-20 >>> query_embedding
-21 [0.028048301115632057, 0.011499025858938694, -0.009440079\
-22 33139801, -0.020809611305594444, -0.023904507979750633, 0
-23 .018750663846731186, -0.01626438833773136, 0.018129095435
-24 142517,
-25 ...]
-26 >>>
+{format: console}
+```
+$ python
+    Python 3.10.8 (main, Nov 24 2022, 08:08:27) [Clang 14.0.6] on darwin
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> from langchain.embeddings import OpenAIEmbeddings
+    >>> embeddings = OpenAIEmbeddings()
+    >>> text = "Mary has blond hair and John has brown hair. Mary lives in town and John lives in the country."
+    >>> doc_embeddings = embeddings.embed_documents([text])
+    >>> doc_embeddings[[0.007727328687906265, 0.0009025644976645708, -0.0033224383369088173, -0.01794492080807686, -0.017969949170947075, 0.028506645932793617, -0.013414892368018627, 0.0046676816418766975, -0.0024965214543044567, -0.02662956342101097,...]]
+    >>> query_embedding = embeddings.embed_query("Does John live in the city?")
+    >>> query_embedding[0.028048301115632057, 0.011499025858938694, -0.00944007933139801, -0.020809611305594444, -0.023904507979750633, 0.018750663846731186, -0.01626438833773136, 0.018129095435142517,...]
+    >>>
 ```
 
 [^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
@@ -173,92 +159,37 @@ Als Referenz hier die Dokumentation von [LangChain Vector Stores](https://python
 
 [^4]: https://python.langchain.com/en/latest/reference/modules/vectorstores.html
 
-```shell
-1 pip install chroma
-2 pip install chromadb
-3 pip install unstructured
+{format: console}
+```
+pip install chroma
+pip install chromadb
+pip install unstructured
 ```
 
 Das Beispielskript ist **doc_search.py**:
 
-```python
-1 from langchain.text_splitter import CharacterTextSplitter
-2 from langchain.vectorstores import Chroma
-3 from langchain.embeddings import OpenAIEmbeddings
-4 from langchain.document_loaders import DirectoryLoader
-5 from langchain import OpenAI, VectorDBQA
-6
-7 embeddings = OpenAIEmbeddings() 8
-9 loader=DirectoryLoader('../data/', glob="**/*.txt")
-10 documents = loader.load()
-11 text_splitter = CharacterTextSplitter(chunk_size=2500, ch\
-12 unk_overlap=0)
-13
-14 texts = text_splitter.split_documents(documents)
-15
-16 docsearch = Chroma.from_documents(texts, embeddings)
-17
-18 qa = VectorDBQA.from_chain_type(llm=OpenAI(),
-19                                 chain_type="stuff",
-20                                 vectorstore=docsearch)
-21
-22 def query(q):
-23     print(f"Query: {q}")
-24     print(f"Answer: {qa.run(q)}")
-25
-26 query("What kinds of equipment are in a chemistry laborat\
-27 ory?")
-28 query("What is Austrian School of Economics?")
-29 query("Why do people engage in sports?")
-30 query("What is the effect of bodychemistry on exercise?")
-```
+{format: python}
+![](code/03/03-doc_search.py)
 
 Die Klasse DirectoryLoader ist hilfreich für das Laden eines Verzeichnisses voller Eingabedokumente. In diesem Beispiel haben wir festgelegt, dass wir nur Textdateien verarbeiten wollen, aber das Pattern für den Dateiabgleich hätte auch PDF-Dateien usw. enthalten können.
 
 Das Ergebnis ist:
 
-```shell
-1 $ python doc_search.py
-2 Created a chunk of size 1055, which is longer than the sp\
-3 ecified 1000
-4 Running Chroma using direct local API.
-5 Using DuckDB in-memory for database. Data will be transie\
-6 nt.
-7 Query: What kinds of equipment are in a chemistry laborat\
-8 ory?
-9 Answer: A chemistry lab would typically include glasswar\
-10 e, such as beakers, flasks, and testtubes, as well as ot
-11 her equipment such as scales, Bunsenburners, and thermom
-12 eters.
-13 Query: What is Austrian School of Economics?
-14 Answer: The Austrian School is a school of economic thou\
-15 ght that emphasizes the spontaneous organizing power of t
-16 he price mechanism. Austrians hold that the complexity of
-17 subjective human choices makes mathematical modelling of
-18 the evolving market extremely difficult and advocate a "
-19 laissezfaire" approach to the economy. Austrian School e
-20 conomists advocate the strict enforcement of voluntary co
-21 ntractual agreements between economic agents, and hold th
-22 at commercial transactions should be subject to the small
-23 est possible imposition of forces they consider to be (in
-24 particular the smallest possible amount of government in
-25 tervention). The Austrian School derives its name from it
-26 s predominantly Austrian founders and early supporters, i
-27 ncluding Carl Menger, Eugen von Bohm-Bawerk and Ludwig vo
-28 n Mises.
-29 Query: Why do people engage in sports?
-30 Answer: People engage in sports for leisure and entertai\
-31 nment, as well as for physical exercise and athleticism.
-32 Query: What is the effect of bodychemistry on exercise?
-33 Answer: Body chemistry can affect the body's response to\
-34 exercise, as certain hormones and enzymes produced by th
-35 e body can affect the energy levels and muscleperformanc
-36 e. Chemicals in the body, such as adenosinetriphosphate
-37 (ATP) and urea, can affect the body's energy production a
-38 nd muscle metabolism during exercise. Additionally,the b
-39 ody's levels of electrolytes, vitamins, and minerals can
-40 affect exercise performance.
-41 Exiting: Cleaning up .chroma directory
+{format: console}
+```
+$ python doc_search.py
+Created a chunk of size 1055, which is longer than the specified 1000
+Running Chroma using direct local API.
+Using DuckDB in-memory for database. Data will be transient.
+Query: What kinds of equipment are in a chemistry laboratory?
+Answer: A chemistry lab would typically include glassware, such as beakers, flasks, and testtubes, as well as other equipment such as scales, Bunsenburners, and thermometers.
+Query: What is Austrian School of Economics?
+Answer: The Austrian School is a school of economic thought that emphasizes the spontaneous organizing power of the price mechanism. Austrians hold that the complexity of subjective human choices makes mathematical modelling of the evolving market extremely difficult and advocate a "laissezfaire" approach to the economy. Austrian School economists advocate the strict enforcement of voluntary contractual agreements between economic agents, and hold that commercial transactions should be subject to the smallest possible imposition of forces they consider to be (in particular the smallest possible amount of government intervention). The Austrian School derives its name from its predominantly Austrian founders and early supporters, including Carl Menger, Eugen von Bohm-Bawerk and Ludwig von Mises.
+Query: Why do people engage in sports?
+Answer: People engage in sports for leisure and entertainment, as well as for physical exercise and athleticism.
+Query: What is the effect of bodychemistry on exercise?
+Answer: Body chemistry can affect the body's response to exercise, as certain hormones and enzymes produced by the body can affect the energy levels and muscleperformance. Chemicals in the body, such as adenosinetriphosphate(ATP) and urea, can affect the body's energy production and muscle metabolism during exercise. Additionally,the body's levels of electrolytes, vitamins, and minerals can affect exercise performance.
+Exiting: Cleaning up .chroma directory
 ```
 
 ## Zusammenfassung LangChain 
