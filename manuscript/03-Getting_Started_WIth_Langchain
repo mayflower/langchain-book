@@ -19,7 +19,7 @@ LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, et
 Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
 
 {format: shell}
-![Pakete installieren](code/install_langchain.sh)
+![](code/install_langchain.sh)
 
 Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_-study** im GitHub-Repository für dieses Buch verwenden.
 
@@ -74,23 +74,8 @@ Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabetextes unterschi
 
 Unser nächstes Beispiel befindet sich in der Quelldatei **directions_template.py** und verwendet die Klasse **PromptTemplate**. Eine Prompt-Vorlage ist eine reproduzierbare Methode zur Generierung einer Eingabeaufforderung. Es enthält einen Textstring ("die Vorlage"), der eine Reihe von Parametern des Endbenutzers entgegennehmen und einen Prompt erzeugen kann. Die Prompt-Vorlage kann Anweisungen für das Sprachmodell, Beispiele zur Verbesserung der Antwort des Modells oder spezifische Fragen enthalten, die das Modell beantworten soll.
 
-```python
-1    from langchain.prompts import PromptTemplate
-2    from langchain.llms import OpenAI
-3    llm = OpenAI(temperature=0.9)
-4
-5    def get_directions(thing_to_do):
-6        prompt = PromptTemplate(
-7            input_variables=["thing_to_do"],
-8            template="How do I {thing_to_do}?",
-9        )
-10       prompt_text = prompt.format(thing_to_do=thing_to_do)
-11       print(f"\n{prompt_text}:")
-12       return llm(prompt_text)
-13   
-14    print(get_directions("get to the store"))
-15    print(get_directions("hang a picture on the wall"))
-```
+{format: python}
+![](code/03-first.py)
 
 Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um eine Eingabeaufforderung zu erstellen, aber die Verwendung der Utility-Klasse **PromptTemplate** ist besser lesbar und funktioniert mit einer beliebigen Anzahl von Eingabevariablen.
 
