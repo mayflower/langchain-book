@@ -1,4 +1,4 @@
-01-Preface.md
+01-Preface
 02-Large_Language_Model_Overview
 03-Getting_Started_WIth_Langchain
 04-Overview_of_LlamaIndex
