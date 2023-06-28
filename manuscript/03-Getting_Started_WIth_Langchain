@@ -1,18 +1,18 @@
 # Getting Started With LangChain
 
-Harrison Chase begann das LangChain Projekt im Oktober 2022. Während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für LangChain https://github.com/hwchase17/langchain 171 Beitragende.
+Harrison Chase hat das LangChain Projekt im Oktober 2022 begonnen, und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für LangChain https://github.com/hwchase17/langchain 171 Beitragende.
 
-[LangChain](https://langchain.readthedocs.io/en/latest/index.html)[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (LLMs) durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datengestützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Chains, Agents und Memory, sowie Integrationsmöglichkeiten mit anderen Tools und End-to-End-Beispielen bietet. Wir beziehen uns auf "Chains" als Sequenzen von Aufrufen (zu einem LLM und verschiedenen Programm-Utilities, Cloud-Services, usw.), die über einen einzigen LLM-API-Aufruf hinausgehen. LangChain bietet eine Standardschnittstelle für Chains, viele Integrationen mit anderen Tools und End-to-End Chains für gängige Anwendungen. Oft findest du bereits existierende Chains, die die Anforderungen deiner Anwendungen erfüllen.
+[LangChain](https://langchain.readthedocs.io/en/latest/index.html)[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (Large Language Models, LLMs). Dies geschieht durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datenunterstützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Ketten, Agenten und Speicher schafft, ebenso wie die Integration mit anderen Tools und End-to-End-Beispielen. Eine Abfolge von Aufrufen (von LLMs und anderen Programmen, Clouddiensten etc.). die einen einzelnen Aufruf der API eines LLM hinausgehen, bezeichnen wir als "Kette" ("Chain"). LangChain bietet eine Standardschnittstelle für Ketten, viele Integrationen mit anderen Tools und Ende-zu-Ende Ketten für gängige Anwendungen. Oft findest du bereits existierende Ketten, die die Anforderungen deiner Anwendungen erfüllen.
 
 [^1]: https://langchain.readthedocs.io/en/latest/index.html
 
-So kann zum Beispiel eine Chain erstellt werden, die Benutzereingaben entgegennimmt, sie mit einem PromptTemplate formatiert und dann die formatierte Antwort zur Verarbeitung an ein Large Language Model (LLM) weitergibt.
+Man kann zum Beispiel eine Kette erstellen, die Benutzereingaben entgegennimmt, sie mit einem PromptTemplate formatiert und dann die formatierte Antwort an ein Large Language Model (LLM)  zur Verarbeitung weitergibt.
 
-LLMs sind sehr allgemein gehalten, was bedeutet, dass sie zwar viele Aufgaben effektiv ausführen können, aber oft nicht direkt spezifische Antworten auf Fragen oder Aufgaben geben können. Dieses erfordert tiefes Fachwissen oder Expertise. LangChain bietet eine Standardschnittstelle für Agents, eine Bibliothek von Agents aus der man wählen kann, und Beispiele für End-to-End-Agents.
+LLMs sind sehr allgemein gehalten, was bedeutet, dass sie zwar viele Aufgaben effektiv ausführen können, aber oft nicht direkt spezifische Antworten auf Fragen oder Aufgaben geben können, die tieferes Domänenwwissen oder Expertise benötigen. LangChain bietet eine Standardschnittstelle für Agenten, eine Bibliothek von Agenten aus der man auswählen kann, ebenso wie Beispiele für Ende-zu-Ende-Agenten.
 
-LangChain Memory ist das Konzept, den Zustand zwischen Aufrufen einer Kette oder eines Agenten beizubehalten. LangChain bietet eine standardisierte Schnittstelle für den Speicher, eine Sammlung von Speicherimplementierungen sowie Beispiele für Ketten/Agenten, die den Speicher verwenden[^?]. LangChain bietet eine große Sammlung von allgemeinen Werkzeugen, die du in deiner Anwendung verwenden kannst. Chains gehen über einen einzelnen LLM-Aufruf hinaus und sind Sequenzen von Aufrufen (ob zu einem LLM oder einem anderen Dienstprogramm). LangChain bietet ebenfalls eine Standardschnittstelle für Chains, viele Integrationen mit anderen Werkzeugen sowie End-to-End-Chains für gängige Anwendungen.
+LangChain Speicher ermöglicht es, den Zustand zwischen Aufrufen einer Kette oder eines Agenten vorzuhalten. LangChain bietet eine standardisierte Schnittstelle für den Speicher, eine Sammlung von Speicherimplementierungen sowie Beispiele für Ketten oder Agenten, die Speicher verwenden[^?]. LangChain stellt eine große Sammlung von allgemeinen Werkzeugen zur Verwendung in eigenen Anwendungen zur Verfügung. Ketten gehen über einen einzelnen LLM-Aufruf hinaus und sind Abfolgen von Aufrufen (an ein LLM oder ein Dienstprogramm). LangChain bietet ebenfalls eine Standardschnittstelle für Ketten, eine Vielzahl an Integrationen mit anderen Werkzeugen sowie Ende-zu-Ende-Ketten für gängige Anwendungen.
 
-LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, etc. integriert werden. Es kann für ausführliche Frage-und-Antwort-Chat-Sitzungen, API-Interaktion oder die Durchführung von Aktionen verwendet werden. Über eine natürlichsprachliche API-Schnittstelle kann LangChain in die Zapier-Plattform integriert werden (wir haben ein ganzes Kapitel den Zapier-Integrationen gewidmet).
+LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, usw. integriert werden. Es kann für ausführliche Frage-und-Antwort-Chat-Sitzungen, API-Interaktion oder die Durchführung von Aktionen verwendet werden. Über eine natürlichsprachliche API-Schnittstelle kann LangChain in die Zapier-Plattform integriert werden (es gibt ein ganzes Kapitel den Zapier-Integrationen).
 
 ## Installation der erforderlichen Pakete
 
@@ -25,12 +25,11 @@ pip install kor pydrive pandas rdflib
 pip install google-search-results SPARQLWrapper
 ```
 
-
-Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_-study** im GitHub-Repository für dieses Buch verwenden.
+Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_study** im GitHub-Repository für dieses Buch verwenden.
 
 ## Ein neues LangChain-Projekt anlegen
 
-Einfache LangChain-Projekte bestehen oft nur aus einer einfachen Python-Skriptdatei. Wenn dir beim Lesen dieses Buches ein Beispiel interessant oder nützlich erscheint, schlage ich vor, die requirements.txt und die Python-Quelldateien in ein neues Verzeichnis zu kopieren und dein eigenes privates GitHub-Repository anzulegen, in dem du arbeiten kannst. Bitte nutze die Beispiele in diesem Buch als "deinen Code", d.h. verwende frei jeden Code oder jede Idee, die du hier findest.
+Einfache LangChain-Projekte bestehen oft nur aus einem einfachen Python-Skript. Wenn dir beim Lesen dieses Buches ein Beispiel interessant oder nützlich erscheint, schlage ich vor, die requirements.txt und die Python-Quelldateien in ein neues Verzeichnis zu kopieren und dein eigenes privates GitHub-Repository anzulegen, in dem du arbeiten kannst. Bitte mache die Beispiele in diesem Buch zu "deinem Code", verwende also frei jeden Code oder jede Idee, die du hier findest.
 
 ## Grundlegende Anwendung und Beispiele
 
