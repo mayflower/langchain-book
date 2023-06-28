@@ -18,8 +18,8 @@ LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, et
 
 Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
 
-{format: bash}
-![Langchain installieren](install_langchain.sh)
+{format: shell}
+![Pakete installieren](code/install_langchain.sh)
 
 Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_-study** im GitHub-Repository für dieses Buch verwenden.
 
