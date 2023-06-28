@@ -18,11 +18,8 @@ LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, et
 
 Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
 
-```shell
-1    pip install langchain llama_index openai
-2    pip install kor pydrive pandas rdflib
-3    pip install google-search-results SPARQLWrapper
-```
+{format: bash}
+![Langchain installieren](install_langchain.sh)
 
 Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- getting_started** und im nächsten Kapitel **llama-index_case_-study** im GitHub-Repository für dieses Buch verwenden.
 
