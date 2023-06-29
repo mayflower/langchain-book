@@ -63,104 +63,26 @@ Damit der Code zum Abrufen von Entitätsinformationen von Google KG nicht wieder
 {format: python}
 ![](code/05/05-Client Calling.py)
 
-```python
-1 """Client for calling Knowledge Graph Search API."""
-2
-3  import json
-4  from urllib.parse import urlencode
-5  from urllib.request import urlopen
-6  from pathlib import Path
-7  from pprint import pprint
-8
-9  api_key =
-10       open(str(Path.home()) + "/.google_api_key").read()
-11
-12   # use Google search API to get information
-13   # about a named entity:
-14
-15   def get_entity_info(entity_name):
-16       service_url =
-17         "https://kgsearch.googleapis.com/v1/entities:search"
-18       params = {
-19           "query": entity_name,
-20           "limit": 1,
-21           "indent": True,
-22           "key": api_key,
-23       }
-24       url = service_url + "?" + urlencode(params)
-25       response = json.loads(urlopen(url).read())
-26       return response
-27
-28   def tree_traverse(a_dict):
-29       ret = []
-30       def recur(dict_2, a_list):
-31           if isinstance(dict_2, dict):
-32               for key, value in dict_2.items():
-33                   if key in ['name', 'description',
-34                              'articleBody']:
-35                       a_list += [value]
-36                   recur(value, a_list)
-37           if isinstance(dict_2, list):
-38               for x in dict_2:
-39                   recur(x, a_list)
-40       recur(a_dict, ret)
-41       return ret
-42
-43
-44   def get_context_text(entity_name):
-45       json_data = get_entity_info(entity_name)
-46       return ' '.join(tree_traverse(json_data))
-47
-48   if __name__ == "__main__":
-49       get_context_text("Bill Clinton")
-```
-
 Das Haupttestskript ist in der Datei **Google_Knowledge_Graph_Search.py**:
-
-```python
-1   """Example of Python client calling the
-2      Knowledge Graph Search API."""
-3
-4   from llama_index import GPTListIndex, Document
-5
-6   import Google_KG_helper
-7
-8   def kg_search(entity_name, *questions):
-9        ret = ""
-10       context_text =
-11         Google_KG_helper.get_context_text(entity_name)
-12       print(f"Context text: {context_text}")
-13       doc = Document(context_text)
-14       index = GPTListIndex([doc])
-15       for question in questions:
-16           response = index.query(question)
-17           ret +=
-18             f"QUESTION: {question}\nRESPONSE: {response}\n"
-19       return ret
-20
-21   if __name__ == "__main__":
-22       s = kg_search("Bill Clinton",
-23                     "When was Bill president?")
-24       print(s)
-```
 
 Die Ausgabe für das Beispiel ist:
 
+{format: console}
 ```
-1   $ python Google_Knowledge_Graph_Search.py
-2   Context text: Bill Clinton 42nd U.S. President William Je\
-3   fferson Clinton is an American retired politician who ser
-4   ved as the 42nd president of the United States from 1993
-5   to 2001.
-6   INFO:root:> [build_index_from_documents] Total LLM token \
-7   usage: 0 tokens
-8   INFO:root:> [build_index_from_documents] Total embedding \
-9   token usage: 0 tokens
-10  INFO:root:> [query] Total LLM token usage: 77 tokens
-11  INFO:root:> [query] Total embedding token usage: 0 tokens
-12  QUESTION: When was Bill president?
-13  RESPONSE:
-14  Bill Clinton was president from 1993 to 2001.
+$ python Google_Knowledge_Graph_Search.py
+Context text: Bill Clinton 42nd U.S. President William Je\
+fferson Clinton is an American retired politician who ser
+ved as the 42nd president of the United States from 1993
+to 2001.
+INFO:root:> [build_index_from_documents] Total LLM token \
+usage: 0 tokens
+INFO:root:> [build_index_from_documents] Total embedding \
+token usage: 0 tokens
+INFO:root:> [query] Total LLM token usage: 77 tokens
+INFO:root:> [query] Total embedding token usage: 0 tokens
+QUESTION: When was Bill president?
+RESPONSE:
+Bill Clinton was president from 1993 to 2001.
 ```
 
 Der Zugriff auf Knowledge Graphs von Google, DBPedia und Wikidata ermöglicht es dir, Fakten und Wissen aus der realen Welt in deine Anwendungen zu integrieren. Ich arbeite zwar hauptsächlich im Bereich des Deep Learning, benutze aber auch häufig Knowledge Graphs in meiner Arbeit und für meine persönlichen Recherche. Ich denke, dass du, werter Leser, den Zugriff auf hochstrukturierte Daten in KGs zuerlässiger und in vielen Fällen einfacher finden wirst als Web Scraping.
