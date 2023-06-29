@@ -65,7 +65,11 @@ Damit der Code zum Abrufen von Entitätsinformationen von Google KG nicht wieder
 
 Das Haupttestskript ist in der Datei **Google_Knowledge_Graph_Search.py**:
 
+{format: python}
+![](05-example_client_calling.py)
+
 Die Ausgabe für das Beispiel ist:
+
 
 {format: console}
 ```
