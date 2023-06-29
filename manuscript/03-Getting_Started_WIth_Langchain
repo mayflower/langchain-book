@@ -99,28 +99,28 @@ Die Ausgabe des letzten Beispiels ist:
 ```
 $ python country_information.py
 
-    Processing Canada:
-    Creating prompt...
+Processing Canada:
+Creating prompt...
 
-    Predict the capital and population of a country.
+Predict the capital and population of a country.
 
-    Country: Canada
-    Capital:
-    Population:
+Country: Canada
+Capital:
+Population:
 
-    Capital: Ottawa
-    Population: 37.058.856 (as of July 2020)
+Capital: Ottawa
+Population: 37.058.856 (as of July 2020)
 
-    Processing Germany:
+Processing Germany:
 
-    Predict the capital and population of a country.
+Predict the capital and population of a country.
 
-    Country: Germany
-    Capital:
-    Population:
+Country: Germany
+Capital:
+Population:
 
-    Capital: Berlin
-    Population: 83,02 million (est.2019)
+Capital: Berlin
+Population: 83,02 million (est.2019)
 ```
 
 ## Embeddings erstellen
@@ -132,16 +132,16 @@ Als Referenz hier die [LangChain Embeddings Dokumentation](https://python.langch
 {format: console}
 ```
 $ python
-    Python 3.10.8 (main, Nov 24 2022, 08:08:27) [Clang 14.0.6] on darwin
-    Type "help", "copyright", "credits" or "license" for more information.
-    >>> from langchain.embeddings import OpenAIEmbeddings
-    >>> embeddings = OpenAIEmbeddings()
-    >>> text = "Mary has blond hair and John has brown hair. Mary lives in town and John lives in the country."
-    >>> doc_embeddings = embeddings.embed_documents([text])
-    >>> doc_embeddings[[0.007727328687906265, 0.0009025644976645708, -0.0033224383369088173, -0.01794492080807686, -0.017969949170947075, 0.028506645932793617, -0.013414892368018627, 0.0046676816418766975, -0.0024965214543044567, -0.02662956342101097,...]]
-    >>> query_embedding = embeddings.embed_query("Does John live in the city?")
-    >>> query_embedding[0.028048301115632057, 0.011499025858938694, -0.00944007933139801, -0.020809611305594444, -0.023904507979750633, 0.018750663846731186, -0.01626438833773136, 0.018129095435142517,...]
-    >>>
+Python 3.10.8 (main, Nov 24 2022, 08:08:27) [Clang 14.0.6] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from langchain.embeddings import OpenAIEmbeddings
+>>> embeddings = OpenAIEmbeddings()
+>>> text = "Mary has blond hair and John has brown hair. Mary lives in town and John lives in the country."
+>>> doc_embeddings = embeddings.embed_documents([text])
+>>> doc_embeddings[[0.007727328687906265, 0.0009025644976645708, -0.0033224383369088173, -0.01794492080807686, -0.017969949170947075, 0.028506645932793617, -0.013414892368018627, 0.0046676816418766975, -0.0024965214543044567, -0.02662956342101097,...]]
+>>> query_embedding = embeddings.embed_query("Does John live in the city?")
+>>> query_embedding[0.028048301115632057, 0.011499025858938694, -0.00944007933139801, -0.020809611305594444, -0.023904507979750633, 0.018750663846731186, -0.01626438833773136, 0.018129095435142517,...]
+>>>
 ```
 
 [^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
