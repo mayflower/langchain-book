@@ -50,49 +50,8 @@ Im Allgemeinen beginnst du Projekte, die DBPedia verwenden, indem du die verfüg
 
 Das folgende Code-Beispiel der Datei **dbpedia_generate_rdf_as_nt.py** zeigt Python-Code, um eine SPARQL-Abfrage an DBPedia zu stellen und die Ergebnisse als RDF-Tripel im NT-Format in einer lokalen Textdatei zu speichern:
 
-```
-1 from SPARQLWrapper import SPARQLWrapper
-2 from rdflib import Graph
-3
-4 sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-5 sparql.setQuery("""
-6    PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
-7    PREFIX dbpedia: <http://dbpedia.org/resource>
-8    PREFIX dbpprop: <http://dbpedia.org/property>
-9
-10 CONSTRUCT {
-11    ?city dbpedia-owl:country ?country .
-12    ?city rdfs:label ?citylabel .
-13    ?country rdfs:label ?countrylabel .
-14    <http://dbpedia.org/ontology/country> rdfs:label \
-15 "country"@en. 
-16    }
-17    WHERE {
-18            ?city rdf:type dbpedia-owl:City .
-19            ?city rdfs:label ?citylabel .
-20            ?city dbpedia-owl:country ?country .
-21            ?country rdfs:label ?countrylabel .
-22            FILTER (lang(?citylabel) = 'en')
-23            FILTER (lang(?countrylabel) = 'en')
-24         }
-25        LIMIT 50
-26 """)
-27 sparql.setReturnFormat("rdf")
-28 results = sparql.query().convert()
-29
-30 g = Graph()
-31 g.parse(data=results.serialize(format="xml"), format="xml\
-32 ")
-33
-34 print("\nresults:\n")
-35 results = g.serialize(format="nt").encode("utf-8").decode\
-36 ('utf-8')
-37 print(results)
-38
-39 text_file = open("sample.nt", "w")
-40 text_file.write(results)
-41 text_file.close()
-```
+{format: python}
+![](code/06/06-SPARQLWrapper.py)
 
 Hier ist die Ausgabe der Ergebnisse dieses Skripts (die meisten Ausgaben werden nicht angezeigt, und sie wurden manuell an die Seitenbreite angepasst):
 
