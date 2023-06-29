@@ -37,35 +37,9 @@ Wir werden uns zuerst ein kurzes Beispiel aus der LllamaIndex-Dokumentation ansc
 
 Das folgende Beispiel ähnelt dem letzten Beispiel im Überblickskapitel zu LangChain. In Zeile 8 verwenden wir eine Hilfsfunktion zum Laden von Daten, die von LlamaIndex bereitgestellt wird, um Dokumente aus einem Eingabeordner zu lesen. Zur Demonstration speichern wir den Index (bestehend aus Document Embeddings) auf der Festplatte und laden ihn erneut. Diese Vorgehensweise ist nützlich, wenn man eine große Anzahl von statischen Dokumenten hat, wodurch der Indizierungsvorgang eine Weile dauern und viele OpenAI-API-Aufrufe erfordern kann. Man kann zum Beispiel viele Gigabytes an Firmendokumentation haben, die sich nicht oft ändert, sodass es sinnvoll ist, den Index nur gelegentlich neu zu erstellen.
 
-```python
-1 # make sure you set the following environment variable is\
-2  set:
-3 # OPENAI_API_KEY
-4
-5 from llama_index import GPTVectorStoreIndex, SimpleDirect\
-6 oryReader
-7 from llama_index import StorageContext, load_index_from_s\
-8 torage
-9
-10 documents = SimpleDirectoryReader('../data').load_data()
-11 # index = GPTListIndex(documents) # llama_index < 0.5
-12 index = GPTVectorStoreIndex.from_documents(documents)
-13 engine = index.as_query_engine()
-14 print(engine.query("what are key economic indicators?"))
-15
-16 # save to disk
-17 index.storage_context.persist(persist_dir='./cache')
-18
-19 # load from disk
-20 storage_context = StorageContext.from_defaults(persist_di\
-21 r='./cache')
-22 index = load_index_from_storage(storage_context)
-23 engine = index.as_query_engine()
-24
-25 # search for a document
-26 print(engine.query("effect of body chemistry on exercise?\
-27 "))
-```
+{format: python}
+![](code/03/04-test_from_docs.py)
+
 
 Du hast sicherlich bemerkt, dass die in Zeile 17 definierte Abfrage dieselbe ist, die wir im vorigen Kapitel verwendet haben.
 
