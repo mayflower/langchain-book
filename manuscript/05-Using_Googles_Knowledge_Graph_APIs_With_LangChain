@@ -30,54 +30,38 @@ Wenn ich Googles APIs verwende, setze ich den Access Key in **~/.google_api_key*
 
 Du kannst auch Umgebungsvariablen zum Speichern von Access Keys nutzen. Hier ein Codeschnipsel für einen API-Aufruf, der Informationen über mich einholt:
 
-```python
-1   import json
-2   from urllib.parse import urlencode
-3   from urllib.request import urlopen
-4   from pathlib import Path
-5   from pprint import pprint
-6
-7   api_key =
-8       open(str(Path.home()) + "/.google_api_key").read()
-9   query = "Mark Louis Watson"
-10  service_url =
-11      "https://kgsearch.googleapis.com/v1/entities:search"
-12  params = {
-13      "query": query,
-14      "limit": 10,
-15      "indent": True,
-16      "key": api_key,
-17  }
-18  url = service_url + "?" + urlencode(params)
-19  response = json.loads(urlopen(url).read())
-20  pprint(response)
-```
+{format: python}
+![](code/05/05-API-Call.py)
 
 Die Ausgabe von JSON-LD würde so aussehen:
 
+{format: console}
 ```
-1   {'@context': {'@vocab': 'http://schema.org/',
-2                 'EntitySearchResult':
-3                 'goog:EntitySearchResult',
-4                 'detailedDescription':
-5                 'goog:detailedDescription',
-6                 'goog': 'http://schema.googleapis.com/',
-7                 'kg': 'http://g.co/kg',
-8                 'resultScore': 'goog:resultScore'},
-9   '@type': 'ItemList',
-10  'itemListElement': [{'@type': 'EntitySearchResult',
-11                       'result': {'@id': 'kg:/m/0b6_g82',
-12                                  '@type': ['Thing',
-13                                            'Person'],
-14                                  'description': 'Author',
-15                                  'name':
-16                                  'Mark Louis Watson',
-17                                  'url':
-18                                  'http://markwatson.com'},
-19                       'resultScore': 43}]}
+{'@context': {'@vocab': 'http://schema.org/',
+              'EntitySearchResult':
+              'goog:EntitySearchResult',
+              'detailedDescription':
+              'goog:detailedDescription',
+              'goog': 'http://schema.googleapis.com/',
+              'kg': 'http://g.co/kg',
+              'resultScore': 'goog:resultScore'},
+'@type': 'ItemList',
+'itemListElement': [{'@type': 'EntitySearchResult',
+                     'result': {'@id': 'kg:/m/0b6_g82',
+                                '@type': ['Thing',
+                                          'Person'],
+                                'description': 'Author',
+                                'name':
+                                'Mark Louis Watson',
+                                'url':
+                                'http://markwatson.com'},
+                     'resultScore': 43}]}
 ```
 
 Damit der Code zum Abrufen von Entitätsinformationen von Google KG nicht wiederholt werden muss, habe ich das Dienstprogramm **Google_KG_helper.py** geschrieben, das den vorhergehenden Code einschließt und in eine Mini-Library generalisiert:
+
+{format: python}
+![](code/05/05-Client Calling.py)
 
 ```python
 1 """Client for calling Knowledge Graph Search API."""
