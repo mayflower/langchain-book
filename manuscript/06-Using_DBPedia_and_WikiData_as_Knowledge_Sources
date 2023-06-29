@@ -55,28 +55,26 @@ Das folgende Code-Beispiel der Datei **dbpedia_generate_rdf_as_nt.py** zeigt Pyt
 
 Hier ist die Ausgabe der Ergebnisse dieses Skripts (die meisten Ausgaben werden nicht angezeigt, und sie wurden manuell an die Seitenbreite angepasst):
 
+{format: console}
 ```
-1 $ python generate_rdf_as_nt.py
-2 results:
-3
-4 <http://dbpedia.org/resource/Ethiopia>
-5   <http://www.w3.org/2000/01/rdf-schema#label>
-6   "Ethiopia"@en .
-7 <http://dbpedia.org/resource/Valentin_Alsina,_Buenos_Aire\
-8 s>
-9    <http://www.w3.org/2000/01/rdf-schema#label>
-10   "Valentin Alsina, Buenos Aires"@en .
-11 <http://dbpedia.org/resource/Davyd-Haradok>
-12   <http://dbpedia.org/ontology/country>
-13   <http://dbpedia.org/resource/Belarus> .
-14 <http://dbpedia.org/resource/Davyd-Haradok>
-15   <http://www.w3.org/2000/01/rdf-schema#label>
-16   "Davyd-Haradok"@en .
-17 <http://dbpedia.org/resource/Belarus>
-18   <http://www.w3.org/2000/01/rdf-schema#label>
-19   "Belarus"@en .
-20 ...
- ```
+$ python generate_rdf_as_nt.py
+results:
+<http://dbpedia.org/resource/Ethiopia>
+  <http://www.w3.org/2000/01/rdf-schema#label>
+  "Ethiopia"@en .
+<http://dbpedia.org/resource/Valentin_Alsina,_Buenos_Aires>
+   <http://www.w3.org/2000/01/rdf-schema#label>
+   "Valentin Alsina, Buenos Aires"@en .
+ <http://dbpedia.org/resource/Davyd-Haradok>
+   <http://dbpedia.org/ontology/country>
+   <http://dbpedia.org/resource/Belarus> .
+ <http://dbpedia.org/resource/Davyd-Haradok>
+   <http://www.w3.org/2000/01/rdf-schema#label>
+   "Davyd-Haradok"@en .
+ <http://dbpedia.org/resource/Belarus>
+   <http://www.w3.org/2000/01/rdf-schema#label>
+   "Belarus"@en .
+```
 
 Diese Ausgabe wurde in eine lokale Datei **sample.nt** geschrieben. Ich habe dieses Beispiel in zwei separate Python-Skripte aufgeteilt, weil ich dachte, dass es für dich, lieber Leser, einfacher wäre, mit dem separaten Abrufen von RDF-Daten und der Verwendung eines LLM zur Verarbeitung der RDF-Daten zu experimentieren. In der Praxis wirst du vermutlich KG-Abfragen mit semantischer Analyse kombinieren wollen.
 
@@ -84,42 +82,29 @@ Dieses Code-Beispiel demonstriert die Verwendung des **GPTSimpleVectorIndex** zu
 
 Hier ist das Skript **dbpedia_rdf_query.py**:
 
-```
-1 "Example from documentation"
-2
-3 from llama_index import GPTSimpleVectorIndex, Document
-4 from llama_index import download_loader
-5
-6 RDFReader = download_loader("RDFReader")
-7 doc = RDFReader().load_data("sample.nt")
-8 index = GPTSimpleVectorIndex(doc)
-9
-10 result = index.query("list all countries in a quoted Pyth\
-11 on array, then explain why")
-12
-13 print(result.response)
-```
+{format: python}
+![](code/06/06-example_doc.py)
 
 Hier das Ergebnis:
 
+{format: console}
 ```
-1 $ python rdf_query.py
-2 INFO:root:> [build_index_from_documents] Total LLM token\
-3 usage: 0 tokens
-4 INFO:root:> [build_index_from_documents] Total embedding\
-5 token usage: 761 tokens
-6 INFO:root:> [query] Total LLM token usage: 921 tokens
-7 INFO:root:> [query] Total embedding token usage: 12 tokens
-8
-9 ['Argentina', 'French Polynesia', 'Democratic Republic of\
-10 the Congo', 'Benin', 'Ethiopia', 'Australia', 'Uzbekista
-11 n', 'Tanzania', 'Albania', 'Belarus', 'Vanuatu', 'Armenia
-12 ', 'Syria', 'Andorra', 'Venezuela', 'France', 'Vietnam',
-13 'Azerbaijan']
-14
-15 This is a list of all the countries mentioned in the cont\
-16 ext information. All of the countries are listed in the c
-17 ontext information, so this list is complete.
+$ python rdf_query.py
+INFO:root:> [build_index_from_documents] Total LLM token\
+usage: 0 tokens
+INFO:root:> [build_index_from_documents] Total embedding\
+token usage: 761 tokens
+INFO:root:> [query] Total LLM token usage: 921 tokens
+INFO:root:> [query] Total embedding token usage: 12 tokens
+['Argentina', 'French Polynesia', 'Democratic Republic of\
+ the Congo', 'Benin', 'Ethiopia', 'Australia', 'Uzbekista
+ n', 'Tanzania', 'Albania', 'Belarus', 'Vanuatu', 'Armenia
+ ', 'Syria', 'Andorra', 'Venezuela', 'France', 'Vietnam',
+ 'Azerbaijan']
+
+ This is a list of all the countries mentioned in the cont\
+ ext information. All of the countries are listed in the c
+ ontext information, so this list is complete.
 ```
 
 Warum sind dort nur 18 Länder gelistet? Im Skript für die SPARQL Suche auf DBPedia hatten wir am Ende der Suche ein Statement **LIMIT 50**. Deshalb wurden nur 50 RDF Tripel in die Datei **sample.net** geschrieben, die nur Daten für 18 Länder enthält.
@@ -132,10 +117,11 @@ Beim Schreiben dieses Beispiels habe ich mit SPARQL-Abfragen experimentiert, ind
 
 Wir können damit beginnen, RDF-Anweisungen mit dem Objektwert "Sedona" zu erhalten, indem wir die Wikidata-Webanwendung verwenden:
 
+{format: console}
 ```
-1 select * where {
-2    ?s ?p "Sedona"@en
-3 } LIMIT 30
+select * where {
+   ?s ?p "Sedona"@en
+} LIMIT 30
 ```
 
 Zuerst schreiben wir ein Hilfsprogramm, um den Eingabetext für den Namen einer Entität (z.B. den Namen einer Person, eines Ortes usw.) zu sammeln. Dies wird in der Datei **wikidata_generate_prompt_text.py** durchgeführt:
