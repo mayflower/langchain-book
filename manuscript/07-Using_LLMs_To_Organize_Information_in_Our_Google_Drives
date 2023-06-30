@@ -35,54 +35,8 @@ Du musst ein Credential unter https://console.cloud.google.com/cloud-resource-ma
 
 Für dieses Beispiel werden wir unser Testskript bei Google authentifizieren und alle Textdateien der obersten Ebene mit Namen, die auf ".txt" enden, in das lokale Dateisystem im Unterverzeichnis **data** kopieren. Der Code befindet sich im Verzeichnis **google_drive_llm** in der Datei **fetch_txt_files.py** (bearbeitet um an die Seitenbreite anzupassen):
 
-```
-1 from pydrive.auth import GoogleAuth
-2 from pydrive.drive import GoogleDrive
-3 from pathlib import Path
-4
-5 # good GD search docs:
-6 # https://developers.google.com/drive/api/guides/search-files
-7
-8
-9 # Authenticate with Google
-10 gauth = GoogleAuth()
-11 gauth.LocalWebserverAuth()
-12 drive = GoogleDrive(gauth)
-13
-14 def get_txt_files(dir_id='root'):
-15    " get all plain text files with .txt extension in top\
-16 level Google Drive directory "
-17
-18    file_list = drive.ListFile({'q': f"'{dir_id}' in pare\
-19 nts and trashed = false"}).GetList()
-20    for file1 in file_list:
-21        print('title: %s, id: %s' % (file1['title'], file\
-22 1['id']))
-23    return [[file1['title'], file1['id'], file1.GetConten\
-24 tString()]
-25            for file1 in file_list
-26                if file1['title'].endswith(".txt")]27
-27
-28 def create_test_file():
-29    " not currently used, but useful for testing. "
-30
-31    # Create GoogleDriveFile instance with title 'Hello.t\
-32 xt':
-33    file1 = drive.CreateFile({'title': 'Hello.txt'})
-34    file1.SetContentString('Hello World!')
-35    file1.Upload()
-36
-37 def test():
-38    fl = get_txt_files()
-39    for f in fl:
-40        print(f)
-41        file1 = open("data/" + f[0],"w")
-42        file1.write(f[2])
-43        file1.close()
-44
-45 if __name__ == '__main__':
-46    test()
-```
+{format: python}
+![](code/07/07-fetch_txt_files.py)
 
 Zum Testen habe ich nur eine Textdatei mit der Dateierweiterung ".txt" auf meinem Google Drive, sodass meine Ausgabe nach der Ausführung dieses Skripts wie folgt aussieht. Ich habe die Ausgabe bearbeitet, um meine Datei-IDs zu ändern und nur ein paar Zeilen des Debug-Ausdrucks der Dateititel zu drucken.
 
