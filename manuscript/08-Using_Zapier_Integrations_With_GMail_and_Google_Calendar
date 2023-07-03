@@ -25,96 +25,72 @@ Wenn du dasselbe tust, siehst du die von Zapier registrierten Aktionen:
 
 Im folgenden Beispiel ersetze **TEST_EMAIL_ADDRESS** durch eine E-Mail-Adresse, die du zu Testzwecken verwenden kannst.
 
-```
-1 from langchain.llms import OpenAI
-2 from langchain.agents import initialize_agent
-3 from langchain.agents.agent_toolkits import ZapierToolkit
-4 from langchain.utilities.zapier import ZapierNLAWrapper
-5
-6 llm = OpenAI(temperature=0)
-7 zapier = ZapierNLAWrapper()
-8 toolkit = ZapierToolkit.from_zapier_nla_wrapper(zapier)
-9 agent = initialize_agent(toolkit.get_tools(), llm, agent=\
-10 "zero-shot-react-description", verbose=True)
-11
-12 agent.run("Send an Email to TEST_EMAIL_ADDRESS via gmail \
-13 that is a pitch for hiring Mark Watson as a consultant fo
-14 r deep learning and large language models")
-```
+{format: python}
+![](code/08/08-send_gmail.py)
 
 Hier ist die Beispielausgabe:
 
+{format: console}
 ```
-1 $ pythonsend_gmail.py
-2
-3
-4 > Entering new AgentExecutor chain...
-5 I need to use the Gmail: Send Email tool
-6 Action:Gmail:SendEmail
-7 ActionInput:SendanemailtoTEST_EMAIL_ADDRESSwithth\
-8 esubject"Pitch for Hiring MarkWatsonasaConsultantf
-9 orDeepLearningandLargeLanguageModels"andthebody
-10 "DearMarkWatson,Iamwritingtoyoutopitchtheidea
-11 ofhiringyouasaconsultantfordeeplearningandlarge
-12 language models. I believe you have the expertise and ex
-13 periencetohelpusachieveourgoals.Pleaseletmeknow
-14 if you are interested in discussing further. Thank you f
-15 oryourtime."
-16 Cc:notenoughinformationprovidedintheinstruction,m\
-17 issingCc
-18 Observation:{"labelIds":"SENT"}
-19 Thought:Inowknowthefinalanswer
-20 FinalAnswer:AnemailhasbeensenttoTEST_EMAIL_ADDRES\
-21 Swiththesubject"PitchforHiringMarkWatsonasaCon
-22 sultantforDeepLearningandLargeLanguageModels"and
-23 thebody"DearMarkWatson,Iamwritingtoyoutopitch
-24 theideaofhiringyouasaconsultantfordeeplearning
-25 andlargelanguagemodels.Ibelieveyouhavetheexperti
-26 seandexperiencetohelpusachieveourgoals.Pleasele
-27 tmeknowifyouareinterestedindiscussingfurther.Th
-28 ankyouforyourtime."
-29
-30 >Finishedchain.
+$ pythonsend_gmail.py
+
+
+> Entering new AgentExecutor chain...
+I need to use the Gmail: Send Email tool
+Action:Gmail:SendEmail
+ActionInput:SendanemailtoTEST_EMAIL_ADDRESSwithth\
+esubject"Pitch for Hiring MarkWatsonasaConsultantf
+orDeepLearningandLargeLanguageModels"andthebody
+"DearMarkWatson,Iamwritingtoyoutopitchtheidea
+ofhiringyouasaconsultantfordeeplearningandlarge
+language models. I believe you have the expertise and ex
+periencetohelpusachieveourgoals.Pleaseletmeknow
+if you are interested in discussing further. Thank you f
+oryourtime."
+Cc:notenoughinformationprovidedintheinstruction,m\
+issingCc
+Observation:{"labelIds":"SENT"}
+Thought:Inowknowthefinalanswer
+FinalAnswer:AnemailhasbeensenttoTEST_EMAIL_ADDRES\
+Swiththesubject"PitchforHiringMarkWatsonasaCon
+sultantforDeepLearningandLargeLanguageModels"and
+thebody"DearMarkWatson,Iamwritingtoyoutopitch
+theideaofhiringyouasaconsultantfordeeplearning
+andlargelanguagemodels.Ibelieveyouhavetheexperti
+seandexperiencetohelpusachieveourgoals.Pleasele
+tmeknowifyouareinterestedindiscussingfurther.Th
+ankyouforyourtime."
+
+>Finishedchain.
 ```
 
 ## Beispiel für die Integration von Google Calendar
 
 Angenommen, du hast die Zapier Natural Language Action "Google Calendar: Find Event" konfiguriert. Dann funktioniert derselbe Code, den wir im letzten Abschnitt zum Senden einer E-Mail verwendet haben, auch für die Überprüfung von Kalendereinträgen. Man muss nur die Aufforderung in natürlicher Sprache ändern:
 
-```
-1 fromlangchain.llmsimportOpenAI
-2 fromlangchain.agentsimportinitialize_agent
-3 fromlangchain.agents.agent_toolkitsimportZapierToolkit
-4 fromlangchain.utilities.zapierimportZapierNLAWrapper
-5
-6 llm=OpenAI(temperature=0)
-7 zapier=ZapierNLAWrapper()
-8 toolkit=ZapierToolkit.from_zapier_nla_wrapper(zapier)
-9 agent=initialize_agent(toolkit.get_tools(),llm,
-10 agent="zero-shot-react-descripti\
-11 on",verbose=True)
-12
-13 agent.run("GetmyGoogleCalendarentriesfortomorrow")
-```
+{format: python}
+![](code/08/08-get_google_calendar.py)
 
 Die Ausgabe sieht folgendermaßen aus:
 
+{format: console}
 ```
-1 $pythonget_google_calendar.py 2
-3 >EnteringnewAgentExecutorchain...
-4 I need to find events in my Google Calendar
-5 Action:GoogleCalendar:FindEvent
-6 ActionInput:FindeventsinmyGoogleCalendartomorrow
-7 Observation:{"location":"GregtocallMarkon(928)XXX\
-8 -ZZZZ","kind":"calendar#event","end__dateTime":"2023-
-9 03-23T10:00:00-07:00","status":"confirmed","end__dateT
-10 ime_pretty":"Mar23,202310:00AM","htmlLink":"https:/
-11 /zpr.io/WWWWWWWW"}
-12 Thought:Inowknowthefinalanswer
-13 FinalAnswer:IhaveaneventinmyGoogleCalendartomor\
-14 rowat10:00AM.
-15
-16 >Finishedchain
+$python get_google_calendar.py 
+
+> Entering new AgentExecutor chain...
+I need to find events in my Google Calendar
+Action: Google Calendar: Find Event
+Action Input: Find events in my Google Calendar tomorrow
+Observation: {"location": "Greg to call Mark on (928) XXX\
+-ZZZZ", "kind": "calendar#event", "end__dateTime": "2023-
+03-23T10:00:00-07:00", "status": "confirmed", "end__dateT
+ime_pretty": "Mar 23, 2023 10:00AM", "htmlLink": "https:/
+/zpr.io/WWWWWWWW"}
+Thought: I now know the final answer
+Final Answer: I have an event in my Google Calendar tomor\
+row at 10:00AM.
+
+> Finished chain.
 ```
 
 Ich habe diese Ausgabe bearbeitet, um einige private Informationen zu entfernen.
