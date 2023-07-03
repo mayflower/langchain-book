@@ -6,6 +6,7 @@ Ich habe langjährige Erfahrung im Schreiben von Schnittstellen für relationale
 
 Wir werden die SQlite-Beispieldatenbank von der SQLite-Tutorial-Webseite verwenden:
 
+{format: console}
 ```
 1 https://www.sqlitetutorial.net/sqlite-sample-database/
 ```
@@ -23,73 +24,60 @@ Dieses Beispiel ist von der [LangChain-Dokumentation](https://langchain.readthed
 
 Der Temperaturparameter ist in diesem Beispiel auf 0 gesetzt. Der Temperaturparameter steuert die Zufälligkeit der generierten Ausgabe. Ein niedriger Wert (wie 0) macht die Ausgabe des Modells deterministischer und zielgerichteter, während ein höherer Wert für mehr Zufälligkeit (oder "Kreativität") sorgt. Die Methode run des db_chain-Objekts übersetzt die in natürlicher Sprache geschriebene Abfrage in eine entsprechende SQL-Abfrage, führt sie in der verknüpften Datenbank aus und gibt dann das Ergebnis - in natürliche Sprache umgewandelt - zurück.
 
-```py
-1 #SqLiteNLPQueryDemoScript 2
-3 from langchain import OpenAI,SQLDatabase
-4 from langchain import SQLDatabaseChain
-5
-6 db=SQLDatabase.from_uri("sqlite:///chinook.db")
-7 llm=OpenAI(temperature=0)
-8
-9 db_chain=SQLDatabaseChain(llm=llm,database=db,
-10                          verbose=True)
-11
-12 db_chain.run("Howmanyemployeesarethere?")
-13 db_chain.run("Whatisthenameofthefirstemployee?")
-14 db_chain.run("Whichcustomerhasthemostinvoices?")
-15 db_chain.run("Listallmusicgenresinthedatabase")
-```
+{format: python}
+![](code/09/09-sqlite_chat_test.py)
 
 Die Ausgabe (gekürzt) zeigt die generierten SQL-Abfragen und die Abfrageergebnisse:
 
+{format: console}
 ```
-1 $ python sqlite_chat_test.py
-2
-3 > Entering new SQLDatabaseChain chain...
-4 How many employees are there?
-5 SELECT COUNT(*) FROM employees;
-6 SQLResult: [(8,)]
-7 Answer: There are 8 employees.
-8 > Finished chain.
-9
-10 > Entering new SQLDatabaseChain chain...
-11 What is the name of the first employee?
-12 SELECT FirstName, LastName FROM employees WHERE Employee\
-13 Id = 1;
-14 SQLResult: [('Andrew', 'Adams')]
-15 Answer: The first employee is Andrew Adams.
-16 > Finished chain.
-17
-18 > Entering new SQLDatabaseChain chain...
-19 Which customer has the most invoices?
-20 SELECT customers.FirstName, customers.LastName, COUNT(in\
-21 voices.InvoiceId) AS NumberOfInvoices FROM customers INNE
-22 R JOIN invoices ON customers.CustomerId = invoices.Custom
-23 erId GROUP BY customers.CustomerId ORDER BY NumberOfInvoi
-24 ces DESC LIMIT 5;
-25 SQLResult: [('Luis', 'Goncalves', 7), ('Leonie', 'Kohler'\
-26 , 7), ('Francois', 'Tremblay', 7), ('Bjorn', 'Hansen', 7)
-27 , ('Frantisek', 'Wichterlova', 7)]
-28 Answer: Luis Goncalves has the most invoices with 7.
-29 > Finished chain.
-30
-31 > Entering new SQLDatabaseChain chain...
-32 List all music genres in the database
-33 SQLQuery: SELECT Name FROM genres
-34 SQLResult: [('Rock',), ('Jazz',), ('Metal',), ('Alternati\
-35 ve & Punk',), ('Rock And Roll',), ('Blues',), ('Latin',),
-36 ('Reggae',), ('Pop',), ('Soundtrack',), ('Bossa Nova',),
-37 ('Easy Listening',), ('Heavy Metal',), ('R&B/Soul',), ('
-38 Electronica/Dance',), ('World',), ('Hip Hop/Rap',), ('Sci
-39 ence Fiction',), ('TV Shows',), ('Sci Fi & Fantasy',), ('
-40 Drama',), ('Comedy',), ('Alternative',), ('Classical',),
-41 ('Opera',)]
-42 Answer: Rock, Jazz, Metal, Alternative & Punk, Rock And R\
-43 oll, Blues, Latin, Reggae, Pop, Soundtrack, Bossa Nova, E
-44 asy Listening, Heavy Metal, R&B/Soul, Electronica/Dance,
-45 World, Hip Hop/Rap, Science Fiction, TV Shows, Sci Fi & F
-46 antasy, Drama, Comedy, Alternative, Classical, Opera
-47 > Finished chain.
+$ python sqlite_chat_test.py
+
+> Entering new SQLDatabaseChain chain...
+How many employees are there?
+SELECT COUNT(*) FROM employees;
+SQLResult: [(8,)]
+Answer: There are 8 employees.
+> Finished chain.
+
+> Entering new SQLDatabaseChain chain...
+What is the name of the first employee?
+SELECT FirstName, LastName FROM employees WHERE Employee\
+Id = 1;
+SQLResult: [('Andrew', 'Adams')]
+Answer: The first employee is Andrew Adams.
+> Finished chain.
+
+> Entering new SQLDatabaseChain chain...
+Which customer has the most invoices?
+SELECT customers.FirstName, customers.LastName, COUNT(in\
+voices.InvoiceId) AS NumberOfInvoices FROM customers INNE
+R JOIN invoices ON customers.CustomerId = invoices.Custom
+erId GROUP BY customers.CustomerId ORDER BY NumberOfInvoi
+ces DESC LIMIT 5;
+SQLResult: [('Luis', 'Goncalves', 7), ('Leonie', 'Kohler'\
+, 7), ('Francois', 'Tremblay', 7), ('Bjorn', 'Hansen', 7)
+, ('Frantisek', 'Wichterlova', 7)]
+Answer: Luis Goncalves has the most invoices with 7.
+> Finished chain.
+
+> Entering new SQLDatabaseChain chain...
+List all music genres in the database
+SQLQuery: SELECT Name FROM genres
+SQLResult: [('Rock',), ('Jazz',), ('Metal',), ('Alternati\
+ve & Punk',), ('Rock And Roll',), ('Blues',), ('Latin',),
+('Reggae',), ('Pop',), ('Soundtrack',), ('Bossa Nova',),
+('Easy Listening',), ('Heavy Metal',), ('R&B/Soul',), ('
+Electronica/Dance',), ('World',), ('Hip Hop/Rap',), ('Sci
+ence Fiction',), ('TV Shows',), ('Sci Fi & Fantasy',), ('
+Drama',), ('Comedy',), ('Alternative',), ('Classical',),
+('Opera',)]
+Answer: Rock, Jazz, Metal, Alternative & Punk, Rock And R\
+oll, Blues, Latin, Reggae, Pop, Soundtrack, Bossa Nova, E
+asy Listening, Heavy Metal, R&B/Soul, Electronica/Dance,
+World, Hip Hop/Rap, Science Fiction, TV Shows, Sci Fi & F
+antasy, Drama, Comedy, Alternative, Classical, Opera
+> Finished chain.
 ```
 
 ## Zusammenfassung Datenbankabfrage in natürlicher Sprache
