@@ -139,63 +139,40 @@ Die Klasse **GPTTreeIndex** ähnelt den anderen Indexklassen von LlamaIndex. Die
 
 Der LlamaIndex-Code ist relativ einfach im Skript **wikidata_query.py** zu implementieren (an die Seitenbreite angepasst):
 
-```
-1 from llama_index import StringIterableReader, GPTTreeIndex
-2 from wikidata_generate_prompt_text import generate_prompt\
-3 _text
-4
-5 def wd_query(question, *entity_names):
-6    prompt_texts = []
-7       for entity_name in entity_names:
-8           prompt_texts +=
-9            [generate_prompt_text(entity_name)]
-10   documents =
-11    StringIterableReader().load_data(texts=prompt_texts)
-12    index = GPTTreeIndex(documents)
-13    return index.query(question)
-14
-15 if__name__== "__main__":
-16    print("Sedona:", wd_query("What is Sedona?", "Sedona"))
-17    print("California:",
-18        wd_query("What is California?", "California"))
-19    print("Bill Clinton:",
-20    wd_query("When was Bill Clinton president?",
-21             "Bill Clinton"))
-22    print("Donald Trump:",
-23    wd_query("Who is Donald Trump?",
-24             "Donald Trump"))
-```
+{format: python}
+![](code/06/06-wikidata_query.py)
 
 Hier ist die Testausgabe (einige Zeilen wurden entfernt):
 
+{format: console}
 ```
-1 $ python wikidata_query.py
-2 Total LLM token usage: 162 tokens
-3 INFO:llama_index.token_counter.token_counter:> [build_ind\
-4 ex_from_documents] INFO:llama_index.indices.query.tree.le
-5 af_query:> Starting query: WhatisSedona?
-6 INFO:llama_index.token_counter.token_counter:> [query]To\
-7 tal LLM token usage: 154 tokens
-8 Sedona: Sedona is a city in the United States located in \
-9 the counties of Yavapai and Coconino, Arizona. It is also
-10 the title of a 2012 film, a company, and a 2015 single b
-11 y Houndmouth.
-12
-13 Total LLM token usage: 191 tokens
-14 INFO:llama_index.indices.query.tree.leaf_query:> Starting\
-15 query: What is California?
-16 California: California is a U.S. state in the UnitedStat\
-17 es of America.
-18
-19 Total LLM token usage: 138 tokens
-20 INFO:llama_index.indices.query.tree.leaf_query:> Starting\
-21 query: When was Bill Clinton president?
-22 Bill Clinton: Bill Clinton was the 42nd President of  the\
-23 United States from 1993 to 2001.
-24
-25 Total LLM token usage: 159 tokens
-26 INFO:llama_index.indices.query.tree.leaf_query:> Starting\
-27 query: Who is Donald Trump?
-28 Donald Trump: Donald Trump is the 45th President of the U\
-29 nited States, serving from 2017 to 2021.
+$ python wikidata_query.py
+Total LLM token usage: 162 tokens
+INFO:llama_index.token_counter.token_counter:> [build_ind\
+ex_from_documents] INFO:llama_index.indices.query.tree.le
+af_query:> Starting query: WhatisSedona?
+INFO:llama_index.token_counter.token_counter:> [query]To\
+tal LLM token usage: 154 tokens
+Sedona: Sedona is a city in the United States located in \
+the counties of Yavapai and Coconino, Arizona. It is also
+the title of a 2012 film, a company, and a 2015 single b
+y Houndmouth.
+
+Total LLM token usage: 191 tokens
+INFO:llama_index.indices.query.tree.leaf_query:> Starting\
+query: What is California?
+California: California is a U.S. state in the UnitedStat\
+es of America.
+
+Total LLM token usage: 138 tokens
+INFO:llama_index.indices.query.tree.leaf_query:> Starting\
+query: When was Bill Clinton president?
+Bill Clinton: Bill Clinton was the 42nd President of  the\
+United States from 1993 to 2001.
+
+Total LLM token usage: 159 tokens
+INFO:llama_index.indices.query.tree.leaf_query:> Starting\
+query: Who is Donald Trump?
+Donald Trump: Donald Trump is the 45th President of the U\
+nited States, serving from 2017 to 2021.
 ```

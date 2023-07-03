@@ -40,58 +40,93 @@ Für dieses Beispiel werden wir unser Testskript bei Google authentifizieren und
 
 Zum Testen habe ich nur eine Textdatei mit der Dateierweiterung ".txt" auf meinem Google Drive, sodass meine Ausgabe nach der Ausführung dieses Skripts wie folgt aussieht. Ich habe die Ausgabe bearbeitet, um meine Datei-IDs zu ändern und nur ein paar Zeilen des Debug-Ausdrucks der Dateititel zu drucken.
 
+{format: console}
 ```
-1 $ python fetch_txt_files.py
-2 Your browser has been opened to visit:
-3
-4 https://accounts.google.com/o/oauth2/auth?client_id=5\
-5 29311921932-xsmj3hhiplr0dhqjln13fo4rrtvoslo8.apps.googleu
-6 sercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3B6180
-7 %2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive
-8 &access_type=offline&response_type=code
-9
-10 Authentication successful.
-11
-12 title: testdata, id: 1TZ9bnL5XYQvKACJw8VoKWdVJ8jeCszJ
-13 title: sports.txt, id: 18RN4ojvURWt5yoKNtDdAJbh4fvmRpzwb
-14 title: Anaconda blog article, id: 1kpLaYQA4Ao8ZbdFaXU209h\
-15 g-z0tv1xA7YOQ4L8y8NbU
-16 title: backups_2023, id: 1-k_r1HTfuZRWN7vwWWsYqfssl0C96J2x
-17 title: Work notes, id: 1fDyHyZtKI-0oRNabA_P41LltYjGoek21
-18 title:SedonaWritingGroupContactList,id:1zK-5v9OQUf\
-19 y8Sw33nTCl9vnL822hL1w
-20 ...
-21 ['sports.txt', '18RN4ojvURWt5yoKNtDdAJbh4fvmRpzwb', 'Spor\
-22 t is generally recognised as activities based in physical
-23 athleticism or physical dexterity.[3] Sports are usually
-24 governed by rules to ensure fair competition and consist
-25 ent adjudication of the winner.\n\n"Sport" comes from the
-26 Old French desport meaning "leisure", with the oldest de
-27 finition in English from around 1300 being "anything huma
-28 ns find amusing or entertaining".[4]\n\nOther bodies advo
-29 cate widening the definition of sport to include all phys
-30 ical activity and exercise. For instance, the Council of
-31 Europe include all forms of physical exercise, including
-32 those completed just for fun.\n\n']
+$ python fetch_txt_files.py
+Your browser has been opened to visit:
+
+https://accounts.google.com/o/oauth2/auth?client_id=5\
+29311921932-xsmj3hhiplr0dhqjln13fo4rrtvoslo8.apps.googleu
+sercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3B6180
+%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive
+&access_type=offline&response_type=code
+
+Authentication successful.
+
+title: testdata, id: 1TZ9bnL5XYQvKACJw8VoKWdVJ8jeCszJ
+title: sports.txt, id: 18RN4ojvURWt5yoKNtDdAJbh4fvmRpzwb
+title: Anaconda blog article, id: 1kpLaYQA4Ao8ZbdFaXU209h\
+g-z0tv1xA7YOQ4L8y8NbU
+title: backups_2023, id: 1-k_r1HTfuZRWN7vwWWsYqfssl0C96J2x
+title: Work notes, id: 1fDyHyZtKI-0oRNabA_P41LltYjGoek21
+title:SedonaWritingGroupContactList,id:1zK-5v9OQUf\
+y8Sw33nTCl9vnL822hL1w
+
+['sports.txt', '18RN4ojvURWt5yoKNtDdAJbh4fvmRpzwb', 'Spor\
+t is generally recognised as activities based in physical
+athleticism or physical dexterity.[3] Sports are usually
+governed by rules to ensure fair competition and consist
+ent adjudication of the winner.\n\n"Sport" comes from the
+Old French desport meaning "leisure", with the oldest de
+finition in English from around 1300 being "anything huma
+ns find amusing or entertaining".[4]\n\nOther bodies advo
+cate widening the definition of sport to include all phys
+ical activity and exercise. For instance, the Council of
+Europe include all forms of physical exercise, including
+those completed just for fun.\n\n']
 ```
 
 ## Vektorindizes für Dateien in speziellen Google Drive-Ordnern erstellen
 
 Das Beispiel-Skript im letzten Abschnitt sollte Kopien der Textdateien in deinem obersten Google Documents Ordner mit der Endung ".txt" erzeugt haben. Jetzt verwenden wir den gleichen LlamaIndex Testcode wie in einem früheren Kapitel. Hier is das Testskript **index_and_QA.py**: 
 
-```
+{format: python}
+![](code/07/07-index_and_QA.py)
 
-```
 
 Für meine Testdatei sieht der Output so aus:
 
+{format: console}
 ```
+$ python index_and_QA.py
+INFO:llama_index.token_counter.token_counter:> [build_ind\
+ex_from_documents] Total LLM token usage: 0 tokens
+INFO:llama_index.token_counter.token_counter:> [build_ind\
+ex_from_documents] Total embedding token usage: 111 token
+s
+INFO:llama_index.token_counter.token_counter:> [query] To\
+tal LLM token usage: 202 tokens
+INFO:llama_index.token_counter.token_counter:> [query] To\
+tal embedding token usage: 7 tokens
+
+Sport is generally recognised as activities based in phys\
+ical athleticism or physical dexterity that are governed
+by rules to ensure fair competition and consistent adjudi
+cation of the winner. It is anything humans find amusing
+or entertaining, and can include all forms of physical ex
+ercise, even those completed just for fun.
 
 ```
 
 Es ist interessant zu sehen, wie das Ergebnis der Abfrage in eine schöne Form umgeschrieben wird, verglichen mit dem Rohtext in der Datei **sports.txt** in meinem Google Drive:
 
+{format: console}
 ```
+$ cat data/sports.txt
+Sport is generally recognised as activities based in phys\
+ical athleticism or physical dexterity.[3] Sports are usu
+ally governed by rules to ensure fair competition and con
+sistent adjudication of the winner.
+
+"Sport" comes from the Old French desport meaning "leisur\
+e", with the oldest definition in English from around 130
+0 being "anything humans find amusing or entertaining".[4
+]
+
+Other bodies advocate widening the definition of sport to\
+include all physical activity and exercise. For instance
+, the Council of Europe include all forms of physical exe
+rcise, including those completed just for fun.
 
 ```
 
