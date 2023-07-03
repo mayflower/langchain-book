@@ -12,14 +12,28 @@ Dieser Ansatz hat den Vorteil (für mich!), dass die erstellten Rezepte den Reze
 
 Ich benutze die JSON Rezept-Dateien von meiner Webanwendung http://cookingspace.com. Das folgende Python-Skript konvertiert meine JSON-Daten zu Textbeschreibungen, eine per Datei:
 
-```
-
-```
+{format: python}
+![](code/11/11-convert_JSON.py)
 
 Hier ist eine Auflistung einer der kürzeren generierten Rezeptdateien (d.h., Text-Rezeptdaten, die aus rohen JSON-Rezeptdaten von meiner Webseite CookingSpace.com konvertiert wurden):
 
+{format: console}
 ```
+Recipe name: Black Bean Dip
 
+Number of servings: 6
+
+Ingredients:
+2 cup Refried Black Beans
+1/4 cup Sour cream
+1 teaspoon Ground cumin
+1/2 cup Salsa
+
+Directions: Use either a food processor or a mixing bowl \
+and hand mixer to make this appetizer. Blend the black be
+ans and cumin for at least one minute until the mixture i
+s fairly smooth. Stir in salsa and sour cream and lightly
+mix. Serve immediately or store in the refrigerator.
 ```
 
 Ich habe 41 einzelne Rezeptdateien erstellt, die für den Rest dieses Kapitels verwendet werden.
@@ -32,24 +46,77 @@ Hier verwenden wir die **DirectoryLoader** -Klasse, die wir in früheren Beispie
 
 Hier das Code-Beispiel für das Skript **recipe_generator.py**:
 
-```
-
-```
+{format: python}
+![](code/11/11-recipe_generator.py)
 
 Das hat zwei Rezepte erzeugt. Hier das Ergebnis für die erste Anfrage:
 
+{format: console}
 ```
+$ python recipe_generator.py
+Running Chroma using direct local API.
+Using DuckDB in-memory for database. Data will be transie\
+nt.
 
+Recipe creation request: Create a new recipe using both B\
+roccoli and Chicken
 
+Recipe name: Broccoli and Chicken Teriyaki
+Number of servings: 4
+
+Ingredients:
+1 cup broccoli
+1 pound chicken meat
+2 tablespoons soy sauce
+1 tablespoon honey
+1 tablespoon vegetable oil
+1 clove garlic, minced
+1 teaspoon rice vinegar
+
+Directions:
+
+1. In a large bowl, whisk together soy sauce, honey, vege\
+table oil, garlic, and rice vinegar.
+2. Cut the broccoli into small florets. Add the broccoli \
+and chicken to the bowl and toss to coat.
+3. Preheat a grill or grill pan over medium-high heat.
+4. Grill the chicken and broccoli for 5-7 minutes per sid\
+e, or until the chicken is cooked through and the broccol
+i is slightly charred.
+5. Serve immediately.
 ```
 
 Wenn du dir die von mir indizierten Textrezeptdateien anschaust, siehst du, dass das Vorhersagemodell Informationen aus mehreren Trainingsdatenrezepten zusammenführt und gleichzeitig neue Originaltexte für Anleitungen erstellt, die lose auf den von mir geschriebenen Anleitungen und Informationen aus dem OpenAI text-davinci-002-Modell basieren.  
 
 Hier das Ergebnis der zweiten Anfrage:
 
+{format: console}
 ```
+Recipe creation request: Create a recipe using Beans, Ric\
+e, and Chicken
 
+Recipe name: Beans and Rice with Chicken
+Number of servings: 4
+Ingredients:
+1 cup white rice
+1 cup black beans
+1 chicken breast, cooked and shredded
+1/2 teaspoon cumin
+1/2 teaspoon chili powder
+1/4 teaspoon salt
+1/4 teaspoon black pepper
+1 tablespoon olive oil
+1/2 cup salsa
+1/4 cup cilantro, chopped
 
+Directions:
+1. Cook rice according to package instructions.
+2. In a medium bowl, combine black beans, chicken, cumin,\
+ chili powder, salt, and black pepper.
+3. Heat olive oil in a large skillet over medium heat. Ad\
+d the bean mixture and cook until heated through, about 5
+ minutes.
+4. Stir in salsa and cilantro. Serve over cooked rice.
 ```
 
 ## Zusammenfassung der Erstellung von Kochrezepten
