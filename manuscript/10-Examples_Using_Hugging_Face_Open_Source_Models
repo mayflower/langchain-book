@@ -2,24 +2,28 @@
 
 Als erstes musst du ein kostenloses Konto auf dem [Hugging Face Hub](https://huggingface.co/docs/huggingface_hub/index)[^1] erstellen, einen API-Schlüssel beschaffen und installieren:
 
+{format: console}
 ````
 1 pipinstall--upgradehuggingface_hub
 ````
 
 Du musst die folgende Umgebungsvariable für dein Zugangs-Token zum Hugging Face Hub setzen:
 
+{format: console}
 ````
 1 HUGGINGFACEHUB_API_TOKEN
 ````
 
 Bisher haben wir in diesem Buch den OpenAI LLM Wrapper verwendet:
 
+{format: console}
 ````
 1 from langchain.llms import OpenAI
 ````
 
 Jetzt werden wir als Alternative die Hugging Face Wrapper Klasse verwenden:
 
+{format: console}
 ```
 1 from langchain import HuggingFaceHub
 ```
@@ -36,9 +40,8 @@ Wir brauchen einen Hugging Face-Account und -API Key, um diese Endpunkte zu nutz
 
 Wir beginnen mit einem einfachen Beispiel, das den Support für Prompt-Text in LangChain verwendet. Das folgende Beispiel ist im Skript **simple_example.py** enthalten:
 
-```
-
-```
+{format: python}
+![](code/10/10-simple_example.py)
 
 Durch das Verändern von wenigen Zeilen Code kannst Du viele der Beispiele in diesem Buch mit Hugging Face-APIs statt mit OpenAi-APIs nutzen.
 
@@ -53,24 +56,36 @@ Dieses Beispiel ist die Abwandlung eines Beispiels für eigene LLMs aus der [Lla
 [^2]: https://langchain.readthedocs.io/en/latest/_modules/langchain/embeddings/self_hosted_hugging_face.html
 [^3]: https://github.com/jerryjliu/llama_index/blob/main/docs/how_to/customization/custom_llms.md#example-using-a-custom-llm-model
 
-```
-
-```
+{format: python}
+![](code/10/10-hf_tansformer_local.py)
 
 Wenn ich das auf einem M1 MacBook Pro nur mit der CPU laufen lasse (ohne GPU oder NeuralEngine-Konfiguration), können wir das Modell schnell von der Festplatte lesen, aber die Verarbeitung der Anfrage dauert eine Weile:
 
+{format: console}
 ```
+$ python hf_transformer_local.py
+INFO:llama_index.token_counter.token_counter:> [build_ind\
+ex_from_documents] Total LLM token usage: 0 tokens
+INFO:llama_index.token_counter.token_counter:> [build_ind\
+ex_from_documents] Total embedding token usage: 0 tokens
+Time to load model from disk: 1.5303528308868408 seconds.
+INFO:llama_index.token_counter.token_counter:> [query] To\
+tal LLM token usage: 182 tokens
+INFO:llama_index.token_counter.token_counter:> [query] To\
+tal embedding token usage: 0 tokens
 
+"Sport" comes from the Old French desport meaning "leisur\
+e", with the oldest definition in English from around 130
+0 being "anything humans find amusing or entertaining".[4
+]
+Time for query/prediction: 228.8184850215912 seconds.
 ```
 
 Auch wenn mein M1 MacBook ziemlich gut läuft, wenn ich TensorFlow und PyTorch für die Verwendung von Apple Silicon GPUs und Neural Engines konfiguriere, entwickle ich meine Modelle normalerweise mit Google Colab.
 
 Lass uns das letzte Beispiel auf Colab wiederholen:
 
-
-```
-
-```
+>>>BILD EINFÜGEN<<<
 
 Mit einer Standard Colab GPU ist die Zeit für Abfrage/Vorhersage viel schneller. Hier ein [Link zu meinem Colab Notebook](https://colab.research.google.com/drive/1Ecg-0iid3AD05zM4HgPXTVHcgkGxyi3q?usp=sharing)[^4], falls du dieses Beispiel lieber auf Colab als auf deinem Laptop laufen lassen möchtest.
 
