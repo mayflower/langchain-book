@@ -13,7 +13,8 @@ def get_country_information(country_name):
             Predict the capital and population of a country.
 
             Country:{country_name}
-            Capital: Population:""",
+            Capital: 
+            Population:""",
         )
     prompt_text = prompt.format(country_name=country_name)
     print(prompt_text)

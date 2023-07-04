@@ -1,22 +1,22 @@
-# Getting Started With LangChain
+# Der Anfang mit LangChain
 
 Harrison Chase hat das LangChain Projekt im Oktober 2022 begonnen, und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für LangChain https://github.com/hwchase17/langchain 171 Beitragende.
 
-[LangChain](https://langchain.readthedocs.io/en/latest/index.html)[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (Large Language Models, LLMs). Dies geschieht durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datenunterstützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Ketten, Agenten und Speicher schafft, ebenso wie die Integration mit anderen Tools und End-to-End-Beispielen. Eine Abfolge von Aufrufen (von LLMs und anderen Programmen, Clouddiensten etc.). die einen einzelnen Aufruf der API eines LLM hinausgehen, bezeichnen wir als "Kette" ("Chain"). LangChain bietet eine Standardschnittstelle für Ketten, viele Integrationen mit anderen Tools und Ende-zu-Ende Ketten für gängige Anwendungen. Oft findest du bereits existierende Ketten, die die Anforderungen deiner Anwendungen erfüllen.
+[LangChain](https://langchain.readthedocs.io/en/latest/index.html)[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (Large Language Models, LLMs). Dies geschieht durch Verkettung verschiedener Komponenten. Einige Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datenunterstützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Ketten, Agenten und Speicher schafft, ebenso wie die Integration mit anderen Tools und End-to-End-Beispiele. Eine Abfolge von Aufrufen (von LLMs und anderen Programmen, Clouddiensten etc.). die einen einzelnen Aufruf der API eines LLM hinausgehen, bezeichnen wir als "Kette" ("Chain"). LangChain bietet eine Standardschnittstelle für Ketten, viele Integrationen mit anderen Tools und Ende-zu-Ende Ketten für gängige Anwendungen. Oft findest du bereits existierende Ketten, die die Anforderungen deiner Anwendungen erfüllen.
 
 [^1]: https://langchain.readthedocs.io/en/latest/index.html
 
-Man kann zum Beispiel eine Kette erstellen, die Benutzereingaben entgegennimmt, sie mit einem PromptTemplate formatiert und dann die formatierte Antwort an ein Large Language Model (LLM)  zur Verarbeitung weitergibt.
+Man kann zum Beispiel eine Kette erstellen, die Benutzereingaben entgegennimmt, sie mit einem PromptTemplate formatiert und dann die formatierte Antwort an ein Large Language Model (LLM) zur Verarbeitung weitergibt.
 
-LLMs sind sehr allgemein gehalten, was bedeutet, dass sie zwar viele Aufgaben effektiv ausführen können, aber oft nicht direkt spezifische Antworten auf Fragen oder Aufgaben geben können, die tieferes Domänenwwissen oder Expertise benötigen. LangChain bietet eine Standardschnittstelle für Agenten, eine Bibliothek von Agenten aus der man auswählen kann, ebenso wie Beispiele für Ende-zu-Ende-Agenten.
+LLMs sind sehr allgemein gehalten, was bedeutet, dass sie zwar viele Aufgaben effektiv ausführen können, aber oft nicht direkt spezifische Antworten auf Fragen oder Aufgaben geben können, wenn diese tieferes Domänenwwissen oder Expertise benötigen. LangChain bietet eine Standardschnittstelle für Agenten, eine Bibliothek von Agenten aus der man auswählen kann, ebenso wie Beispiele für Ende-zu-Ende-Agenten.
 
-LangChain Speicher ermöglicht es, den Zustand zwischen Aufrufen einer Kette oder eines Agenten vorzuhalten. LangChain bietet eine standardisierte Schnittstelle für den Speicher, eine Sammlung von Speicherimplementierungen sowie Beispiele für Ketten oder Agenten, die Speicher verwenden[^?]. LangChain stellt eine große Sammlung von allgemeinen Werkzeugen zur Verwendung in eigenen Anwendungen zur Verfügung. Ketten gehen über einen einzelnen LLM-Aufruf hinaus und sind Abfolgen von Aufrufen (an ein LLM oder ein Dienstprogramm). LangChain bietet ebenfalls eine Standardschnittstelle für Ketten, eine Vielzahl an Integrationen mit anderen Werkzeugen sowie Ende-zu-Ende-Ketten für gängige Anwendungen.
+LangChain Speicher ermöglicht es, den Zustand zwischen Aufrufen einer Kette oder eines Agenten vorzuhalten. LangChain bietet eine standardisierte Schnittstelle für Speicher, eine Sammlung von Speicherimplementierungen sowie Beispiele für Ketten oder Agenten, die Speicher verwenden. LangChain stellt zur Verwendung in eigenen Anwendungen eine große Sammlung von allgemeinen Werkzeugen zur Verfügung. Ketten gehen über einen einzelnen LLM-Aufruf hinaus und sind Abfolgen von Aufrufen (an ein LLM oder irgendein Dienstprogramm). LangChain bietet ebenfalls eine Standardschnittstelle für Ketten, eine Vielzahl an Integrationen mit anderen Werkzeugen sowie Ende-zu-Ende-Ketten für gängige Anwendungen.
 
-LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, usw. integriert werden. Es kann für ausführliche Frage-und-Antwort-Chat-Sitzungen, API-Interaktion oder die Durchführung von Aktionen verwendet werden. Über eine natürlichsprachliche API-Schnittstelle kann LangChain in die Zapier-Plattform integriert werden (es gibt ein ganzes Kapitel den Zapier-Integrationen).
+LangChain kann mit einem oder mehreren Modellanbietern, Datenspeichern, APIs, usw. integriert werden. Es kann für ausführliche Frage-und-Antwort Chatsitzungen, API-Interaktion oder das Ausführen von Aktionen verwendet werden. Über eine natürlichsprachliche API-Schnittstelle kann LangChain in die Zapier-Plattform integriert werden (es gibt ein ganzes Kapitel den Zapier-Integrationen).
 
 ## Installation der erforderlichen Pakete
 
-Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder andere Python-Umgebung zu erstellen und zu installieren:
+Für die Beispiele in diesem Buch empfiehlt es sich, eine neue Anaconda- oder sonstige Python-Umgebung zu erstellen und zu installieren:
 
 {format: console}
 ```
@@ -29,21 +29,22 @@ Für den Rest dieses Kapitels werden wir das Unterverzeichnis **langchain_- gett
 
 ## Ein neues LangChain-Projekt anlegen
 
-Einfache LangChain-Projekte bestehen oft nur aus einem einfachen Python-Skript. Wenn dir beim Lesen dieses Buches ein Beispiel interessant oder nützlich erscheint, schlage ich vor, die requirements.txt und die Python-Quelldateien in ein neues Verzeichnis zu kopieren und dein eigenes privates GitHub-Repository anzulegen, in dem du arbeiten kannst. Bitte mache die Beispiele in diesem Buch zu "deinem Code", verwende also frei jeden Code oder jede Idee, die du hier findest.
+Einfache LangChain-Projekte bestehen oft nur aus einem einfachen Python-Skript. Wenn dir beim Lesen dieses Buches ein Beispiel interessant oder nützlich erscheint, schlage ich vor, die requirements.txt und die Python-Quelldateien in ein neues Verzeichnis zu kopieren und dein eigenes privates GitHub-Repository für deine Arbeit anzulegen. Bitte mache "deinen Code" aus den Beispielen in diesem Buch, verwende also frei jeden Code oder jede Idee, die du hier findest.
 
 ## Grundlegende Anwendung und Beispiele
 
-Während ich versuche, das Material in diesem Buch so zu gestalten, dass du es unabhängig und ohne externe Referenzen genießen kannst, solltest du auch die ausgezeichnete [Dokumentation](https://python.langchain.com/en/latest/getting_started/getting_started.html) und die einzelnen detaillierten Anleitungen für Prompts, Chat, document loading, Indizes usw. nutzen.
+Ich versuche, das Material in diesem Buch unabhängig und ohne externe Referenzen nutzbarzu gestalten. Du solltest aber auch die ausgezeichnete [Dokumentation](https://python.langchain.com/en/latest/getting_started/getting_started.html) und die detaillierten Anleitungen für Prompts, Chat, document loading, Indizes usw. nutzen.
 
-Während wir einige Beispiele durchgehen, beachte bitte, wie die ChatGPT-Webanwendung arbeitet: Du gibst Text ein und erhältst Antworten. Die Art und Weise, wie du ChatGPT aufforderst, ist offensichtlich wichtig, wenn du nützliche Antworten erhalten möchtest. In Code-Beispielen automatisieren und formalisieren wir diesen manuellen Prozess.
+Beachte bitte beim Durcharbeiten der Beipiele, wie die ChatGPT-Webanwendung arbeitet: Du gibst Text ein und erhältst Antworten. Die Art und Weise, wie du ChatGPT "ansprichst", ist offensichtlich wichtig, um nützliche Antworten zu erhalten. In Codebeispielen automatisieren und formalisieren wir diesen Prozess.
 
-Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich für einen [API-Schlüssel anmelden](https://platform.openai.com/account/api-keys)[^2] und diesen als Umgebungsvariable festlegen:
+Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich [anmelden](https://platform.openai.com/account/api-keys)[^2], um einen API-Key zu erhalten und diesen dann als Umgebungsvariable festlegen:
 
-```console
+{format: console}
+```
 export OPENAI_API_KEY="YOUR KEY GOES HERE"
 ```
 
-Sowohl die Bibliotheken **openai** als auch **langchain** werden nach dieser Umgebungsvariablen suchen und diese verwenden. Wir werden uns ein paar einfache Beispiele in einer Python-REPL ansehen. Wir beginnen mit der Verwendung der Textvorhersage-API von OpenAI:
+Sowohl die **openai** als auch die **langchain** Bibliotheken verwendendiese Umgebungsvariable. Schauen wir uns ein paar einfache Beispiele in einer Python-REPL an und beginnen mit der Textvorhersage-API von OpenAI:
 
 [^2]: https://platform.openai.com/account/api-keys
 
@@ -58,14 +59,14 @@ $python
 >>> s"around town\n\nJohn drove his new sportscar around town, enjoying the feeling of the wind in his hair. He stopped to admire the view froma scenic lookout, and then sped off to the mall to do some shopping. On the way home, he took a detour down a winding country road, admiring the scenery and enjoying the feel of the car's powerful engine. By the time he arrived back home, he had a huge smile on his face."
 ```
 
-Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabetextes unterschiedliche Ergebnisse erhalten. Durch das Erhöhen der Temperatur in Zeile 3 wird die Zufälligkeit erhöht.
+Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabeprompts unterschiedliche Ergebnisse erhalten. Durch das Erhöhen der Temperatur in Zeile 3 wird die Zufälligkeit erhöht.
 
-Unser nächstes Beispiel befindet sich in der Quelldatei **directions_template.py** und verwendet die Klasse **PromptTemplate**. Eine Prompt-Vorlage ist eine reproduzierbare Methode zur Generierung einer Eingabeaufforderung. Es enthält einen Textstring ("die Vorlage"), der eine Reihe von Parametern des Endbenutzers entgegennehmen und einen Prompt erzeugen kann. Die Prompt-Vorlage kann Anweisungen für das Sprachmodell, Beispiele zur Verbesserung der Antwort des Modells oder spezifische Fragen enthalten, die das Modell beantworten soll.
+Unser nächstes Beispiel befindet sich in der Quelldatei **directions_template.py** und verwendet die Klasse **PromptTemplate**. Ein PromptTemplate ist eine reproduzierbare Methode zur Generierung eines Prompts. Es enthält einen Textstring ("die Vorlage"), der eine Reihe von Parametern entgegennehmen und daraus einen Prompt erzeugen kann. Das PromptTemplate kann Anweisungen für das Sprachmodell, "few-shot" Beispiele zur Verbesserung der Antwort des Modells oder spezifische Fragen, die das Modell beantworten soll enthalten.
 
 {format: python}
 ![](code/03/03-directions_template.py)
 
-Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um eine Eingabeaufforderung zu erstellen, aber die Verwendung der Utility-Klasse **PromptTemplate** ist besser lesbar und funktioniert mit einer beliebigen Anzahl von Eingabevariablen.
+Man könnte einfach Python-Code zur Manipulation von Zeichenketten schreiben, um ein Prompt zu erstellen, aber die Verwendung der Utilityklasse **PromptTemplate** ist besser lesbar und funktioniert mit einer beliebigen Anzahl von Eingabevariablen.
 
 Das Ergebnis ist:
 
@@ -86,7 +87,7 @@ $python directions_template.py
     5.Hang the picture on the picture hanger.
 ```
 
-Das nächste Beispiel in der Datei **country_information.py** ist von einem Beispiel in der LangChain-Dokumentation abgeleitet. In diesem Beispiel verwenden wir die **PromptTemplate**, welche das gewünschte Muster enthält, um dem LLM zu ermöglichen, eine Antwort zu generieren.
+Das nächste Beispiel in der Datei **country_information.py** ist von einem Beispiel in der LangChain-Dokumentation abgeleitet. Hier verwenden wir **PromptTemplate**, das das gewünschte Ausgabemuster für das LLM enthält.
 
 {format: python}
 ![](code/03/03-country_information.py)
@@ -125,7 +126,7 @@ Population: 83,02 million (est.2019)
 
 ## Embeddings erstellen
 
-Als Referenz hier die [LangChain Embeddings Dokumentation](https://python.langchain.com/en/latest/reference/modules/embeddings.html)[^3]. Mit einer Python REPL können wir verstehen, wie Text- zu Vektorraum-Einbettungen aussehen könnten:
+Wir beziehen uns auf die [Dokumentation zu Embeddings von LangChain](https://python.langchain.com/en/latest/reference/modules/embeddings.html)[^3]. Mit einer Python REPL können wir ausprobieren, wie Text- zu Vektorraum-Embeddings aussehen könnten:
 
 [^3]: https://python.langchain.com/en/latest/reference/modules/embeddings.html
 
@@ -150,11 +151,11 @@ Beachte, dass das **doc_embeddings** eine Liste ist, bei der jedes Listenelement
 
 Das **query_embedding** ist ein einzelnes Embedding. Lies dir bitte die oben verlinkte Dokumentation zu Embeddings durch. 
 
-Wir werden Vektor-Speicher verwenden, um berechnete Embeddings für zukünftige Verwendungszwecke zu speichern. Im nächsten Kapitel werden wir ein Beispiel einer Dokumentendatenbank-Suche mit LangChain und Llama-Index betrachten. 
+Wir werden Vektor-Speicher verwenden, um berechnete Embeddings für zukünftige Verwendungszwecke zu speichern. Im nächsten Kapitel werden wir ein Beispiel einer Suche in einer Dokumentendatenbank mittels LangChain und Llama-Index betrachten. 
 
 ## Verwendung von LangChain-Vektor-Speichern zum Durchsuchen von Dokumenten
 
-Als Referenz hier die Dokumentation von [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html)[^4]. Du musst ein paar Bibliotheken installieren:
+Hier beziehen wur uns auf die Dokumentation zu [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html)[^4]. Du musst ein paar Bibliotheken installieren:
 
 [^4]: https://python.langchain.com/en/latest/reference/modules/vectorstores.html
 
@@ -170,7 +171,7 @@ Das Beispielskript ist **doc_search.py**:
 {format: python}
 ![](code/03/03-doc_search.py)
 
-Die Klasse DirectoryLoader ist hilfreich für das Laden eines Verzeichnisses voller Eingabedokumente. In diesem Beispiel haben wir festgelegt, dass wir nur Textdateien verarbeiten wollen, aber das Pattern für den Dateiabgleich hätte auch PDF-Dateien usw. enthalten können.
+Die Klasse DirectoryLoader ist hilfreich für das Laden eines Verzeichnisses voller Eingabedokumente. In diesem Beispiel haben wir festgelegt, dass wir nur Textdateien verarbeiten wollen, aber das Dateimuster hätte auch PDF-Dateien usw. enthalten können.
 
 Das Ergebnis ist:
 
@@ -191,11 +192,11 @@ Answer: Body chemistry can affect the body's response to exercise, as certain ho
 Exiting: Cleaning up .chroma directory
 ```
 
-## Zusammenfassung LangChain 
+## Zusammenfassung des Überblicks
 
-Für den Rest dieses Buches werden wir weiter LangChain verwenden, wie auch die LlamaIndex-Bibliothek, die wir im nächsten Kapitel vorstellen.
+Für den Rest dieses Buches werden wir weiter LangChain verwenden, ebenso wie die LlamaIndex-Bibliothek, die wir im nächsten Kapitel vorstellen.
 
-Ich behandle in diesem Buch nur die Teilmenge von LangChain, die ich in meinen eigenen Projekten verwende. Lies unbedingt auch die LangChain-Dokumentation und schau dir die LangChain-Chains an, die Benutzer auf
+Ich behandle nur die Teilmenge von LangChain, die ich in meinen Projekten in diesem Buch verwende. Lies unbedingt auch die LangChain-Dokumentation und schau dir die öffentlichen LangChain-Ketten an, die Benutzer auf
 [Langchain-hub](https://github.com/hwchase17/langchain-hub)[^5] geschrieben haben.
 
 [^5]: https://github.com/hwchase17/langchain-hub
