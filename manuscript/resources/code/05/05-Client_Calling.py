@@ -28,8 +28,7 @@ def tree_traverse(a_dict):
     def recur(dict_2, a_list):
         if isinstance(dict_2, dict):
             for key, value in dict_2.items():
-                if key in ['name', 'description',
-                            'articleBody']:
+                if key in ['name', 'description', 'articleBody']:
                     a_list += [value]
                 recur(value, a_list)
         if isinstance(dict_2, list):
