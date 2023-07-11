@@ -1,6 +1,6 @@
 # Verwendung von LLMs zur Organisation von Informationen in unseren Google Drives
 
-Mein digitales Leben besteht aus dem Schreiben und Arbeiten als KI-Anwender, sowie aus Lernaktivitäten, die ich mit meinem Selbstbild eines "sanftmütigen Wissenschaftlers" rechtfertige. Cloud-Speicher wie GitHub, Google Drive, Microsoft OneDrive und iCloud sind zentral für meine Aktivitäten.
+Mein digitales Leben besteht aus dem Schreiben und Arbeiten als KI-Anwender, sowie aus Lernaktivitäten, die ich mit meinem Selbstbild eines "gentleman scientist" rechtfertige. Cloud-Speicher wie GitHub, Google Drive, Microsoft OneDrive und iCloud sind zentral für meine Aktivitäten.
 
 Vor etwa zehn Jahren verbrachte ich zwei Monate damit, ein System in Clojure zu schreiben, das meine eigene, persönliche DropBox werden sollte, ergänzt durch verschiedene NLP-Tools und ein FireFox-Plugin, um Web-Clippings direkt an mein persönliches System zu senden. Um ehrlich zu sein, habe ich mein eigenes Projekt nach ein paar Monaten wieder eingestellt, weil die Zeit, die ich für die Organisation meiner Informationen benötigte, einen größeren Aufwand darstellte als den Nutzen, den ich daraus zog.
 
@@ -8,9 +8,9 @@ In diesem Kapitel werde ich dir Teile eines neuen Systems vorstellen, das ich f�
 
 Mit den unten aufgeführten Google-Einrichtungsanweisungen erhältst du ein Pop-up-Fenster mit einer Warnung wie dieser (dies zeigt meine Google Mail-Adresse, du solltest hier deine eigene Google Mail-Adresse sehen, vorausgesetzt, du hast dich kürzlich mit deinem Standard-Webbrowser bei Google Mail angemeldet):
 
->>> BILD einfügen <<<
+![](images/gwarning.png)
 
-Du musst zuerst auf **Erweitert** und dann auf den Link **Gehe zu GoogleAPIExamples (unsicher)** in der unteren linken Ecke klicken und dann dieses Beispiel vorübergehend in deinem Gmail-Konto autorisieren.
+Du musst zuerst auf **Advanced** und dann auf den Link **Go to GoogleApiExamples (unsafe)** in der unteren linken Ecke klicken und dann dieses Beispiel vorübergehend in deinem Gmail-Konto autorisieren.
 
 ## Einrichten der Anforderungen
 
