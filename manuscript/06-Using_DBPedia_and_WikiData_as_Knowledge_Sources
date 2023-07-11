@@ -1,6 +1,6 @@
 # Nutzung von DBPedia und Wikidata als Wissensquellen
 
-Sowohl [DBPedia](https://www.dbpedia.org)[^1] als auch [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)[^2] sind öffentliche Knowledge Graphs (KGs), die Daten als [Resource Description Framework (RDF)](https://www.w3.org/RDF/)[^3] speichern und über die [SPARQL Query Language for RDF](https://www.w3.org/TR/rdf-sparql-query/)[^4] abrufbar sind. Die Beispiele für dieses Projekt befinden sich im [GitHub-Repository für dieses Buch](https://github.com/mark-watson/langchain-book-examples)[^5] im Verzeichnis **kg_search**.
+[DBPedia](https://www.dbpedia.org)[^1] und [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)[^2] sind öffentliche Knowledge Graphs (KGs), die Daten als [Resource Description Framework (RDF)](https://www.w3.org/RDF/)[^3] speichern und auf die über die [SPARQL Query Language for RDF](https://www.w3.org/TR/rdf-sparql-query/)[^4] zugegriffen werden kann. Die Beispiele für dieses Projekt befinden sich im [GitHub-Repository für dieses Buch](https://github.com/mark-watson/langchain-book-examples)[^5] im Verzeichnis **kg_search**.
 
 Ich werde hier nicht viel Zeit auf die Behandlung von RDF und SPARQL verwenden. Stattdessen bitte ich dich, das einführende Kapitel **Linked Data, the Semantic Web, and Knowledge Graphs** in meinem Buch [A Lisp Programmer Living in Python-Land: The Hy Programming Language](https://leanpub.com/hy-lisp-python/read)[^6] online zu lesen.
 
@@ -27,9 +27,9 @@ Wenn du das Kapitel über RDF und SPARQL in meinem bereits erwähnten Buch geles
 - Eigenschaft
 - Objekt
 
-Wir werden uns in diesem Kapitel zwei ähnliche Beispiele ansehen, eines mit DBPedia und eines mit Wikidata. Beide Dienste verfügen über SPARQL-Endpunkt-Webanwendungen, die du für die Erkundung beider KGs verwenden kannst. Wir werden uns die DBPedia-Weboberfläche später ansehen. Hier ist die Wikidata-Webschnittstelle:
+Wir werden uns in diesem Kapitel zwei ähnliche Beispiele ansehen, eines mit DBPedia und eines mit Wikidata. Beide Dienste verfügen über SPARQL-Endpunkt-Webanwendungen, die du für die Erkundung beider KGs verwenden kannst. Wir schauen uns die DBPedia-Weboberfläche später an. Hier ist die Wikidata-Webschnittstelle:
 
->>>BILD EINFÜGEN<<<
+![](images/wikidata.png)
 
 In dieser SPARQL-Abfrage steht das Präfix **wd:** für Wikidata-Daten, während das Präfix **wdt:** für Wikidata-Typ (oder Eigenschaft) steht. Das Präfix **rdfs:** steht für RDF Schema.
 
@@ -42,13 +42,13 @@ In dieser SPARQL-Abfrage steht das Präfix **wd:** für Wikidata-Daten, während
 
 ## DBPedia als Datenquelle
 
-DBPedia ist ein von der Gemeinschaft getragenes Projekt, das strukturierte Inhalte aus Wikipedia extrahiert und sie im Web als Knowledge Graph (KG) zur Verfügung stellt. Der KG ist eine wertvolle Ressource für Forscher und Entwickler, die auf strukturierte Daten aus Wikipedia zugreifen müssen. Durch die Verwendung von SPARQL-Abfragen an DBPedia als Datenquelle können wir eine Vielzahl von Anwendungen schreiben, darunter natürliche Sprachverarbeitung, maschinelles Lernen und Datenanalyse. Wir demonstrieren die Effektivität von DBPedia als Datenquelle, indem wir mehrere Beispiele vorstellen, die den Einsatz in realen Anwendungen veranschaulichen. Nach meiner Erfahrung ist DBPedia eine wertvolle Ressource für Forscher und Entwickler, die auf strukturierte Daten aus Wikipedia zugreifen müssen.
+DBPedia ist ein von der Gemeinschaft getragenes Projekt, das strukturierte Inhalte aus Wikipedia extrahiert und sie im Web als Knowledge Graph (KG) zur Verfügung stellt. Der KG ist eine wertvolle Ressource für Forscher und Entwickler, die auf strukturierte Daten aus Wikipedia zugreifen müssen. Durch die Verwendung von SPARQL-Abfragen an DBPedia als Datenquelle können wir eine Vielzahl von Anwendungen schreiben, darunter natürliche Sprachverarbeitung, maschinelles Lernen und Datenanalyse. Wir demonstrieren die Effektivität von DBPedia als Datenquelle in mehreren Beispielen, die den Einsatz in realen Anwendungen veranschaulichen. Nach meiner Erfahrung ist DBPedia eine wertvolle Ressource für Forscher und Entwickler, die auf strukturierte Daten aus Wikipedia zugreifen müssen.
 
 Im Allgemeinen beginnst du Projekte, die DBPedia verwenden, indem du die verfügbaren Daten mit der Web-App https://dbpedia.org/sparql untersuchst, die in diesem Screenshot zu sehen ist:
 
->>>BILD einfügen<<<
+![](images/dbpedia.png)
 
-Das folgende Code-Beispiel der Datei **dbpedia_generate_rdf_as_nt.py** zeigt Python-Code, um eine SPARQL-Abfrage an DBPedia zu stellen und die Ergebnisse als RDF-Tripel im NT-Format in einer lokalen Textdatei zu speichern:
+Die folgende Datei **dbpedia_generate_rdf_as_nt.py** zeigt Python-Code, um eine SPARQL-Abfrage an DBPedia zu stellen und die Ergebnisse als RDF-Tripel im NT-Format in einer lokalen Textdatei zu speichern:
 
 {format: python}
 ![](code/06/06-SPARQLWrapper.py)
@@ -78,7 +78,7 @@ results:
 
 Diese Ausgabe wurde in eine lokale Datei **sample.nt** geschrieben. Ich habe dieses Beispiel in zwei separate Python-Skripte aufgeteilt, weil ich dachte, dass es für dich, lieber Leser, einfacher wäre, mit dem separaten Abrufen von RDF-Daten und der Verwendung eines LLM zur Verarbeitung der RDF-Daten zu experimentieren. In der Praxis wirst du vermutlich KG-Abfragen mit semantischer Analyse kombinieren wollen.
 
-Dieses Code-Beispiel demonstriert die Verwendung des **GPTSimpleVectorIndex** zur Abfrage von RDF-Daten und zum Abrufen von Informationen über Länder. Die Funktion **download_loader** lädt Datenimporteure anhand ihres Namens als Zeichenkette. Es ist zwar nicht typsicher, eine Python-Klasse über den Namen einer Zeichenkette zu laden, aber wenn du den Namen der zu ladenden Klasse beim Aufruf von **download_loader** falsch schreibst, wird ein Python **ValueError("Loader class name not found in library")** Fehler ausgegeben. Die Klasse GPTSimpleVectorIndex stellt eine Indexdatenstruktur dar, die zum effizienten Suchen und Abrufen von Informationen aus den RDF-Daten verwendet werden kann. Dies ist vergleichbar mit anderen Typen von LlamaIndex-Vektor-Index-Typen für unterschiedliche Arten von Datenquellen.
+Dieses Codebeispiel demonstriert die Verwendung des **GPTSimpleVectorIndex** zur Abfrage von RDF-Daten zum Abruf von Informationen über Länder. Die Funktion **download_loader** lädt Datenimporteure anhand ihres Namens als Zeichenkette. Es ist zwar nicht typsicher, eine Python-Klasse über den Namen einer Zeichenkette zu laden, aber wenn du den Namen der zu ladenden Klasse beim Aufruf von **download_loader** falsch schreibst, wird ein Python **ValueError("Loader class name not found in library")** Fehler ausgegeben. Die Klasse GPTSimpleVectorIndex stellt eine Indexdatenstruktur dar, die zum effizienten Suchen und Abrufen von Informationen aus den RDF-Daten verwendet werden kann. Dies ist vergleichbar mit anderen LlamaIndex-Vektorindextypen für unterschiedliche Arten von Datenquellen.
 
 Hier ist das Skript **dbpedia_rdf_query.py**:
 
@@ -90,28 +90,20 @@ Hier das Ergebnis:
 {format: console}
 ```
 $ python rdf_query.py
-INFO:root:> [build_index_from_documents] Total LLM token\
-usage: 0 tokens
-INFO:root:> [build_index_from_documents] Total embedding\
-token usage: 761 tokens
+INFO:root:> [build_index_from_documents] Total LLM token usage: 0 tokens
+INFO:root:> [build_index_from_documents] Total embedding token usage: 761 tokens
 INFO:root:> [query] Total LLM token usage: 921 tokens
 INFO:root:> [query] Total embedding token usage: 12 tokens
-['Argentina', 'French Polynesia', 'Democratic Republic of\
- the Congo', 'Benin', 'Ethiopia', 'Australia', 'Uzbekista
- n', 'Tanzania', 'Albania', 'Belarus', 'Vanuatu', 'Armenia
- ', 'Syria', 'Andorra', 'Venezuela', 'France', 'Vietnam',
- 'Azerbaijan']
+['Argentina', 'French Polynesia', 'Democratic Republic of the Congo', 'Benin', 'Ethiopia', 'Australia', 'Uzbekistan', 'Tanzania', 'Albania', 'Belarus', 'Vanuatu', 'Armenia', 'Syria', 'Andorra', 'Venezuela', 'France', 'Vietnam', 'Azerbaijan']
 
- This is a list of all the countries mentioned in the cont\
- ext information. All of the countries are listed in the c
- ontext information, so this list is complete.
+This is a list of all the countries mentioned in the context information. All of the countries are listed in the context information, so this list is complete.
 ```
 
-Warum sind dort nur 18 Länder gelistet? Im Skript für die SPARQL Suche auf DBPedia hatten wir am Ende der Suche ein Statement **LIMIT 50**. Deshalb wurden nur 50 RDF Tripel in die Datei **sample.net** geschrieben, die nur Daten für 18 Länder enthält.
+Warum werden nur 18 Länder aufgelistet? Im Skript für die SPARQL Suche auf DBPedia hatten wir am Ende der Suche ein Statement **LIMIT 50**. Deshalb wurden nur 50 RDF Tripel in die Datei **sample.net** geschrieben, die nur Daten für 18 Länder enthält.
 
 ## Wikidata als Datenquelle
 
-Die Erkundung von Wikidata gestaltet sich im Vergleich zu DBPedia etwas schwieriger. Schauen wir uns noch einmal an, wie ich Informationen über meine Heimatstadt Sedona Arizona erhalte.
+Die Abfrage von Wikidata gestaltet sich im Vergleich zu DBPedia etwas schwieriger. Schauen wir uns noch einmal an, wie ich Informationen über meine Heimatstadt Sedona Arizona erhalte.
 
 Beim Schreiben dieses Beispiels habe ich mit SPARQL-Abfragen experimentiert, indem ich die [Wikidata SPARQL Web-App](https://query.wikidata.org)[^7] verwendet habe.
 
@@ -120,24 +112,24 @@ Wir können damit beginnen, RDF-Anweisungen mit dem Objektwert "Sedona" zu erhal
 {format: console}
 ```
 select * where {
-   ?s ?p "Sedona"@en
+  ?s ?p "Sedona"@en
 } LIMIT 30
 ```
 
-Zuerst schreiben wir ein Hilfsprogramm, um den Eingabetext für den Namen einer Entität (z.B. den Namen einer Person, eines Ortes usw.) zu sammeln. Dies wird in der Datei **wikidata_generate_prompt_text.py** durchgeführt:
+Zuerst schreiben wir ein Hilfsprogramm, um den Eingabetext für den Namen einer Entität (z.B. den Namen einer Person, eines Ortes usw.) zu entgegenzunehmen. Das passiert in der Datei **wikidata_generate_prompt_text.py**:
 
 [^7]: https://query.wikidata.org
 
 {format: python}
 ![](code/06/06-wikidata_generate_prompt_text.py)
 
-Dieses Hilfsprogramm erledigt den größten Teil der Arbeit, um den Eingabetext für eine Entität zu erhalten.
+Dieses Hilfsprogramm erledigt den größten Teil der Arbeit, um den Prompt Text für eine Entität zu erhalten.
 
-Die Klasse **GPTTreeIndex** ähnelt den anderen Indexklassen von LlamaIndex. Diese Klasse baut einen baumbasierten Index der Eingabetexte auf, der verwendet werden kann, um Informationen basierend auf der Eingabefrage abzurufen. In LlamaIndex wird ein **GPTTreeIndex** verwendet, um die Child-Knoten auszuwählen, an die die Anfrage gesendet werden soll. Ein **GPTKeywordTableIndex** verwendet Keyword Matching und ein **GPTVectorStoreIndex** verwendet Embedding Cosine Similarity. Die Wahl der zu verwendenden Indexklasse hängt davon ab, wie viel Text indiziert werden soll, wie granular der Inhalt des Textes ist und ob man eine Zusammenfassung wünscht.
+Die Klasse **GPTTreeIndex** ähnelt den anderen Indexklassen von LlamaIndex. Diese Klasse baut einen baumbasierten Index der Eingabetexte auf, der verwendet werden kann, um Informationen basierend auf der Eingabefrage abzurufen. In LlamaIndex wird ein **GPTTreeIndex** verwendet, um die Kind-Knoten auszuwählen, an die die Anfrage gesendet werden soll. Ein **GPTKeywordTableIndex** verwendet Keyword Matching und ein **GPTVectorStoreIndex** verwendet Embedding Cosine Similarity. Die Wahl der zu verwendenden Indexklasse hängt davon ab, wie viel Text indiziert werden soll, wie granular der Inhalt des Textes ist und ob man eine Zusammenfassung wünscht.
 
 **GPTTreeIndex** ist auch effizienter als **GPTSimpleVectorIndex**, da er eine Baumstruktur zur Datenspeicherung verwendet. Dies ermöglicht ein schnelleres Suchen und Abrufen von Daten im Vergleich zu einer linearen Listenindexklasse wie **GPTSimpleVectorIndex**.
 
-Der LlamaIndex-Code ist relativ einfach im Skript **wikidata_query.py** zu implementieren (an die Seitenbreite angepasst):
+Der LlamaIndex-Code ist relativ einfach im Skript **wikidata_query.py** implementiert:
 
 {format: python}
 ![](code/06/06-wikidata_query.py)
@@ -148,31 +140,19 @@ Hier ist die Testausgabe (einige Zeilen wurden entfernt):
 ```
 $ python wikidata_query.py
 Total LLM token usage: 162 tokens
-INFO:llama_index.token_counter.token_counter:> [build_ind\
-ex_from_documents] INFO:llama_index.indices.query.tree.le
-af_query:> Starting query: WhatisSedona?
-INFO:llama_index.token_counter.token_counter:> [query]To\
-tal LLM token usage: 154 tokens
-Sedona: Sedona is a city in the United States located in \
-the counties of Yavapai and Coconino, Arizona. It is also
-the title of a 2012 film, a company, and a 2015 single b
-y Houndmouth.
+INFO:llama_index.token_counter.token_counter:> [build_index_from_documents] INFO:llama_index.indices.query.tree.leaf_query:> Starting query: WhatisSedona?
+INFO:llama_index.token_counter.token_counter:> [query]Total LLM token usage: 154 tokens
+Sedona: Sedona is a city in the United States located in the counties of Yavapai and Coconino, Arizona. It is also the title of a 2012 film, a company, and a 2015 single by Houndmouth.
 
 Total LLM token usage: 191 tokens
-INFO:llama_index.indices.query.tree.leaf_query:> Starting\
-query: What is California?
-California: California is a U.S. state in the UnitedStat\
-es of America.
+INFO:llama_index.indices.query.tree.leaf_query:> Starting query: What is California?
+California: California is a U.S. state in the UnitedStates of America.
 
 Total LLM token usage: 138 tokens
-INFO:llama_index.indices.query.tree.leaf_query:> Starting\
-query: When was Bill Clinton president?
-Bill Clinton: Bill Clinton was the 42nd President of  the\
-United States from 1993 to 2001.
+INFO:llama_index.indices.query.tree.leaf_query:> Starting query: When was Bill Clinton president?
+Bill Clinton: Bill Clinton was the 42nd President of  the United States from 1993 to 2001.
 
 Total LLM token usage: 159 tokens
-INFO:llama_index.indices.query.tree.leaf_query:> Starting\
-query: Who is Donald Trump?
-Donald Trump: Donald Trump is the 45th President of the U\
-nited States, serving from 2017 to 2021.
+INFO:llama_index.indices.query.tree.leaf_query:> Starting query: Who is Donald Trump?
+Donald Trump: Donald Trump is the 45th President of the United States, serving from 2017 to 2021.
 ```
