@@ -1,6 +1,6 @@
 # SqLite-Datenbankabfragen in natürlicher Sprache mit LangChain
 
-Die LangChain-Bibliotheksunterstützung für SqLite-Datenbanken verwendet die Python-Bibliothek SQLAlchemy für Datenbankverbindungen. Diese Abstraktionsschicht ermöglicht es LangChain, die gleiche Logik und die gleichen Modelle für andere relationale Datenbanken zu verwenden.
+Die LangChain-Bibliotheksunterstützung für SQLite-Datenbanken verwendet die Python-Bibliothek SQLAlchemy für Datenbankverbindungen. Diese Abstraktionsschicht ermöglicht es LangChain, die gleiche Logik und die gleichen Modelle für andere relationale Datenbanken zu verwenden.
 
 Ich habe langjährige Erfahrung im Schreiben von Schnittstellen für relationale Datenbanken in natürlicher Sprache, auf die ich in der Zusammenfassung des Kapitels eingehen werde. Lass Dich erst einmal überraschen, wie einfach es ist, die LangChain-Skripte für die Abfrage einer Datenbank in natürlicher Sprache zu schreiben.
 
@@ -8,21 +8,21 @@ Wir werden die SQlite-Beispieldatenbank von der SQLite-Tutorial-Webseite verwend
 
 {format: console}
 ```
-1 https://www.sqlitetutorial.net/sqlite-sample-database/
+https://www.sqlitetutorial.net/sqlite-sample-database/
 ```
 
 Diese Datenbank hat 11 Tabellen. Unter der obigen URL findest du die Dokumentation zu dieser Datenbank. Bitte nimm dir eine Minute Zeit und betrachte das [Diagramm des Tabellenschemas und die Textbeschreibung](https://www.sqlitetutorial.net/sqlite-sample-database)[^1].
 
 Dieses Beispiel ist von der [LangChain-Dokumentation](https://langchain.readthedocs.io/en/latest/modules/chains/examples/sqlite.html)[^2] abgeleitet. Wir verwenden drei Klassen aus der Langchain-Bibliothek:
 
-- OpenAI: Eine Klasse, die das OpenAI-Sprachmodell enthält, welches natürliche Sprache verstehen und eine Antwort erzeugen kann.
-- SQLDatabase: Eine Klasse, die eine Verbindung zu einer SQL-Datenbank enthält.
+- OpenAI: Eine Klasse, die das OpenAI-Sprachmodell enthält, das natürliche Sprache verstehen und eine Antwort erzeugen kann.
+- SQLDatabase: Eine Klasse, die eine Verbindung zu einer SQL-Datenbank darstellt.
 - SQLDatabaseChain: Eine Klasse, die das OpenAI-Sprachmodell mit der SQL-Datenbank verbindet, um Abfragen in natürlicher Sprache zu ermöglichen.
 
 [^1]: https://www.sqlitetutorial.net/sqlite-sample-database
 [^2]: https://langchain.readthedocs.io/en/latest/modules/chains/examples/sqlite.html
 
-Der Temperaturparameter ist in diesem Beispiel auf 0 gesetzt. Der Temperaturparameter steuert die Zufälligkeit der generierten Ausgabe. Ein niedriger Wert (wie 0) macht die Ausgabe des Modells deterministischer und zielgerichteter, während ein höherer Wert für mehr Zufälligkeit (oder "Kreativität") sorgt. Die Methode run des db_chain-Objekts übersetzt die in natürlicher Sprache geschriebene Abfrage in eine entsprechende SQL-Abfrage, führt sie in der verknüpften Datenbank aus und gibt dann das Ergebnis - in natürliche Sprache umgewandelt - zurück.
+Der Temperaturparameter ist in diesem Beispiel auf 0 gesetzt. Der Temperaturparameter steuert die Zufälligkeit der generierten Ausgabe. Ein niedriger Wert (wie 0) macht die Ausgabe des Modells deterministischer und zielgerichteter, während ein höherer Wert für mehr Zufälligkeit (oder "Kreativität") sorgt. Die Methode run des db_chain Objekts übersetzt die in natürlicher Sprache geschriebene Abfrage in eine entsprechende SQL-Abfrage, führt sie in der verknüpften Datenbank aus und gibt dann das Ergebnis - in natürliche Sprache umgewandelt - zurück.
 
 {format: python}
 ![](code/09/09-sqlite_chat_test.py)
@@ -42,18 +42,14 @@ Answer: There are 8 employees.
 
 > Entering new SQLDatabaseChain chain...
 What is the name of the first employee?
-SELECT FirstName, LastName FROM employees WHERE Employee\
-Id = 1;
+SELECT FirstName, LastName FROM employees WHERE EmployeeId = 1;
 SQLResult: [('Andrew', 'Adams')]
 Answer: The first employee is Andrew Adams.
 > Finished chain.
 
 > Entering new SQLDatabaseChain chain...
 Which customer has the most invoices?
-SELECT customers.FirstName, customers.LastName, COUNT(in\
-voices.InvoiceId) AS NumberOfInvoices FROM customers INNE
-R JOIN invoices ON customers.CustomerId = invoices.Custom
-erId GROUP BY customers.CustomerId ORDER BY NumberOfInvoi
+SELECT customers.FirstName, customers.LastName, COUNT(invoices.InvoiceId) AS NumberOfInvoices FROM customers INNER JOIN invoices ON customers.CustomerId = invoices.CustomerId GROUP BY customers.CustomerId ORDER BY NumberOfInvoi
 ces DESC LIMIT 5;
 SQLResult: [('Luis', 'Goncalves', 7), ('Leonie', 'Kohler'\
 , 7), ('Francois', 'Tremblay', 7), ('Bjorn', 'Hansen', 7)
@@ -64,29 +60,19 @@ Answer: Luis Goncalves has the most invoices with 7.
 > Entering new SQLDatabaseChain chain...
 List all music genres in the database
 SQLQuery: SELECT Name FROM genres
-SQLResult: [('Rock',), ('Jazz',), ('Metal',), ('Alternati\
-ve & Punk',), ('Rock And Roll',), ('Blues',), ('Latin',),
-('Reggae',), ('Pop',), ('Soundtrack',), ('Bossa Nova',),
-('Easy Listening',), ('Heavy Metal',), ('R&B/Soul',), ('
-Electronica/Dance',), ('World',), ('Hip Hop/Rap',), ('Sci
-ence Fiction',), ('TV Shows',), ('Sci Fi & Fantasy',), ('
-Drama',), ('Comedy',), ('Alternative',), ('Classical',),
+SQLResult: [('Rock',), ('Jazz',), ('Metal',), ('Alternative & Punk',), ('Rock And Roll',), ('Blues',), ('Latin',), ('Reggae',), ('Pop',), ('Soundtrack',), ('Bossa Nova',), ('Easy Listening',), ('Heavy Metal',), ('R&B/Soul',), ('Electronica/Dance',), ('World',), ('Hip Hop/Rap',), ('Science Fiction',), ('TV Shows',), ('Sci Fi & Fantasy',), ('Drama',), ('Comedy',), ('Alternative',), ('Classical',),
 ('Opera',)]
-Answer: Rock, Jazz, Metal, Alternative & Punk, Rock And R\
-oll, Blues, Latin, Reggae, Pop, Soundtrack, Bossa Nova, E
-asy Listening, Heavy Metal, R&B/Soul, Electronica/Dance,
-World, Hip Hop/Rap, Science Fiction, TV Shows, Sci Fi & F
-antasy, Drama, Comedy, Alternative, Classical, Opera
+Answer: Rock, Jazz, Metal, Alternative & Punk, Rock And Roll, Blues, Latin, Reggae, Pop, Soundtrack, Bossa Nova, Easy Listening, Heavy Metal, R&B/Soul, Electronica/Dance, World, Hip Hop/Rap, Science Fiction, TV Shows, Sci Fi & Fantasy, Drama, Comedy, Alternative, Classical, Opera
 > Finished chain.
 ```
 
 ## Zusammenfassung Datenbankabfrage in natürlicher Sprache
 
-Ich hatte ein Beispiel, das ich für die ersten beiden Ausgaben meines [Java-KI-Buches](https://leanpub.com/javaai)[^3] geschrieben hatte (später habe ich dieses Beispiel entfernt, weil der Code zu lang und zu schwer zu verstehen war). Dieses Beispiel habe ich dann in Common Lisp überarbeitet und beide Versionen in mehreren Consulting-Projekten in den späten 1990er und frühen 2000er Jahren verwendet.
+Ich hatte ein Beispiel, das ich für die ersten beiden Ausgaben meines [Java-KI-Buches](https://leanpub.com/javaai)[^3] geschrieben hatte (später habe ich dieses Beispiel entfernt, weil der Code zu lang und zu schwer verständlich war). Dieses Beispiel habe ich dann in Common Lisp überarbeitet und beide Versionen in mehreren Consulting-Projekten in den späten 1990er und frühen 2000er Jahren verwendet.
 
 In meinem letzten Buch [Practical Python Artificial Intelligence Programming](https://leanpub.com/pythonai)[^4] habe ich ein OpenAI-Beispiel https://github.com/openai/openai-cookbook/blob/main/examples/Backtranslation_of_SQL_queries.py verwendet, das relativ einfachen Code (im Vergleich zu meinem älteren handgeschriebenen Java- und Common Lisp-Code) für eine NLP-Datenbankschnittstelle enthält.
 
-Verglichen mit dem eleganten Support für NLP-Datenbankabfragen in LangChain sind die vorherigen Beispiele nur begrenzt leistungsfähig und erfordern viel mehr Code. Beim Schreiben im März 2023 habe ich das gute Gefühl, dass der Zugriff auf NLP-Datenbanken nun für den Rest meines Berufslebens kein Problem mehr ist!
+Verglichen mit dem eleganten Support für NLP-Datenbankabfragen in LangChain sind die vorherigen Beispiele nur begrenzt leistungsfähig und erfordern viel mehr Code. Beim Schreiben im März 2023 habe ich das gute Gefühl, dass der Datenbankzugriff über NLP nun für den Rest meines Berufslebens kein Problem mehr ist!
 
 [^3]: https://leanpub.com/javaai
 [^4]: https://leanpub.com/pythonai

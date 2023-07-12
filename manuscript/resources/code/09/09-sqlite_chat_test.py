@@ -3,11 +3,10 @@
 from langchain import OpenAI, SQLDatabase
 from langchain import SQLDatabaseChain
 
-db = SQLDatabase.from_uri("sqlite:///chinook.db")
+db = SQLDatabase.from_uri("sqlite:///chinook.db") 
 llm = OpenAI(temperature=0)
 
-db_chain = SQLDatabaseChain(llm=llm, database=db,
-verbose=True)
+db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True)
 
 db_chain.run("How many employees are there?")
 db_chain.run("What is the name of the first employee?")
