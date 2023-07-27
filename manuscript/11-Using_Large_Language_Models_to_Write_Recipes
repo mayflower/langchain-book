@@ -1,12 +1,12 @@
 # Rezepte verfassen mit Large Language Models
 
-Wenn du die ChatGPT-Webanwendung bittest, ein Rezept aus einer Zutatenliste des Users und mit einer Beschreibung zu verfassen, gelingt ihr die Erstellung von Rezepten recht gut. Für das Beispiel in diesem Kapitel nehme ich einen anderen Ansatz:
+Wenn du die ChatGPT-Webanwendung bittest, ein Rezept aus einer Zutatenliste des Users und einer Beschreibung zu verfassen, funktioniert das recht gut. Für das Beispiel in diesem Kapitel gehe ich einen anderen Weg:
 
-* die Rezept- und Zutatendateien von meiner Webanwendung http://cookingspace.com zur Erstellung von Text nutzen, basierend auf einer Benutzeranfrage für ein Rezept
-* behandle das als Problem der Textvorhersage
+* nutze die Rezept- und Zutatendateien von meiner Webanwendung http://cookingspace.com zur Erstellung von Text, basierend auf einem Prompt für ein Rezept.
+* behandle das als Vorhersageaufgabe
 * formatiere die Antwort für die Anzeige
 
-Dieser Ansatz hat den Vorteil (für mich!), dass die erstellten Rezepte den Rezepten ähneln, die ich gerne koche, da die Kontextdaten von meinen eigenen Rezeptdateien abgeleitet werden.
+Dieser Ansatz hat den Vorteil (für mich!), dass die erstellten Rezepte meinen bevorzugten Rezepten ähneln, da die Kontextdaten von meinen eigenen Rezeptdateien abgeleitet werden.
 
 ## Rezeptdaten vorbereiten
 
@@ -15,7 +15,7 @@ Ich benutze die JSON Rezept-Dateien von meiner Webanwendung http://cookingspace.
 {format: python}
 ![](code/11/11-convert_JSON.py)
 
-Hier ist eine Auflistung einer der kürzeren generierten Rezeptdateien (d.h., Text-Rezeptdaten, die aus rohen JSON-Rezeptdaten von meiner Webseite CookingSpace.com konvertiert wurden):
+Hier ist eine der kürzeren generierten Rezeptdateien (d.h., Text-Rezeptdaten, die aus rohen JSON-Rezeptdaten von meiner Webseite CookingSpace.com konvertiert wurden):
 
 {format: console}
 ```
@@ -24,25 +24,21 @@ Recipe name: Black Bean Dip
 Number of servings: 6
 
 Ingredients:
-2 cup Refried Black Beans
-1/4 cup Sour cream
-1 teaspoon Ground cumin
-1/2 cup Salsa
+    2 cup Refried Black Beans
+    1/4 cup Sour cream
+    1 teaspoon Ground cumin
+    1/2 cup Salsa
 
-Directions: Use either a food processor or a mixing bowl \
-and hand mixer to make this appetizer. Blend the black be
-ans and cumin for at least one minute until the mixture i
-s fairly smooth. Stir in salsa and sour cream and lightly
-mix. Serve immediately or store in the refrigerator.
+Directions: Use either a food processor or a mixing bowl and hand mixer to make this appetizer. Blend the black beans and cumin for at least one minute until the mixture is fairly smooth. Stir in salsa and sour cream and lightly mix. Serve immediately or store in the refrigerator.
 ```
 
 Ich habe 41 einzelne Rezeptdateien erstellt, die für den Rest dieses Kapitels verwendet werden.
 
-Wenn wir im nächsten Abschnitt ein LLM zum Erstellen eines Rezepts verwenden, sind die Anweisungen nummerierte Schritte und die Formatierung ist anders als bei meinen ursprünglichen Rezeptdateien.
+Wenn wir im nächsten Abschnitt ein LLM zum Erstellen eines Rezepts verwenden, sind die Anweisungen numerierte Schritte und die Formatierung ist anders als bei meinen ursprünglichen Rezeptdateien.
 
 ## Ein Vorhersagemodell mit dem OpenAI text-davinci-002 Modell
 
-Hier verwenden wir die **DirectoryLoader** -Klasse, die wir in früheren Beispielen genutzt haben, um einen Embedding Index zu laden und dann zu erstellen.
+Hier verwenden wir die **DirectoryLoader** -Klasse, die wir in früheren Beispielen genutzt haben, um Dokumente zu laden und dann einen Embedding Index zu erstellen.
 
 Hier das Code-Beispiel für das Skript **recipe_generator.py**:
 
@@ -55,11 +51,9 @@ Das hat zwei Rezepte erzeugt. Hier das Ergebnis für die erste Anfrage:
 ```
 $ python recipe_generator.py
 Running Chroma using direct local API.
-Using DuckDB in-memory for database. Data will be transie\
-nt.
+Using DuckDB in-memory for database. Data will be transient.
 
-Recipe creation request: Create a new recipe using both B\
-roccoli and Chicken
+Recipe creation request: Create a new recipe using both Broccoli and Chicken
 
 Recipe name: Broccoli and Chicken Teriyaki
 Number of servings: 4
@@ -75,14 +69,10 @@ Ingredients:
 
 Directions:
 
-1. In a large bowl, whisk together soy sauce, honey, vege\
-table oil, garlic, and rice vinegar.
-2. Cut the broccoli into small florets. Add the broccoli \
-and chicken to the bowl and toss to coat.
+1. In a large bowl, whisk together soy sauce, honey, vegetable oil, garlic, and rice vinegar.
+2. Cut the broccoli into small florets. Add the broccoli and chicken to the bowl and toss to coat.
 3. Preheat a grill or grill pan over medium-high heat.
-4. Grill the chicken and broccoli for 5-7 minutes per sid\
-e, or until the chicken is cooked through and the broccol
-i is slightly charred.
+4. Grill the chicken and broccoli for 5-7 minutes per side, or until the chicken is cooked through and the broccoli is slightly charred.
 5. Serve immediately.
 ```
 
@@ -92,8 +82,7 @@ Hier das Ergebnis der zweiten Anfrage:
 
 {format: console}
 ```
-Recipe creation request: Create a recipe using Beans, Ric\
-e, and Chicken
+Recipe creation request: Create a recipe using Beans, Rice, and Chicken
 
 Recipe name: Beans and Rice with Chicken
 Number of servings: 4
@@ -111,18 +100,15 @@ Ingredients:
 
 Directions:
 1. Cook rice according to package instructions.
-2. In a medium bowl, combine black beans, chicken, cumin,\
- chili powder, salt, and black pepper.
-3. Heat olive oil in a large skillet over medium heat. Ad\
-d the bean mixture and cook until heated through, about 5
- minutes.
+2. In a medium bowl, combine black beans, chicken, cumin, chili powder, salt, and black pepper.
+3. Heat olive oil in a large skillet over medium heat. Add the bean mixture and cook until heated through, about 5 minutes.
 4. Stir in salsa and cilantro. Serve over cooked rice.
 ```
 
 ## Zusammenfassung der Erstellung von Kochrezepten
 
-Kochen ist eine meiner Lieblingsbeschäftigungen (neben dem Wandern, Kajakfahren und Spielen einer Vielzahl von Musikinstrumenten). Die Webanwendung [CookingSpace.com](http://cookingspace.com/)[^1] habe ich ursprünglich geschrieben, um ein persönliches Bedürfnis zu erfüllen: Aus medizinischen Gründen musste ich meine Vitamin K-Zufuhr genau überwachen und regulieren. Ich verwendete die USDA Nutrition Database der US Regierung, um die Menge von Vitaminen und Nährstoffen in den von mir genutzten Rezepten zu schätzen.
+Kochen ist eine meiner Lieblingsbeschäftigungen (neben dem Wandern, Kajakfahren und Spielen einer Vielzahl von Musikinstrumenten). Die Webanwendung [CookingSpace.com](http://cookingspace.com/)[^1] habe ich ursprünglich geschrieben, um ein persönliches Bedürfnis zu erfüllen: Aus medizinischen Gründen musste ich meine Vitamin K-Zufuhr genau überwachen und regulieren. Ich habe die USDA Nutrition Database der US Regierung verwendet, um die Menge von Vitaminen und Nährstoffen in den von mir genutzten Rezepten zu schätzen.
 
-Als ich mit generativen Modellen experimentieren wollte, um Rezepte auf Basis meiner persönlichen Rezeptdaten zu erstellen, war das Experiment einfach aufzusetzen und durchzuführen, weil ich Rezeptdaten aus meinem vorherigen Projekt und Tools wie OpenAI-APIs und LangChain zur Verfügung hatte. Es ist ein durchgängiges Thema in diesem Buch, dass es heutzutage relativ einfach ist, persönliche Projekte auf der Grundlage unserer Daten und Interessen zu erstellen.
+Das Experiment, mit generativen Modellen, unterstützt von meinen eigenen Daten, Rezepte zu erstellen, war einfach aufzusetzen und durchzuführen, weil ich Rezeptdaten aus meinem vorherigen Projekt und Tools wie OpenAI-APIs und LangChain zur Verfügung hatte. Das Thema, dass es heutzutage relativ einfach ist, persönliche Projekte auf der Grundlage unserer Daten und Interessen zu erstellen, zieht sich durch dieses Buch.
 
 [^1]: http://cookingspace.com/
