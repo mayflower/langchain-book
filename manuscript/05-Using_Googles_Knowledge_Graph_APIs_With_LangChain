@@ -1,12 +1,12 @@
 # Die Nutzung von Googles Knowledge Graph APIs mit LangChain
 
-Googles Knowledge Graph (KG) ist eine Wissensbasis, mit deren Hilfe Google relevante Informationen in einer Infobox neben den Suchergebnissen anzeigt. Sie ermöglicht es dem Nutzer, die Antwort mit einem Blick zu sehen, als sofortige Antwort. Die Daten werden automatisch aus einer Vielzahl von Quellen ermittelt, die Orte, Personen, Unternehmen und mehr enthalten. Ich arbeitete 2013 in einem Projekt bei Google, das den eigenen KG für ein internes Projekt nutzte.
+Googles Knowledge Graph (KG) ist eine Wissensbasis, mit deren Hilfe Google relevante Informationen in einer Infobox neben den Suchergebnissen anzeigt. Sie ermöglicht es dem Nutzer, die Antwort auf einen Blick zu sehen, als sofortige Antwort. Die Daten werden automatisch aus einer Vielzahl von Quellen ermittelt, die Orte, Personen, Unternehmen und mehr enthalten. Ich habe 2013 an einem Projekt bei Google gearbeitet, das den eigenen KG für ein internes Projekt eingesetzt hat.
 
 Mit der öffentlichen Knowledge Graph Search API von Google kannst du Entitäten im Google Knowledge Graph finden. Die API verwendet standardmäßige schema.org-Typen und ist konform mit der JSON-LD-Spezifikation. Sie unterstützt das Suchen und Nachschlagen von Entitäten.
 
 Du kannst die Knowledge Graph Search API zur Erstellung von Anwendungen nutzen, die Google Knowledge Graph verwenden. Zum Beispiel kannst Du die API verwenden, um eine Suchmaschine zu bauen, die Ergebnisse auf der Grundlage der Entitäten im Knowledge Graph ausgibt.
 
-Im nächsten Kapitel benutzen wir auch die öffentlichen KGs DBPedia und Wikidata. Googles KG API ist auf das Nachschlagen von Entitäten (Menschen, Orte, Organisationen, etc.) beschränkt während DBPedia und Wikidata mit der SPARQL Query Language eine größere Bandbreite von Informationen auffindbar machen, wie z.B. Beziehungen zwischen Entitäten. Du kannst mit der Google KP API einige Beziehungen zwischen Entitäten finden, z.B. alle Filme eines bestimmten Regisseurs oder alle Bücher eines bestimmten Autors. Du kannst mit der API auch Informationen finden wie etwa alle Menschen, die an einem bestimmten Film mitgewirkt haben, oder alle Schauspieler, die in einer bestimmten TV Show aufgetreten sind.
+Im nächsten Kapitel benutzen wir auch die öffentlichen KGs DBPedia und Wikidata. Googles KG API ist auf das Nachschlagen von Entitäten (Menschen, Orte, Organisationen, etc.) beschränkt während DBPedia und Wikidata mit der SPARQL Query Language eine größere Bandbreite von Informationen auffindbar machen, wie z.B. Beziehungen zwischen Entitäten. Du kannst mit der Google KG API einige Beziehungen zwischen Entitäten finden, z.B. alle Filme eines bestimmten Regisseurs oder alle Bücher eines bestimmten Autors. Du kannst mit der API auch Informationen finden wie etwa alle Menschen, die an einem bestimmten Film mitgewirkt haben, oder alle Schauspieler, die in einer bestimmten TV Show aufgetreten sind.
 
 ## Den Zugriff auf Google Knowledge Graph-APIs einrichten
 
@@ -20,7 +20,7 @@ Mit diesen Schritten generierst du den API Key:
 * wähle links "Anmeldedaten" aus
 * klicke "Anmeldedaten erstellen" und wähle dann API Key aus
 
-Danach kannst du diesen API Key für Anfragen an die Knowledge Graph Search API verwenden.
+Danach kannst du diesen API-Key für Anfragen an die Knowledge Graph Search API verwenden.
 
 Wenn ich Googles APIs verwende, setze ich den Access Key in **~/.google_api_key** und lese den Key so ein:
 
@@ -59,18 +59,17 @@ Die Ausgabe in JSON-LD würde so aussehen:
                      'resultScore': 43}]}
 ```
 
-Damit der Code zum Abrufen von Entitätsinformationen von Google KG nicht wiederholt werden muss, habe ich das Dienstprogramm **Google_KG_helper.py** geschrieben, das den vorhergehenden Code einschließt und in einer Mini-Library generalisiert:
+Damit der Code zum Abrufen von Entitätsinformationen von Google KG nicht wiederholt werden muss, habe ich das Dienstprogramm **Google_KG_helper.py** geschrieben, das den vorhergehenden Code einschließt und in einer Minilibrary zur Verfügung stellt:
 
 {format: python}
-![](code/05/05-Client_Calling.py)
+![](code/05/05-Google_KG_helper.py)
 
-Das Haupttestskript ist in der Datei **Google_Knowledge_Graph_Search.py**:
+Das Hauptskript ist in der Datei **Google_Knowledge_Graph_Search.py**:
 
 {format: python}
-![](05-example_client_calling.py)
+![](05-Google_Knowledge_Graph_Search.py)
 
-Die Ausgabe für das Beispiel ist:
-
+Die Ausgabe ist zum Beispiel:
 
 {format: console}
 ```
@@ -85,4 +84,4 @@ RESPONSE:
 Bill Clinton was president from 1993 to 2001.
 ```
 
-Der Zugriff auf Knowledge Graphs von Google, DBPedia und Wikidata ermöglicht es dir, Fakten und Wissen aus der realen Welt in deine Anwendungen zu integrieren. Ich arbeite zwar hauptsächlich im Bereich des Deep Learning, benutze aber auch häufig Knowledge Graphs in meiner Arbeit und für meine persönlichen Recherche. Ich denke, dass du, werter Leser, den Zugriff auf hochstrukturierte Daten in KGs zuerlässiger und in vielen Fällen einfacher finden wirst als Web Scraping.
+Über Zugriff auf Knowledge Graphs von Google, DBPedia und Wikidata kannst du Fakten und Wissen aus der realen Welt in deine Anwendungen integrieren. Ich arbeite zwar hauptsächlich im Bereich des Deep Learning, benutze aber auch häufig Knowledge Graphs in meiner Arbeit und für meine persönliche Recherche. Ich denke, dass du, werter Leser, den Zugriff auf hochstrukturierte Daten in KGs zuerlässiger und in vielen Fällen einfacher finden wirst als Web Scraping.
