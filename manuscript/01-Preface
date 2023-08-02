@@ -2,11 +2,11 @@
 
 Ich arbeite seit 1982 auf dem Gebiet der künstlichen Intelligenz und ohne Zweifel sind Large Language Models (LLMs) wie GPT-3 und Infrastrukturprojekte wie LangChain die größten technologischen Durchbrüche, die ich erlebt habe. In dieser Publikation werden die Projekte [LangChain](https://github.com/hwchase17/langchain)[^1] und [GPT Index (LlamaIndex)](https://github.com/jerryjliu/gpt_index)[^2] zusammen mit den OpenAI GPT-3 und ChatGPT APIs verwendet, um eine Reihe von interessanten Problemen zu lösen.
 
-Harrison Chase startete das LangChain-Projekt im Oktober 2022 und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für [LangChain](https://github.com/hwchase17/langchain)[^1] 171 Mitwirkende. Jerry Liu startete das GPT-Index-Projekt (kürzlich umbenannt in LlamaIndex) Ende 2022 und das GitHub-Repository für [LlamaIndex](https://github.com/jerryjliu/gpt_index)[^2] hat derzeit vierundfünfzig Mitwirkende.
+Harrison Chase hat das LangChain-Projekt im Oktober 2022 begonnen und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für [LangChain](https://github.com/hwchase17/langchain)[^1] 171 Mitwirkende. Jerry Liu startete das GPT-Index-Projekt (kürzlich umbenannt in LlamaIndex) Ende 2022 und das GitHub-Repository für [LlamaIndex](https://github.com/jerryjliu/gpt_index)[^2] hat derzeit vierundfünfzig Mitwirkende.
 
-Das GitHub-Repository für die Beispiele in diesem Buch ist https://github.com/mark-watson/langchain-book-examples.git.
+Das GitHub-Repository für die Beispiele in diesem Buch ist https://github.com/mark-watson/langchain-book-examples.git. Bitte achte darauf, dass ich den Code im Beispiel-Repository ziemlich häufug aktualisiere, um mit Änderungen in den Bibliotheken, die ich verwende, Schritt zu halten. 
 
-Obwohl die Dokumentation und die Online-Beispiele für LangChain und LlamaIndex exzellent sind, bin ich immer noch bestrebt, dieses Buch zu schreiben, um interessante Probleme zu lösen, an denen ich gerne arbeite. Diese sind: Information Retrieval, natürliche Sprachverarbeitung (natural language processing, NLP), Dialogsysteme (dialog agents) und semantisch verknüpfte Datenfelder. Ich hoffe, dass du, liebe Leserin, lieber Leser, von diesen Beispielen begeistert sein wirst und dass zumindest manche von diesen deine zukünftigen Projekte inspirieren werden.
+Obwohl die Dokumentation und die Online-Beispiele für LangChain und LlamaIndex exzellent sind, möchte ich dieses Buch dennoch schreiben, um interessante Probleme zu lösen, an denen ich gerne arbeite. Darunter sind Informationsbeschaffung, natürliche Sprachverarbeitung (natural language processing, NLP), Dialogsysteme (dialog agents) oder das semantische Netz. Ich hoffe, dass du, liebe Leserin, lieber Leser, von diesen Beispielen begeistert sein wirst und dass zumindest manche von diesen deine zukünftigen Projekte inspirieren werden.
 
 [^1]: https://github.com/hwchase17/langchain
 [^2]: https://github.com/jerryjliu/gpt_index
@@ -28,11 +28,11 @@ Ich lebe in Sedona, Arizona. Das Foto auf dem Buchdeckel habe ich im Januar 2023
 
 ## Danksagung
 
->BILD FEHLT
+Dieses Bild zeigt mich und meine Frau Carol, die mir bei der Produktion und Veröffentlichung von Büchern hilft.
 
-Dieses Bild zeigt mich und meine Frau Carol, die mir bei der Buchproduktion und -bearbeitung hilft.
+![](images/markcarol.jpg)
 
-Ich möchte mich auch bei den folgenden Lesern bedanken, die Fehler oder Rechtschreibfehler in diesem Buch gemeldet haben: Armando Flores  und Peter Solimine.
+Ich möchte mich auch bei den folgenden Lesern bedanken, die Fehler oder Rechtschreibfehler in diesem Buch gemeldet haben: Armando Flores, Peter Solimine und David Rupp.
 
 ## Voraussetzungen für das Ausführen und Ändern der Beispiele im Buch
 
@@ -52,7 +52,7 @@ Du kannst dich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/M
 
 Für die GMail- und Google Calendar-Beispiele benötigst du außerdem ein [Zapier](https://zapier.com/)-Konto[^9].
 
-Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite [LangChainHub](https://github.com/hwchase17/langchain-hub)[^10] ansehen, die Prompts, Chains und Agents enthält, die für die Erstellung von LLM-Anwendungen nützlich sind.
+Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite [LangChainHub](https://github.com/hwchase17/langchain-hub)[^10] ansehen, die nützliche Prompts, Chains und Agents  für die Erstellung von LLM-Anwendungen enthält.
 
 [^7]: https://cloud.google.com/enterprise-knowledge-graph/docs/search-api
 [^8]: https://pypi.org/project/google-search-results/
@@ -61,8 +61,8 @@ Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite [LangChainH
 
 ## Probleme und Workarounds zur Verwendung der Materialien in diesem Buch
 
-Die Bibliotheken, die ich in diesem Buch verwende, werden häufig aktualisiert und manchmal ändert sich die Dokumentation oder der Link zum Code, wodurch diese in diesem Buch ungültig werden. Ich werde versuchen, alles auf dem neuesten Stand zu halten. Bitte meldet mir defekte Links.
+Die Bibliotheken, die ich in diesem Buch verwende, werden häufig aktualisiert und manchmal ändert sich die Dokumentation oder der Link zum Code, wodurch diese in diesem Buch ungültig werden. Ich werde versuchen, alles aktuell zu halten. Bitte meldet mir defekte Links.
 
 In manchen Fällen wirst du spezielle Versionen oder Bibliotheken für einige der Code-Beispiele verwenden müssen.
 
-Da die Python-Code-Beispiele farbigen Text verwenden, kann es vorkommen, dass beim Kopieren von Code aus diesem E-Book Leerzeichen verloren gehen. Alle Code-Beispiele befinden sich im GitHub-Repository für dieses Buch, daher solltest du das Repository klonen, um mit den Codebeispielen zu experimentieren.
+Da die Python-Codebeispiele farbigen Text verwenden, kann es vorkommen, dass beim Kopieren von Code aus diesem E-Book Leerzeichen verloren gehen. Alle Codebeispiele befinden sich im GitHub-Repository für dieses Buch, daher solltest du das Repository klonen, um mit den Codebeispielen zu experimentieren.
