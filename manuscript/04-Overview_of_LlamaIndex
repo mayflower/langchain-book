@@ -11,10 +11,10 @@ Das beliebte LlamaIndex-Projekt hieß früher GPT-Index, wurde aber erweitert, u
 LlamaIndex unterstützt eine Vielzahl von Dokumenttypen, u.a.:
 
 * Textdokumente sind die häufigsten Dokumenttypen. Sie können in einer Vielfalt von Formaten gespeichert werden, wie z. B. .txt, .doc und .pdf.
-* XML Dokumente sind Textdokumente, die zur Speicherung von Daten in strukturiertem Format verwendet werden.
-* JSON-Dokumente sind Textdokumente, die zur Speicherung von Daten in schlankem Format verwendet werden.
-* HTML-Dokumente sind Textdokumente, mit denen Webseiten erstellt werden.
-* PDF-Dokumente sind Textdokumente, die zur Speicherung von Dokumenten in einem festen Format verwendet werden. 
+* XML Dokumente sind Textdokumente zur Speicherung von Daten in strukturiertem Format.
+* JSON-Dokumente sind Textdokumente zur Speicherung von Daten in schlankem Format.
+* HTML-Dokumente sind Textdokumente zur Erstellung von Webseiten.
+* PDF-Dokumente sind Textdokumente zur Speicherung von Dokumenten in einem unveränderlichen Format. 
 
 [^1]: https://gpt-index.readthedocs.io/en/latest/how_to/embeddings.html
 [^2]: https://github.com/jerryjliu/gpt_index/blob/main/docs/index.rst
@@ -24,8 +24,8 @@ LlamaIndex kann auch Daten indizieren, die in einer Vielzahl von Datenbanken ges
 
 * SQL-Datenbanken wie MySQL, PostgreSQL und Oracle. NoSQL-Datenbanken wie MongoDB, Cassandra und CouchDB.
 * Solr ist eien beliebte Open-Source Suchmaschine mit hoher Performance und Skalierbarkeit.
-* Elasticsearch ist eine weitere beliebte Open-Source Suchmaschine, die eine Vielzahl von Features aufweist, darunter Volltextsuche, Geodatensuche und Machine learning.
-* Apache Cassanda ist eine NoSQL-Datenbank, die zur Speicherung großer Datenmengen verwendet werden kann.
+* Elasticsearch ist eine weitere beliebte Open-Source Suchmaschine mit einer Vielzahl von Features, darunter Volltextsuche, Geodatensuche und Machine learning.
+* Apache Cassanda ist eine NoSQL-Datenbank zur Speicherung großer Datenmengen.
 * MongoDB ist eine weitere NoSQL-Datenbank, die einfach zu verwenden und skalieren ist.
 * PostgreSQL ist eine relationale Datenbank, die verbreitet in Unternehmensappliaktionen verwendet wird
 
@@ -54,7 +54,7 @@ The effect of body chemistry on exercise depends on the type of exercise being p
 
 ## Verwendung von LlamaIndex zur Beantwortung von Fragen aus einer Liste von Webseiten
 
-In diesem Beispiel verwenden wir die Bibliotheken **trafilatura** und **html2text**, um Text von einer Webseite zu beziehen, den wir indizieren und durchsuchen. Die Klasse **TrafilaturaWebReader** übernimmt die Erstellung lokaler Dokumente aus einer Liste von Webseiten-URIs und die Indexklasse **GPTListIndex** erstellt einen lokalen Index für die Verwendung mit OpenAI-API-Aufrufen zur Implementierung der Suche.
+In diesem Beispiel verwenden wir die Bibliotheken **trafilatura** und **html2text**, um Text von einer Webseite zu beziehen, um ihn zu indizieren und durchsuchen. Die Klasse **TrafilaturaWebReader** übernimmt die Erstellung lokaler Dokumente aus einer Liste von Webseiten-URIs und die Indexklasse **GPTListIndex** erstellt einen lokalen Index für die Verwendung mit OpenAI-API-Aufrufen zur Implementierung der Suche.
 
 Das folgende Codebeispiel zeigt die Datei **web_page_QA.py**:
 
@@ -91,8 +91,8 @@ Mark has written 20+ books on AI.
 
 ## Zusammenfassung der LlamaIndex/ GPT-Index-Fallstudie
 
-LlamaIndex ist eine Sammlung von Datenstrukturen und Bibliothekscode, die entwickelt wurden, um die Verwendung großer externer Wissensbasen wie Wikipedia zu erleichtern. LlamaIndex erstellt einen vektorisierten Index aus Dokumentendaten, wodurch Abfragen äußerst effizient werden. Es verwendet dann diesen Index, um zu einer Abfrage die relevantesten Abschnitte des Dokuments zu identifizieren.
+LlamaIndex ist eine Sammlung von Datenstrukturen und Bibliotheken, die entwickelt wurden, um die Verwendung großer externer Wissensbasen wie Wikipedia zu erleichtern. LlamaIndex erstellt einen vektorisierten Index aus Dokumentendaten, wodurch Abfragen äußerst effizient werden. Es verwendet dann diesen Index, um zu einer Abfrage die relevantesten Abschnitte des Dokuments zu identifizieren.
 
-LlamaIndex ist nützlich, weil es eine zentrale Schnittstelle zwischen deine LLMs und externen Daten sowie Datenverbindungen zu deinen bestehenden Datenquellen und -formaten (APIs, PDFs, docs, SQL, etc.) bereitstellt. Es bietet eine einfache, flexible Schnittstelle zwischen externen Daten und LLMs.
+LlamaIndex ist nützlich, weil es eine zentrale Schnittstelle zwischen deinen LLMs und externen Daten sowie Verbindungen zu deinen bestehenden Datenquellen und -formaten (APIs, PDFs, docs, SQL, etc.) bereitstellt. Es bietet eine einfache, flexible Schnittstelle zwischen externen Daten und LLMs.
 
 Projekte nutzen LlamaIndex für die Dokumentenabfrage und das Zusammenführen von Antworten aus verschiedenen Dokumenten in persönlichen Assistenten mit LlamaIndex und GPT-3.5.
