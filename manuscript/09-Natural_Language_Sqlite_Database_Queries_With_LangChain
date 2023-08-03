@@ -51,17 +51,14 @@ Answer: The first employee is Andrew Adams.
 Which customer has the most invoices?
 SELECT customers.FirstName, customers.LastName, COUNT(invoices.InvoiceId) AS NumberOfInvoices FROM customers INNER JOIN invoices ON customers.CustomerId = invoices.CustomerId GROUP BY customers.CustomerId ORDER BY NumberOfInvoi
 ces DESC LIMIT 5;
-SQLResult: [('Luis', 'Goncalves', 7), ('Leonie', 'Kohler'\
-, 7), ('Francois', 'Tremblay', 7), ('Bjorn', 'Hansen', 7)
-, ('Frantisek', 'Wichterlova', 7)]
+SQLResult: [('Luis', 'Goncalves', 7), ('Leonie', 'Kohler', 7), ('Francois', 'Tremblay', 7), ('Bjorn', 'Hansen', 7), ('Frantisek', 'Wichterlova', 7)]
 Answer: Luis Goncalves has the most invoices with 7.
 > Finished chain.
 
 > Entering new SQLDatabaseChain chain...
 List all music genres in the database
 SQLQuery: SELECT Name FROM genres
-SQLResult: [('Rock',), ('Jazz',), ('Metal',), ('Alternative & Punk',), ('Rock And Roll',), ('Blues',), ('Latin',), ('Reggae',), ('Pop',), ('Soundtrack',), ('Bossa Nova',), ('Easy Listening',), ('Heavy Metal',), ('R&B/Soul',), ('Electronica/Dance',), ('World',), ('Hip Hop/Rap',), ('Science Fiction',), ('TV Shows',), ('Sci Fi & Fantasy',), ('Drama',), ('Comedy',), ('Alternative',), ('Classical',),
-('Opera',)]
+SQLResult: [('Rock',), ('Jazz',), ('Metal',), ('Alternative & Punk',), ('Rock And Roll',), ('Blues',), ('Latin',), ('Reggae',), ('Pop',), ('Soundtrack',), ('Bossa Nova',), ('Easy Listening',), ('Heavy Metal',), ('R&B/Soul',), ('Electronica/Dance',), ('World',), ('Hip Hop/Rap',), ('Science Fiction',), ('TV Shows',), ('Sci Fi & Fantasy',), ('Drama',), ('Comedy',), ('Alternative',), ('Classical',), ('Opera',)]
 Answer: Rock, Jazz, Metal, Alternative & Punk, Rock And Roll, Blues, Latin, Reggae, Pop, Soundtrack, Bossa Nova, Easy Listening, Heavy Metal, R&B/Soul, Electronica/Dance, World, Hip Hop/Rap, Science Fiction, TV Shows, Sci Fi & Fantasy, Drama, Comedy, Alternative, Classical, Opera
 > Finished chain.
 ```
