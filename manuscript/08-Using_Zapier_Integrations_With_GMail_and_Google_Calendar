@@ -2,11 +2,11 @@
 
 Zapier ist ein Dienst, mit dem man Integrationen mit Hunderten von Cloud-Services erstellen kann. Hier werden wir einige Demos für das Schreiben von automatischen Integrationen mit GMail und Google Calendar schreiben.
 
-Die Verwendung des Zapier-Dienstes ist einfach. Du musst die Dienste, mit denen du interagieren möchtest, auf der Zapier-Entwicklerwebseite registrieren und kannst dann mithilfe von Aufforderungen in natürlicher Sprache ausdrücken, wie du mit den Diensten interagieren möchtest.
+Die Verwendung des Zapier-Dienstes ist einfach. Du musst die Dienste, mit denen du interagieren möchtest, auf der Zapier-Entwicklerwebseite registrieren und kannst dann mithilfe von Prompts in natürlicher Sprache ausdrücken, wie du mit den Diensten interagieren möchtest.
 
 ## Entwicklungsumgebung einrichten
 
-Du benötigst einen Entwicklerschlüssel für die [Zapier Natural Language Actions API](https://nla.zapier.com/get-started/)[^1]. Folge dem Link zur Webseite und suche nach "Dev App" in der Spalte "Provider Name". Wenn kein Schlüssel vorhanden ist, musst du eine Aktion einrichten, um einen Schlüssel zu erstellen. Klicke auf "Set up Actions" (Aktionen einrichten) und folge den Anweisungen. Dein Schlüssel wird in der Spalte "Persönlicher API-Schlüssel" für die "Dev App" angezeigt. Klicke darauf, um deinen Schlüssel zu sehen und zu kopieren. Du kannst hier die [Dokumentation lesen](https://nla.zapier.com/api/v1/dynamic/docs)[^2].
+Du benötigst einen Entwickler-Key für die [Zapier Natural Language Actions API](https://nla.zapier.com/get-started/)[^1]. Folge dem Link zur Webseite und suche nach "Dev App" in der Spalte "Provider Name". Wenn kein Schlüssel vorhanden ist, musst du eine Aktion einrichten, um einen Schlüssel zu erstellen. Klicke auf "Set up Actions" (Aktionen einrichten) und folge den Anweisungen. Dein Schlüssel wird in der Spalte "Persönlicher API-Schlüssel" für die "Dev App" angezeigt. Klicke darauf, um deinen Schlüssel zu sehen und zu kopieren. Du kannst hier die [Dokumentation lesen](https://nla.zapier.com/api/v1/dynamic/docs)[^2].
 
 Als ich mein Zapier-Konto eingerichtet habe, habe ich drei Zapier Natural Language Actions eingerichtet:
  
@@ -28,7 +28,7 @@ Im folgenden Beispiel ersetze **TEST_EMAIL_ADDRESS** durch eine E-Mail-Adresse, 
 {format: python}
 ![](code/08/08-send_gmail.py)
 
-Hier ist die Beispiel ausgabe:
+Hier ist die Beispielausgabe:
 
 {format: console}
 ```
@@ -48,7 +48,7 @@ Final Answer: An email has been sent to TEST_EMAIL_ADDRESS with the subject "Pit
 
 ## Beispiel für die Integration von Google Calendar
 
-Angenommen, du hast die Zapier Natural Language Action "Google Calendar: Find Event" konfiguriert. Dann funktioniert derselbe Code, den wir im letzten Abschnitt zum Senden einer E-Mail verwendet haben, auch für die Überprüfung von Kalendereinträgen. Man muss nur die Aufforderung in natürlicher Sprache ändern:
+Angenommen, du hast die Zapier Natural Language Action "Google Calendar: Find Event" konfiguriert. Dann funktioniert derselbe Code, den wir im letzten Abschnitt zum Senden einer E-Mail verwendet haben, auch für die Überprüfung von Kalendereinträgen. Man muss nur den Prompt in natürlicher Sprache ändern:
 
 {format: python}
 ![](code/08/08-get_google_calendar.py)
