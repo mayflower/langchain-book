@@ -1,8 +1,8 @@
 # Verwendung von LLMs zur Organisation von Informationen in unseren Google Drives
 
-Mein digitales Leben besteht aus dem Schreiben und Arbeiten als KI-Anwender, sowie aus Lernaktivitäten, die ich mit meinem Selbstbild eines "gentleman scientist" rechtfertige. Cloud-Speicher wie GitHub, Google Drive, Microsoft OneDrive und iCloud sind zentral für meine Aktivitäten.
+Mein digitales Leben besteht aus dem Schreiben, der Arbeit als KI-Anwender, sowie aus Lernaktivitäten, die ich mit meinem Selbstbild als "gentleman scientist" rechtfertige. Cloud-Speicher wie GitHub, Google Drive, Microsoft OneDrive und iCloud sind zentral für meine Aktivitäten.
 
-Vor etwa zehn Jahren verbrachte ich zwei Monate damit, ein System in Clojure zu schreiben, das meine eigene, persönliche DropBox werden sollte, ergänzt durch verschiedene NLP-Tools und ein FireFox-Plugin, um Web-Clippings direkt an mein persönliches System zu senden. Um ehrlich zu sein, habe ich mein eigenes Projekt nach ein paar Monaten wieder eingestellt, weil die Zeit, die ich für die Organisation meiner Informationen benötigte, einen größeren Aufwand darstellte als den Nutzen, den ich daraus zog.
+Vor etwa zehn Jahren verbrachte ich zwei Monate damit, ein System in Clojure zu schreiben, das meine eigene, persönliche DropBox werden sollte, ergänzt durch verschiedene NLP-Tools und ein FireFox-Plugin, um Web-Clippings direkt an mein persönliches System zu senden. Um ehrlich zu sein, habe ich mein eigenes Projekt nach ein paar Monaten wieder eingestellt, weil die Zeit, die ich für die Organisation meiner Informationen benötigte, einen größeren Aufwand darstellte als sie Nutzen brachte.
 
 In diesem Kapitel werde ich dir Teile eines neuen Systems vorstellen, das ich für meinen persönlichen Gebrauch entwickle und das mir helfen soll, mein Material in Google Drive (und eventuell in anderen Cloud-Diensten) zu organisieren. Sei nicht überrascht, wenn das fertige Projekt ein weiteres Beispiel in einer zukünftigen Auflage dieses Buches ist!
 
@@ -15,8 +15,6 @@ Du musst zuerst auf **Advanced** und dann auf den Link **Go to GoogleApiExamples
 ## Einrichten der Anforderungen
 
 Du musst ein Credential unter https://console.cloud.google.com/cloud-resource-manager erstellen (kopiert aus der [PyDrive-Dokumentation](https://pythonhosted.org/PyDrive/quickstart.html)[^1], wobei der Anwendungstyp auf "Desktop" geändert werden muss):
-
->>>REVIEW: die Anleitung lässt sich so nicht nachvollziehen: die Punkte mit localhost bekomme ich nicht
 
 - suche nach "Google Drive API", wähle den Eintrag und klicke auf "Aktivieren"
 - wähle "Anmeldedaten" aus dem linken Menü, klicke "Anmeldedaten erstellen", wähle "OAuth-Client ID"
@@ -38,7 +36,7 @@ Für dieses Beispiel werden wir unser Testskript bei Google authentifizieren und
 {format: python}
 ![](code/07/07-fetch_txt_files.py)
 
-Zum Testen habe ich nur eine Textdatei mit der Dateierweiterung ".txt" auf meinem Google Drive, sodass meine Ausgabe nach der Ausführung dieses Skripts wie folgt aussieht. Ich habe die Ausgabe bearbeitet, um meine Datei-IDs zu ändern und nur ein paar Zeilen des Debug-Ausdrucks der Dateititel zu drucken.
+Zum Testen habe ich nur eine Textdatei mit der Dateierweiterung ".txt" auf meinem Google Drive, sodass meine Ausgabe nach der Ausführung dieses Skripts wie folgt aussieht. Ich habe die Ausgabe bearbeitet, um meine Datei-IDs zu ändern und nur ein paar Zeilen der Debug-Ausdrucks der Dateititel auszugeben.
 
 {format: console}
 ```
@@ -78,7 +76,7 @@ those completed just for fun.\n\n']
 
 ## Vektorindizes für Dateien in speziellen Google Drive-Ordnern erstellen
 
-Das Beispiel-Skript im letzten Abschnitt sollte Kopien der Textdateien in deinem obersten Google Documents Ordner mit der Endung ".txt" erzeugt haben. Jetzt verwenden wir den gleichen LlamaIndex Testcode wie in einem früheren Kapitel. Hier is das Testskript **index_and_QA.py**: 
+Das Beispiel-Skript im letzten Abschnitt sollte lokale Kopien der Textdateien in deinem obersten Google Documents Ordner mit der Endung ".txt" erzeugt haben. Jetzt verwenden wir den gleichen LlamaIndex Testcode wie in einem früheren Kapitel. Hier is das Testskript **index_and_QA.py**: 
 
 {format: python}
 ![](code/07/07-index_and_QA.py)
@@ -99,13 +97,7 @@ tal LLM token usage: 202 tokens
 INFO:llama_index.token_counter.token_counter:> [query] To\
 tal embedding token usage: 7 tokens
 
-Sport is generally recognised as activities based in phys\
-ical athleticism or physical dexterity that are governed
-by rules to ensure fair competition and consistent adjudi
-cation of the winner. It is anything humans find amusing
-or entertaining, and can include all forms of physical ex
-ercise, even those completed just for fun.
-
+Sport is generally recognised as activities based in physical athleticism or physical dexterity that are governed by rules to ensure fair competition and consistent adjudication of the winner. It is anything humans find amusing or entertaining, and can include all forms of physical exercise, even those completed just for fun.
 ```
 
 Es ist interessant zu sehen, wie das Ergebnis der Abfrage in eine schöne Form umgeschrieben wird, verglichen mit dem Rohtext in der Datei **sports.txt** in meinem Google Drive:
@@ -113,25 +105,15 @@ Es ist interessant zu sehen, wie das Ergebnis der Abfrage in eine schöne Form u
 {format: console}
 ```
 $ cat data/sports.txt
-Sport is generally recognised as activities based in phys\
-ical athleticism or physical dexterity.[3] Sports are usu
-ally governed by rules to ensure fair competition and con
-sistent adjudication of the winner.
+Sport is generally recognised as activities based in physical athleticism or physical dexterity.[3] Sports are usually governed by rules to ensure fair competition and consistent adjudication of the winner.
 
-"Sport" comes from the Old French desport meaning "leisur\
-e", with the oldest definition in English from around 130
-0 being "anything humans find amusing or entertaining".[4
-]
+"Sport" comes from the Old French desport meaning "leisure", with the oldest definition in English from around 1300 being "anything humans find amusing or entertaining".[4]
 
-Other bodies advocate widening the definition of sport to\
-include all physical activity and exercise. For instance
-, the Council of Europe include all forms of physical exe
-rcise, including those completed just for fun.
-
+Other bodies advocate widening the definition of sport to include all physical activity and exercise. For instance, the Council of Europe include all forms of physical exercise, including those completed just for fun.
 ```
 
 ## Zusammenfassung Google Drive Beispiele
 
-Wenn du Google Drive bereits zum Speichern deiner Arbeitsnotizen und anderer Dokumente verwendest, dann magst du vielleicht das einfache Beispiel in diesem Kapitel erweitern, um dein eigenes Abfragesystem für Dokumente zu erstellen. Zusätzlich zu Google Drive nutze ich auch Microsoft 365 und OneDrive für meine Arbeit und persönlichen Projekte.
+Wenn du Google Drive bereits zum Speichern deiner Arbeitsnotizen und anderer Dokumente verwendest, dann magst du vielleicht das einfache Beispiel in diesem Kapitel erweitern, um dein eigenes Abfragesystem für Dokumente zu erstellen. Zusätzlich zu Google Drive nutze ich auch Microsoft Office 365 und OneDrive für meine Arbeit und persönlichen Projekte.
 
 Ich habe noch keine eigenen Konnektoren für OneDrive geschrieben, aber das ist auf meiner persönlichen Todo-Liste, unter Verwendung der Microsoft Library https://github.com/OneDrive/onedrive-sdk-python.
