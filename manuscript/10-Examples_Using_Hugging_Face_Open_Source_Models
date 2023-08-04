@@ -34,7 +34,7 @@ Der Hugging Face Hub-Endpunkt in LangChain verbindet sich mit dem Hugging Face H
 
 [^1]: https://huggingface.co/docs/huggingface_hub/index
 
-Wir brauchen einen Hugging Face-Account und -API Key, um diese Endpunkte zu nutzen. Es existieren zwei Hugging Face LLM Wrapper, einer für eine lokale Pipeline und einer für ein Modell, das auf dem Hugging Face Hub gehostet wird. Beachte, dass diese Wrapper nur für Modelle funktionieren, die die text2text-generation- und text-generation-Tasks unterstützen. Text2Text-generation bezieht sich darauf, eine Textfolge aus einer anderen Textfolge zu generieren. Zum Beispiel eine Zusammenfassung eines langen Artikels zu erstellen. Text-generation bezieht sich darauf, eine Textfolge komplett neu zu erstellen.
+Wir brauchen einen Hugging Face-Account und -API Key, um diese Endpunkte zu nutzen. Es existieren zwei Hugging Face LLM Wrapper, einer für eine lokale Pipeline und einer für ein Modell, das auf dem Hugging Face Hub gehostet wird. Beachte, dass diese Wrapper nur für Modelle funktionieren, die die text2text-generation- und text-generation Tasks unterstützen. Text2text-generation bezieht sich darauf, eine Textfolge aus einer anderen Textfolge zu generieren. Zum Beispiel eine Zusammenfassung eines langen Artikels zu erstellen. Text-generation bezieht sich darauf, eine Textfolge komplett neu zu erstellen.
 
 ## LangChain als Wrapper für Hugging Face Prediction Model APIs
 
