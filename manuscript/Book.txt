@@ -9,4 +9,5 @@
 09-Natural_Language_Sqlite_Database_Queries_With_LangChain
 10-Examples_Using_Hugging_Face_Open_Source_Models
 11-Using_Large_Language_Models_to_Write_Recipes
+12-More_Useful_libraries
 13-Book_Wrap_up
