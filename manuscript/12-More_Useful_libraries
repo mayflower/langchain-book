@@ -4,4 +4,53 @@ An dieser Stelle wollen wir uns noch zwei weitere Bibliotheken anschauen, die mi
 
 ## Der EmbedChain-Wrapper für LangChain vereinfacht die Anwedungsentwicklung
 
+Tananjeet Sing hat eine nette Wrapper-Bibliothek, EmbedChain https://github.com/embedchain/embedchain entwickelt, die Anewendungen mit eigenen Daten vereinfacht, idem sie sinnvolle Defaultwerte für die Parameter der LangChain-Methoden setzt.
+
+Ich zeige ein einfaches Beispiel, das ich auf meinem Laptop laufen lasse, das alle meine Bücher sowie eine große Anzahl von papers aus der Forschung durchsucht. Das Beispiel kannst du im GitHub-Rpository zu diesem Buch im Verzeichnis **langchain-book-examples/embedchain_test** finden. Wie gewöhnlich brauchst du einen OpenAI API-Account und musst diesen in der Umgebungsvariablen **OPENAI_API_KEY** setzen.
+
+Ich habe die PDF-Dateien für all die Inhalte in ein Verzeichins **~/data** auf meinem Laptop kopiert. Es dauert ein bisschen, bis der lokale Vektor-Store für die Embeddings aufgebaut ist. Ich benutze zwei Python-Skripte. Das erste, **process_pdfs.py** siehst du hier:
+
+{format: python}
+![](code/12/12-process_pdfs.py)
+
+Hier ist ein Demoskript, **app.py**, das drei Abfragen startet:
+
+{format: python}
+![](code/12/12-app.py)
+
+Die Ausgabe sieht so aus:
+
+{format: console}
+```
+$ python app.py
+How can I iterate over a list in Haskell?
+To iterate over a list in Haskell, you can use recursion or higher-order functions like `map` or `foldl`. 
+
+How can I edit my Common Lisp files?
+To edit Common Lisp files, you can use Emacs with the Lisp editing mode. By setting the default auto-mode-alist in
+ Emacs, whenever you open a file with the extensions ".lisp", ".lsp", or ".cl", Emacs will automatically use the Lisp editing mode. You can search for an "Emacs tutorial" online to learn how to use the basic Emacs editing commands. 
+
+How can I scrape a website using Common Lisp?
+One way to scrape a website using Common Lisp is to use the Drakma library. Paul Nathan has written a library using Drakma called web-trotter.lisp, which is available under the AGPL license at articulate-lisp.com/src/web-trotter.lisp. This library can be a good starting point for your scraping project. Additionally, you can use the wget utility to make local copies of a website. The command "wget -m -w 2 http:/knowledgebooks.com/" can be used to mirror a site with a two-second delay between HTTP requests for resources. The option "-m" indicates to recursively follow all links on the website, and the option "-w 2" adds a two-second delay between requests. Another option, "wget -mk -w 2 http:/knowledgebooks.com/", converts URI references to local file references on your local mirror. Concatenating all web pages into one file can also be a useful trick. 
+```
+
 ## Die Kor Bibliothek
+
+Die Kor Bibliothek wurde von Eugene Yurtsev geschrieben. Kor ist hilfreich,, wenn strukturierte Daten aus unstrukturiertem Text extrahieren will. Kor erzeugt dazu passenden Prompt-Text um GPT-3.5 zu erklären, welche information es aus dme zu bearbeitenden Text extrahieren soll.
+
+Das [GitHub repository for Kor](https://github.com/eyurtsev/kor) wird aktiv weiterentwickelt, schau immer mal wieder nach Aktualisierungen. Hier ist die [Dokumentation](https://eyurtsev.github.io/kor/).
+
+Für das folgende Beispiel habe ich ein Beispiel aus der Dokumentation zu Kor angepasst, um Kalenderdaten aus dem Text zu extrahieren.
+
+{format: python}
+![](code/12/12-dates.py)
+
+Beispielausgabe:
+
+{format: console}
+```
+$ python dates.py
+* month mentioned in text= {'date': {'month': 'May'}}
+```
+
+Die Kor Bibliothek ist auf die Extraktion von Daten aus Text spezialisiert. Man kann das gleiche Ergebnis mit handgeschriebenen Prompts für GPT-ähnliche LLMs erreicben, aber Tor kann hier Entwicklungsarbeit sparen.
