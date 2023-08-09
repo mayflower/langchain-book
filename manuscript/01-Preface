@@ -1,8 +1,8 @@
 # Vorwort
 
-Ich arbeite seit 1982 auf dem Gebiet der künstlichen Intelligenz und ohne Zweifel sind Large Language Models (LLMs) wie GPT-3 und Infrastrukturprojekte wie LangChain die größten technologischen Durchbrüche, die ich erlebt habe. In dieser Publikation werden die Projekte [LangChain](https://github.com/hwchase17/langchain)[^1] und [GPT Index (LlamaIndex)](https://github.com/jerryjliu/gpt_index) zusammen mit den OpenAI GPT-3 und ChatGPT APIs verwendet, um eine Reihe von interessanten Problemen zu lösen.
+Ich arbeite seit 1982 auf dem Gebiet der künstlichen Intelligenz und ohne Zweifel sind Large Language Models (LLMs) wie GPT-3 und Infrastrukturprojekte wie LangChain die größten technologischen Durchbrüche, die ich erlebt habe. In dieser Publikation werden die Projekte [LangChain](https://github.com/hwchase17/langchain) und [GPT Index (LlamaIndex)](https://github.com/jerryjliu/gpt_index) zusammen mit den OpenAI GPT-3 und ChatGPT APIs verwendet, um eine Reihe von interessanten Problemen zu lösen.
 
-Harrison Chase hat das LangChain-Projekt im Oktober 2022 begonnen und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für [LangChain](https://github.com/hwchase17/langchain)[^1] 171 Mitwirkende. Jerry Liu startete das GPT-Index-Projekt (kürzlich umbenannt in LlamaIndex) Ende 2022 und das GitHub-Repository für [LlamaIndex](https://github.com/jerryjliu/gpt_index) hat derzeit vierundfünfzig Mitwirkende.
+Harrison Chase hat das LangChain-Projekt im Oktober 2022 begonnen und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für [LangChain](https://github.com/hwchase17/langchain) 171 Mitwirkende. Jerry Liu startete das GPT-Index-Projekt (kürzlich umbenannt in LlamaIndex) Ende 2022 und das GitHub-Repository für [LlamaIndex](https://github.com/jerryjliu/gpt_index) hat derzeit vierundfünfzig Mitwirkende.
 
 Das GitHub-Repository für die Beispiele in diesem Buch ist https://github.com/mark-watson/langchain-book-examples.git. Bitte achte darauf, dass ich den Code im Beispiel-Repository ziemlich häufug aktualisiere, um mit Änderungen in den Bibliotheken, die ich verwende, Schritt zu halten. 
 
@@ -10,9 +10,9 @@ Obwohl die Dokumentation und die Online-Beispiele für LangChain und LlamaIndex 
 
 ## Über den Autor
 
-Ich habe mehr als 20 Bücher geschrieben, halte über 50 US-Patente und habe bei so interessanten Unternehmen wie Google, Capital One, SAIC, Mind AI und anderen gearbeitet. Auf meiner Webseite https://markwatson.com findest du Links, um die meisten meiner aktuellen Bücher kostenlos zu lesen. Wenn ich meine Karriere kurz zusammenfassen müsste, würde ich sagen, dass ich eine Menge Spaß hatte und meine Arbeit sehr genossen habe. Ich hoffe, dass das, was du hier lernst, dir sowohl Spaß machen, als auch dass es dir bei deiner Arbeit hilfreich sein wird.
+Ich habe mehr als 20 Bücher geschrieben, halte über 50 US-Patente und habe bei so interessanten Unternehmen wie Google, Capital One, SAIC, Mind AI und anderen gearbeitet. Auf meiner Webseite <https://markwatson.com> findest du Links, um die meisten meiner aktuellen Bücher kostenlos zu lesen. Wenn ich meine Karriere kurz zusammenfassen müsste, würde ich sagen, dass ich eine Menge Spaß hatte und meine Arbeit sehr genossen habe. Ich hoffe, dass das, was du hier lernst, dir sowohl Spaß machen, als auch dass es dir bei deiner Arbeit hilfreich sein wird.
 
-Wenn du meine Arbeit unterstützen möchtest, kannst du meine Bücher auf [Leanpub](https://leanpub.com/u/markwatson) kaufen und meine Git-Repositories, die du nützlich findest, auf [GitHub](https://github.com/mark-watson?tab=repositories&q=&type=public) bewerten. Du kannst mich auch in den sozialen Medien über [Mastodon](https://mastodon.social/@mark_watson) und [Twitter](https://twitter.com/mark_l_watson) finden. Ich stehe auch als Berater zur Verfügung: https://markwatson.com.
+Wenn du meine Arbeit unterstützen möchtest, kannst du meine Bücher auf [Leanpub](https://leanpub.com/u/markwatson) kaufen und meine Git-Repositories, die du nützlich findest, auf [GitHub](https://github.com/mark-watson?tab=repositories&q=&type=public) bewerten. Du kannst mich auch in den sozialen Medien über [Mastodon](https://mastodon.social/@mark_watson) und [Twitter](https://twitter.com/mark_l_watson) finden. Ich stehe auch als Berater zur Verfügung: <https://markwatson.com>.
 
 
 ## Buchumschlag
@@ -32,26 +32,21 @@ Ich möchte mich auch bei den folgenden Lesern bedanken, die Fehler oder Rechtsc
 
 Ich präsentiere den vollständigen Quellcode sowie zahlreiche Beispiele für jedes im Buch aufgeführte Szenario. Falls du also keinen Zugriff auf bestimmte APIs haben möchtest, ermöglicht dir das Buch dennoch, Schritt für Schritt mitzugehen.
 
-Um OpenAIs GPT-3- und ChatGPT-Modelle zu nutzen, musst du dich für einen API-Schlüssel (kostenlose Version ist ausreichend) unter https://openai.com/api/ anmelden und die Umgebungsvariable **OPENAI_API_KEY** auf deinen Key-Value setzen.
+Um OpenAIs GPT-3- und ChatGPT-Modelle zu nutzen, musst du dich für einen API-Schlüssel (kostenlose Version ist ausreichend) unter <https://openai.com/api/> anmelden und die Umgebungsvariable **OPENAI_API_KEY** auf deinen Key-Value setzen.
 
 Du benötigst einen API-Schlüssel für Beispiele, die **Googles Knowledge Graph APIs** verwenden.
 
-Referenz: [Google Knowledge Graph APIs](https://cloud.google.com/enterprise-knowledge-graph/docs/search-api)[^7]. 
+Referenz: [Google Knowledge Graph APIs](https://cloud.google.com/enterprise-knowledge-graph/docs/search-api). 
 
-Die Beispielprogramme, die die Knowledge Graph APIs von Google verwenden, setzen voraus, dass sich die Datei **~/.google_api_key** in deinem Home-Verzeichnis befindet und den Schlüssel von https://console.cloud.google.com/apis enthält.
+Die Beispielprogramme, die die Knowledge Graph APIs von Google verwenden, setzen voraus, dass sich die Datei **~/.google_api_key** in deinem Home-Verzeichnis befindet und den Schlüssel von <https://console.cloud.google.com/apis> enthält.
 
-Für die Beispiele, die die Websuche integrieren, musst du **SerpApi installieren**. Siehe [PyPi-Projektseite](https://pypi.org/project/google-search-results/)[^8]. 
+Für die Beispiele, die die Websuche integrieren, musst du **SerpApi installieren**. Siehe [PyPi-Projektseite](https://pypi.org/project/google-search-results/). 
 
-Du kannst dich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/Monat mit einer E-Mail-Adresse und Telefonnummer bei https://serpapi.com/users/welcome anmelden.
+Du kannst dich für ein kostenloses, nicht-kommerzielles Konto für 100 Suchen/Monat mit einer E-Mail-Adresse und Telefonnummer bei <https://serpapi.com/users/welcome> anmelden.
 
-Für die GMail- und Google Calendar-Beispiele benötigst du außerdem ein [Zapier](https://zapier.com/)-Konto[^9].
+Für die GMail- und Google Calendar-Beispiele benötigst du außerdem ein [Zapier](https://zapier.com/)-Konto.
 
-Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite [LangChainHub](https://github.com/hwchase17/langchain-hub)[^10] ansehen, die nützliche Prompts, Chains und Agents  für die Erstellung von LLM-Anwendungen enthält.
-
-[^7]: https://cloud.google.com/enterprise-knowledge-graph/docs/search-api
-[^8]: https://pypi.org/project/google-search-results/
-[^9]: https://zapier.com/
-[^10]: https://github.com/hwchase17/langchain-hub
+Nachdem du dieses Buch durchgelesen hast, kannst du dir die Webseite [LangChainHub](https://github.com/hwchase17/langchain-hub) ansehen, die nützliche Prompts, Chains und Agents  für die Erstellung von LLM-Anwendungen enthält.
 
 ## Probleme und Workarounds zur Verwendung der Materialien in diesem Buch
 

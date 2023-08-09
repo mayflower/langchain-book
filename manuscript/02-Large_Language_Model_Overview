@@ -9,12 +9,12 @@ Die Hauptpunkte, die wir in diesem Buch behandeln wollen, sind:
 -	LLMs können verschiedene Aufgaben der natürlichen Sprachverarbeitung (Natural Language Processing - NLP) und natürlichen Spracherzeugung (Natural Language Generation – NLG) wie Zusammenfassung, Übersetzung, Vorhersage, Klassifikation und die Beantwortung von Fragen ausführen.
 -	Auch wenn LLMs ursprünglich für Anwendungen des NLP entwickelt wurden, haben sie doch auch Potential in anderen Bereichen wie computerbasiertes Sehen und Bioinformatik gezeigt, indem sie ihr verallgemeinerbares Wissen und ihre Fähigkeit zum Transferlernen nutzbar gemacht haben.
 
-[BERT-Modelle](https://en.wikipedia.org/wiki/BERT_(Language_model))[^5] waren unter den ersten Transformer-Modellen, die breite Nutzung gefunden haben. BERT wurde 2018 von Google AI Language entwickelt. BERT-Modelle stellen eine Gruppe maskierter Sprachmodelle dar, die Transformer-Architektur benutzen, um bidirektionale Repräsentationen natürlicher Sprache zu erlernen. BERT-Modelle können die Bedeutung mehrdeutiger Wörter verstehen, indem sie den umgebenden Text als Kontext benutzen. Der *Zaubertrick* besteht darin, dass es die Trainingsdaten praktisch kostenlos gibt. Man sucht programmgesteuert zufällige Würter, ersetzt sie mit einem fehlendes Wort-Token und trainiert das Modell darauf, die fehlenden Wörter vorherzusagen. Dieser Vorgang wird mit riesigen Mengen an Trainingsdaten aus dem Internet, Büchern und anderen Quellen wiederholt.
+[BERT-Modelle](https://en.wikipedia.org/wiki/BERT_(Language_model)) waren unter den ersten Transformer-Modellen, die breite Nutzung gefunden haben. BERT wurde 2018 von Google AI Language entwickelt. BERT-Modelle stellen eine Gruppe maskierter Sprachmodelle dar, die Transformer-Architektur benutzen, um bidirektionale Repräsentationen natürlicher Sprache zu erlernen. BERT-Modelle können die Bedeutung mehrdeutiger Wörter verstehen, indem sie den umgebenden Text als Kontext benutzen. Der *Zaubertrick* besteht darin, dass es die Trainingsdaten praktisch kostenlos gibt. Man sucht programmgesteuert zufällige Würter, ersetzt sie mit einem fehlendes Wort-Token und trainiert das Modell darauf, die fehlenden Wörter vorherzusagen. Dieser Vorgang wird mit riesigen Mengen an Trainingsdaten aus dem Internet, Büchern und anderen Quellen wiederholt.
 
 Hier sind einige Links zu "Papers mit Code" für BERT (Links sind für Code, Paper-Links in den Code-Repositories):
 
-- https://github.com/allenai/scibert
-- https://github.com/google-research/bert
+- <https://github.com/allenai/scibert>
+- <https://github.com/google-research/bert>
 
 ## Große Tech-Unternehmen und kleine Startups, die Large Language Models benutzen
 

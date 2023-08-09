@@ -14,7 +14,7 @@ Du musst zuerst auf **Advanced** und dann auf den Link **Go to GoogleApiExamples
 
 ## Einrichten der Anforderungen
 
-Du musst ein Credential unter https://console.cloud.google.com/cloud-resource-manager erstellen (kopiert aus der [PyDrive-Dokumentation](https://pythonhosted.org/PyDrive/quickstart.html), wobei der Anwendungstyp auf "Desktop" geändert werden muss):
+Du musst ein Credential unter <https://console.cloud.google.com/cloud-resource-manager> erstellen (kopiert aus der [PyDrive-Dokumentation](https://pythonhosted.org/PyDrive/quickstart.html), wobei der Anwendungstyp auf "Desktop" geändert werden muss):
 
 - suche nach "Google Drive API", wähle den Eintrag und klicke auf "Aktivieren"
 - wähle "Anmeldedaten" aus dem linken Menü, klicke "Anmeldedaten erstellen", wähle "OAuth-Client ID"
@@ -67,15 +67,10 @@ Für meine Testdatei sieht der Output so aus:
 {format: console}
 ```
 $ python index_and_QA.py
-INFO:llama_index.token_counter.token_counter:> [build_ind\
-ex_from_documents] Total LLM token usage: 0 tokens
-INFO:llama_index.token_counter.token_counter:> [build_ind\
-ex_from_documents] Total embedding token usage: 111 token
-s
-INFO:llama_index.token_counter.token_counter:> [query] To\
-tal LLM token usage: 202 tokens
-INFO:llama_index.token_counter.token_counter:> [query] To\
-tal embedding token usage: 7 tokens
+INFO:llama_index.token_counter.token_counter:> [build_index_from_documents] Total LLM token usage: 0 tokens
+INFO:llama_index.token_counter.token_counter:> [build_index_from_documents] Total embedding token usage: 111 tokens
+INFO:llama_index.token_counter.token_counter:> [query] Total LLM token usage: 202 tokens
+INFO:llama_index.token_counter.token_counter:> [query] Total embedding token usage: 7 tokens
 
 Sport is generally recognised as activities based in physical athleticism or physical dexterity that are governed by rules to ensure fair competition and consistent adjudication of the winner. It is anything humans find amusing or entertaining, and can include all forms of physical exercise, even those completed just for fun.
 ```

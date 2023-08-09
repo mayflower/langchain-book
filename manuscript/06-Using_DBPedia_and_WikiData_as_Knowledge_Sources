@@ -16,8 +16,8 @@ DBPedia und Wikidata sind ähnlich, jedoch mit einigen wichtigen Unterschieden. 
 
 Zum letzten Punkt: Ich persönlich bevorzuge DBPedia, wenn ich mit dem semantischen Web und verknüpften Daten experimentiere, vor allem, weil DBPedia-URIs für Menschen lesbar sind, während Wikidata-URIs abstrakt sind. Die folgenden URIs repräsentieren die Stadt Sedona (Arizona), in der ich lebe:
 
-- DBPedia: https://dbpedia.org/page/Sedona,_Arizona
-- Wikidata: https://www.wikidata.org/wiki/Q80041
+- DBPedia: <https://dbpedia.org/page/Sedona,_Arizona>
+- Wikidata: <https://www.wikidata.org/wiki/Q80041>
 
 In RDF schließen wir URIs in spitze Klammern wie **&lt; https://www.wikidata.org/wiki/Q80041 &gt;** ein.
 
@@ -37,7 +37,7 @@ In dieser SPARQL-Abfrage steht das Präfix **wd:** für Wikidata-Daten, während
 
 DBPedia ist ein Communityprojekt, das strukturierte Inhalte aus Wikipedia extrahiert und sie im Web als Knowledge Graph (KG) zur Verfügung stellt. Der KG ist eine wertvolle Ressource für Forscher und Entwickler, die auf strukturierte Daten aus Wikipedia zugreifen müssen. Durch die Verwendung von SPARQL-Abfragen an DBPedia als Datenquelle können wir eine Vielzahl von Anwendungen schreiben, darunter natürliche Sprachverarbeitung, maschinelles Lernen und Datenanalyse. Wir demonstrieren die Effektivität von DBPedia als Datenquelle an mehreren Beispielen, die den Einsatz in realen Anwendungen veranschaulichen. Nach meiner Erfahrung ist DBPedia eine wertvolle Ressource für Forscher und Entwickler, die auf strukturierte Daten aus Wikipedia zugreifen müssen.
 
-Im Allgemeinen beginnst du Projekte, die DBPedia verwenden, indem du die verfügbaren Daten mit der Web-App https://dbpedia.org/sparql untersuchst, die in diesem Screenshot zu sehen ist:
+Im Allgemeinen beginnst du Projekte, die DBPedia verwenden, indem du die verfügbaren Daten mit der Web-App <https://dbpedia.org/sparql> untersuchst, die in diesem Screenshot zu sehen ist:
 
 ![](images/dbpedia.png)
 

@@ -1,6 +1,6 @@
 # Der Anfang mit LangChain
 
-Harrison Chase hat das LangChain Projekt im Oktober 2022 begonnen, und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für LangChain https://github.com/hwchase17/langchain 171 Beitragende.
+Harrison Chase hat das LangChain Projekt im Oktober 2022 begonnen, und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für LangChain <https://github.com/hwchase17/langchain> 171 Beitragende.
 
 [LangChain](https://langchain.readthedocs.io/en/latest/index.html) ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (Large Language Models, LLMs). Dies geschieht durch Verkettung verschiedener Komponenten. Einige der Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datenunterstützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Ketten, Agenten und Speicher schafft, ebenso wie die Integration mit anderen Tools und End-to-End-Beispiele. Eine Abfolge von Aufrufen (von LLMs und anderen Programmen, Clouddiensten etc.). die einen einzelnen Aufruf der API eines LLM hinausgehen, bezeichnen wir als "Kette" ("Chain"). LangChain bietet eine Standardschnittstelle für Ketten, viele Integrationen mit anderen Tools und Ende-zu-Ende Ketten für gängige Anwendungen. Oft findest du bereits existierende Ketten, die die Anforderungen deiner Anwendungen erfüllen.
 
