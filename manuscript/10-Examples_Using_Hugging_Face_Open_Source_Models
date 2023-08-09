@@ -52,7 +52,7 @@ Wir laden das Hugging Face-Modell **facebook/opt-iml-1.3b** herunter, eine 2,6 G
 Dieses Beispiel ist die Abwandlung eines Beispiels für eigene LLMs aus der [LlamaIndex-Dokumentation](https://github.com/jerryjliu/llama_index/blob/main/docs/how_to/customization/custom_llms.md#example-using-a-custom-llm-model). Beachte, dass ich in diesem Beispiel ein viel kleineres Modell verwendet und die Größe des Prompts und der Textausgabe reduziert habe.
 
 {format: python}
-![](code/10/10-hf_tansformer_local.py)
+![](code/10/10-hf_transformer_local.py)
 
 Wenn ich das auf einem M1 MacBook Pro nur mit der CPU laufen lasse (ohne GPU oder NeuralEngine-Konfiguration), können wir das Modell schnell von der Festplatte lesen, aber die Verarbeitung der Anfrage dauert eine Weile:
 

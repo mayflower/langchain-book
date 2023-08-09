@@ -58,5 +58,4 @@ response = index.query("What is the definition of sport?")
 print(response)
 
 time3 = time.time()
-print(f"Time for query/prediction: {time3 - time2} second\
-s.")
+print(f"Time for query/prediction: {time3 - time2} seconds.")
