@@ -1,6 +1,6 @@
 # Übersicht über Large Language Models 
 
-[Large Language Models](https://blogs.nvidia.com/blog/2022/10/10/llms-ai-horizon/)[^1] (LLM) stellen eine Untermenge der künstlichen Intelligenz dar, die Deep Learning und neuronale Netzwerke zur Verarbeitung natürlicher Sprache einsetzen. [Transformers](https://www.linkedin.com/pulse/chatgpt-tip-iceberg-paul-golding)[^2] stellen eine spezielle Art von neuronaler Netzwerkarchitektur dar, die mit Hilfe von selbstbeobachtenden Mechanismen Kontext in sequenziellen Daten feststellen können. Sie wurden im Jahr 2017 von einem Team bei Google Brain eingeführt und haben seitdem Beliebtheit bei der Forschung mit großen Sprachmodelle erlangt. Einige Beispiele [transformerbasierter](https://factored.ai/transformer-based-language-models/)[^3] LLMs sind [BERT, GPT-3, T5 und Megatron-LM](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))[^4].
+[Large Language Models](https://blogs.nvidia.com/blog/2022/10/10/llms-ai-horizon/) (LLM) stellen eine Untermenge der künstlichen Intelligenz dar, die Deep Learning und neuronale Netzwerke zur Verarbeitung natürlicher Sprache einsetzen. [Transformers](https://www.linkedin.com/pulse/chatgpt-tip-iceberg-paul-golding) stellen eine spezielle Art von neuronaler Netzwerkarchitektur dar, die mit Hilfe von selbstbeobachtenden Mechanismen Kontext in sequenziellen Daten feststellen können. Sie wurden im Jahr 2017 von einem Team bei Google Brain eingeführt und haben seitdem Beliebtheit bei der Forschung mit großen Sprachmodelle erlangt. Einige Beispiele [transformerbasierter](https://factored.ai/transformer-based-language-models/) LLMs sind [BERT, GPT-3, T5 und Megatron-LM](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)).
 
 Die Hauptpunkte, die wir in diesem Buch behandeln wollen, sind:
 
@@ -16,12 +16,6 @@ Hier sind einige Links zu "Papers mit Code" für BERT (Links sind für Code, Pap
 - https://github.com/allenai/scibert
 - https://github.com/google-research/bert
 
-[^1]: https://blogs.nvidia.com/blog/2022/10/10/llms-ai-horizon/
-[^2]: https://www.linkedin.com/pulse/chatgpt-tip-iceberg-paul-golding
-[^3]: https://factored.ai/transformer-based-language-models/
-[^4]: https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)
-[^5]: https://en.wikipedia.org/wiki/BERT_(Language_model)
-
 ## Große Tech-Unternehmen und kleine Startups, die Large Language Models benutzen
 
 Sowohl Microsoft als auch Google haben Interessen auf beiden Seiten: Einerseits möchten sie Cloud-LLM-Dienste an Entwickler und kleine Start-ups verkaufen. Andererseits streben sie danach, Nutzer an ihre Dienste wie Office 365, Google Docs, Sheets usw. zu binden.
@@ -30,8 +24,6 @@ Microsoft hat im Rahmen seiner laufenden Partnerschaft mit OpenAI, dem Unternehm
 
 Während ich dies schreibe, hat Google gerade eine öffentliche Warteliste für seinen Bard AI/Chat-Suchdienst eröffnet. Seit Jahren verwende ich verschiedene Google-APIs in meinem eigenen Code. Dabei habe ich keine Favoriten im Wettstreit der Tech-Giganten, sondern bin vor allem daran interessiert, welche ihrer Entwicklungen ich in meinen eigenen Projekten verwenden kann.
 
-Hugging Face, das eigene KI-Produkte entwickelt und die anderer Unternehmen hostet, arbeitet an Open-Source-Konkurrenten zu ChatGPT und wird dafür auch [AWS](https://iblnews.org/aws-partners-with-hugging-face-an-ai-startup-rival-to-chatgpt-working-on-open-source-models/)[^6] nutzen. Cohere AI, Anthropic, Hugging Face und Stability AI sind einige der Startups, die OpenAI und Hugging Face APIs für ihre Entwicklungen nutzen. Für den Moment halte ich Hugging Face für eine großartige Quelle für spezialisierte Modelle. Ich finde es toll, dass die Modelle von Hugging Face sowohl über ihre APIs genutzt, als auch auf unseren eigenen Servern und manchmal sogar Laptops ausgeführt werden können. Hugging Face ist eine fantastische Resource, und auch wenn ich ihre Modelle in diesem Buch viel seltener verwende als OpenAI APIs, solltest du das Hosting und die Flexibilität von Hugging Face in Anspruch nehmen. In diesem Buch verwende ich OpenAI APIs, weil ich möchte, dass du dich schnell orientieren und deine eigenen Projekte erstellen kannst.
+Hugging Face, das eigene KI-Produkte entwickelt und die anderer Unternehmen hostet, arbeitet an Open-Source-Konkurrenten zu ChatGPT und wird dafür auch [AWS](https://iblnews.org/aws-partners-with-hugging-face-an-ai-startup-rival-to-chatgpt-working-on-open-source-models/) nutzen. Cohere AI, Anthropic, Hugging Face und Stability AI sind einige der Startups, die OpenAI und Hugging Face APIs für ihre Entwicklungen nutzen. Für den Moment halte ich Hugging Face für eine großartige Quelle für spezialisierte Modelle. Ich finde es toll, dass die Modelle von Hugging Face sowohl über ihre APIs genutzt, als auch auf unseren eigenen Servern und manchmal sogar Laptops ausgeführt werden können. Hugging Face ist eine fantastische Resource, und auch wenn ich ihre Modelle in diesem Buch viel seltener verwende als OpenAI APIs, solltest du das Hosting und die Flexibilität von Hugging Face in Anspruch nehmen. In diesem Buch verwende ich OpenAI APIs, weil ich möchte, dass du dich schnell orientieren und deine eigenen Projekte erstellen kannst.
 
 Lieber Leser, ich habe dieses Buch nicht für Entwickler geschrieben, die in etablierten KI-Firmen arbeiten (obwohl ich hoffe, dass diese das vorliegende Material auch nützlich finden!). Ich habe dieses Buch für kleine Entwickler geschrieben, die mit selbstgeschriebenen Werkzeugen Zeit sparen und ihre eigenen Probleme lösen. Hoffentlich wird es Entwicklern helfen, in die von ihnen entworfenen und geschriebenen Programme Funktionen einzubauen, die es mit den Lösungen der großen Technologieunternehmen aufnehmen können.
-
-[^6]: https://iblnews.org/aws-partners-with-hugging-face-an-ai-startup-rival-to-chatgpt-working-on-open-source-models/

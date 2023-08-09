@@ -2,7 +2,7 @@
 
 Wenn du die ChatGPT-Webanwendung bittest, ein Rezept aus einer Zutatenliste des Users und einer Beschreibung zu verfassen, funktioniert das recht gut. Für das Beispiel in diesem Kapitel gehe ich einen anderen Weg:
 
-* nutze die Rezept- und Zutatendateien von meiner Webanwendung http://cookingspace.com zur Erstellung von Text, basierend auf einem Prompt für ein Rezept.
+* nutze die Rezept- und Zutatendateien von meiner Webanwendung <http://cookingspace.com> zur Erstellung von Text, basierend auf einem Prompt für ein Rezept.
 * behandle das als Vorhersageaufgabe
 * formatiere die Antwort für die Anzeige
 
@@ -10,7 +10,7 @@ Dieser Ansatz hat den Vorteil (für mich!), dass die erstellten Rezepte meinen b
 
 ## Rezeptdaten vorbereiten
 
-Ich benutze die JSON Rezept-Dateien von meiner Webanwendung http://cookingspace.com. Das folgende Python-Skript konvertiert meine JSON-Daten zu Textbeschreibungen, eine per Datei:
+Ich benutze die JSON Rezept-Dateien von meiner Webanwendung <http://cookingspace.com>. Das folgende Python-Skript konvertiert meine JSON-Daten zu Textbeschreibungen, eine per Datei:
 
 {format: python}
 ![](code/11/11-convert_JSON.py)
@@ -107,8 +107,6 @@ Directions:
 
 ## Zusammenfassung der Erstellung von Kochrezepten
 
-Kochen ist eine meiner Lieblingsbeschäftigungen (neben dem Wandern, Kajakfahren und Spielen einer Vielzahl von Musikinstrumenten). Die Webanwendung [CookingSpace.com](http://cookingspace.com/)[^1] habe ich ursprünglich geschrieben, um ein persönliches Bedürfnis zu erfüllen: Aus medizinischen Gründen musste ich meine Vitamin K-Zufuhr genau überwachen und regulieren. Ich habe die USDA Nutrition Database der US Regierung verwendet, um die Menge von Vitaminen und Nährstoffen in den von mir genutzten Rezepten zu schätzen.
+Kochen ist eine meiner Lieblingsbeschäftigungen (neben dem Wandern, Kajakfahren und Spielen einer Vielzahl von Musikinstrumenten). Die Webanwendung [CookingSpace.com](http://cookingspace.com/) habe ich ursprünglich geschrieben, um ein persönliches Bedürfnis zu erfüllen: Aus medizinischen Gründen musste ich meine Vitamin K-Zufuhr genau überwachen und regulieren. Ich habe die USDA Nutrition Database der US Regierung verwendet, um die Menge von Vitaminen und Nährstoffen in den von mir genutzten Rezepten zu schätzen.
 
 Das Experiment, mit generativen Modellen, unterstützt von meinen eigenen Daten, Rezepte zu erstellen, war einfach aufzusetzen und durchzuführen, weil ich Rezeptdaten aus meinem vorherigen Projekt und Tools wie OpenAI-APIs und LangChain zur Verfügung hatte. Das Thema, dass es heutzutage relativ einfach ist, persönliche Projekte auf der Grundlage unserer Daten und Interessen zu erstellen, zieht sich durch dieses Buch.
-
-[^1]: http://cookingspace.com/

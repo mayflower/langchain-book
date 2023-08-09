@@ -1,8 +1,8 @@
 # Nutzung von DBPedia und Wikidata als Wissensquellen
 
-[DBPedia](https://www.dbpedia.org)[^1] und [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)[^2] sind öffentliche Knowledge Graphs (KGs), die Daten als [Resource Description Framework (RDF)](https://www.w3.org/RDF/)[^3] speichern und auf die über die [SPARQL Query Language for RDF](https://www.w3.org/TR/rdf-sparql-query/)[^4] zugegriffen werden kann. Die Beispiele für dieses Projekt befinden sich im [GitHub-Repository für dieses Buch](https://github.com/mark-watson/langchain-book-examples)[^5] im Verzeichnis **kg_search**.
+[DBPedia](https://www.dbpedia.org) und [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) sind öffentliche Knowledge Graphs (KGs), die Daten als [Resource Description Framework (RDF)](https://www.w3.org/RDF/) speichern und auf die über die [SPARQL Query Language for RDF](https://www.w3.org/TR/rdf-sparql-query/) zugegriffen werden kann. Die Beispiele für dieses Projekt befinden sich im [GitHub-Repository für dieses Buch](https://github.com/mark-watson/langchain-book-examples) im Verzeichnis **kg_search**.
 
-Ich werde hier nicht viel Zeit auf RDF und SPARQL verwenden. Stattdessen bitte ich dich, das einführende Kapitel **Linked Data, the Semantic Web, and Knowledge Graphs** in meinem Buch [A Lisp Programmer Living in Python-Land: The Hy Programming Language](https://leanpub.com/hy-lisp-python/read)[^6] online zu lesen.
+Ich werde hier nicht viel Zeit auf RDF und SPARQL verwenden. Stattdessen bitte ich dich, das einführende Kapitel **Linked Data, the Semantic Web, and Knowledge Graphs** in meinem Buch [A Lisp Programmer Living in Python-Land: The Hy Programming Language](https://leanpub.com/hy-lisp-python/read) online zu lesen.
 
 Wie wir im letzten Kapitel gesehen haben, ist ein Knowledge Graph (den ich oft mit KG abkürze) eine Graphdatenbank, die mittels eines Schemas Typen (sowohl Objekte als auch Beziehungen zwischen Objekten) und Eigenschaften, die Eigenschaftswerte mit Objekten verbinden, definiert. Der Begriff "Knowledge Graph" ist ein allgemeiner Begriff der manchmal aber auch auf den spezifischen Knowledge Graph, der bei Google verwendet wird, meint, und mit dem ich während meiner Tätigkeit dort im Jahr 2013 gearbeitet habe. Hier verwenden wir KG, um auf die allgemeine Technologie der Speicherung von Wissen in Graphdatenbanken zu verweisen.
 
@@ -32,13 +32,6 @@ Wir werden uns in diesem Kapitel zwei ähnliche Beispiele ansehen, eines mit DBP
 ![](images/wikidata.png)
 
 In dieser SPARQL-Abfrage steht das Präfix **wd:** für Wikidata-Daten, während das Präfix **wdt:** für Wikidata-Typ (oder Eigenschaft) steht. Das Präfix **rdfs:** steht für RDF Schema.
-
-[^1]: https://www.dbpedia.org
-[^2]: https://www.wikidata.org/wiki/Wikidata:Main_Page
-[^3]: https://www.w3.org/RDF/
-[^4]: https://www.w3.org/TR/rdf-sparql-query/
-[^5]: https://github.com/mark-watson/langchain-book-examples
-[^6]: https://leanpub.com/hy-lisp-python/read
 
 ## DBPedia als Datenquelle
 
@@ -105,7 +98,7 @@ Warum werden nur 18 Länder aufgelistet? Im Skript für die SPARQL Suche auf DBP
 
 Die Abfrage von Wikidata gestaltet sich im Vergleich zu DBPedia etwas schwieriger. Schauen wir uns noch einmal an, wie ich Informationen über meine Heimatstadt Sedona Arizona erhalte.
 
-Bei diesem Beispiels habe ich mit SPARQL-Abfragen experimentiert, indem ich die [Wikidata SPARQL Web-App](https://query.wikidata.org)[^7] verwendet habe.
+Bei diesem Beispiels habe ich mit SPARQL-Abfragen experimentiert, indem ich die [Wikidata SPARQL Web-App](https://query.wikidata.org) verwendet habe.
 
 Zuerst suchen wir mit der Wikidata-Webanwendung RDF-Einträge, bei denen der Wert für "object" "Sedona" ist.
 
@@ -117,8 +110,6 @@ select * where {
 ```
 
 Zuerst schreiben wir ein Hilfsprogramm, um den Prompttext für den Namen einer Entität (z.B. den Namen einer Person, eines Ortes usw.) zu erzeugen. Das passiert in der Datei **wikidata_generate_prompt_text.py**:
-
-[^7]: https://query.wikidata.org
 
 {format: python}
 ![](code/06/06-wikidata_generate_prompt_text.py)

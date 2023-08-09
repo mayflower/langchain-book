@@ -2,9 +2,7 @@
 
 Harrison Chase hat das LangChain Projekt im Oktober 2022 begonnen, und während ich dieses Buch im Februar 2023 schreibe, hat das GitHub-Repository für LangChain https://github.com/hwchase17/langchain 171 Beitragende.
 
-[LangChain](https://langchain.readthedocs.io/en/latest/index.html)[^1] ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (Large Language Models, LLMs). Dies geschieht durch Verkettung verschiedener Komponenten. Einige der Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datenunterstützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Ketten, Agenten und Speicher schafft, ebenso wie die Integration mit anderen Tools und End-to-End-Beispiele. Eine Abfolge von Aufrufen (von LLMs und anderen Programmen, Clouddiensten etc.). die einen einzelnen Aufruf der API eines LLM hinausgehen, bezeichnen wir als "Kette" ("Chain"). LangChain bietet eine Standardschnittstelle für Ketten, viele Integrationen mit anderen Tools und Ende-zu-Ende Ketten für gängige Anwendungen. Oft findest du bereits existierende Ketten, die die Anforderungen deiner Anwendungen erfüllen.
-
-[^1]: https://langchain.readthedocs.io/en/latest/index.html
+[LangChain](https://langchain.readthedocs.io/en/latest/index.html) ist ein Framework zur Erstellung von Anwendungen mit großen Sprachmodellen (Large Language Models, LLMs). Dies geschieht durch Verkettung verschiedener Komponenten. Einige der Anwendungen von LangChain sind Chatbots, generative Fragebeantwortung, Zusammenfassungen, datenunterstützte Generierung und mehr. LangChain kann Zeit bei der Erstellung von Chatbots und anderen Systemen sparen, indem es eine Standardschnittstelle für Ketten, Agenten und Speicher schafft, ebenso wie die Integration mit anderen Tools und End-to-End-Beispiele. Eine Abfolge von Aufrufen (von LLMs und anderen Programmen, Clouddiensten etc.). die einen einzelnen Aufruf der API eines LLM hinausgehen, bezeichnen wir als "Kette" ("Chain"). LangChain bietet eine Standardschnittstelle für Ketten, viele Integrationen mit anderen Tools und Ende-zu-Ende Ketten für gängige Anwendungen. Oft findest du bereits existierende Ketten, die die Anforderungen deiner Anwendungen erfüllen.
 
 Man kann zum Beispiel eine Kette erstellen, die Benutzereingaben entgegennimmt, sie mit einem PromptTemplate formatiert und dann die formatierte Antwort an ein Large Language Model (LLM) zur Verarbeitung weitergibt.
 
@@ -37,7 +35,7 @@ Ich versuche, das Material in diesem Buch unabhängig und ohne externe Referenze
 
 Beachte bitte beim Durcharbeiten der Beipiele, wie die ChatGPT-Webanwendung arbeitet: Du gibst Text ein und erhältst Antworten. Die Art und Weise, wie du ChatGPT "ansprichst", ist offensichtlich wichtig, um nützliche Antworten zu erhalten. In Codebeispielen automatisieren und formalisieren wir diesen Prozess.
 
-Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich [anmelden](https://platform.openai.com/account/api-keys)[^2], um einen API-Key zu erhalten und diesen dann als Umgebungsvariable festlegen:
+Du musst ein LLM auswählen, das du verwenden möchtest. In der Regel wählen wir die GPT-3.5-API von OpenAI, da sie universell einsetzbar und viel kostengünstiger ist als die früheren Modell-APIs von OpenAI. Du musst dich [anmelden](https://platform.openai.com/account/api-keys), um einen API-Key zu erhalten und diesen dann als Umgebungsvariable festlegen:
 
 {format: console}
 ```
@@ -46,17 +44,17 @@ export OPENAI_API_KEY="DEIN API_KEY HIER"
 
 Sowohl die **openai** als auch die **langchain** Bibliotheken verwenden diese Umgebungsvariable. Schauen wir uns ein paar einfache Beispiele in einer Python-REPL an. Wir beginnen mit der Textvorhersage-API von OpenAI:
 
-[^2]: https://platform.openai.com/account/api-keys
-
 {format: console}
 ```
 $python
 >>> from langchain.llms import OpenAI
 >>> llm = OpenAI(temperature=0.8)
 >>> s = llm("John got into his new sportscar, and he drove it")
->>> s'to work\n\nJohn started up his new sportscar and drove it to work. He had a huge smile on his face as he drove, excited to show off his new car to his colleagues. The wind blowing through his hair, and the sun on his skin, he felt a sense of freedom and joy as he cruised along the road. He arrived at work in no time, feeling refreshed and energized.'
+>>> s
+'to work\n\nJohn started up his new sportscar and drove it to work. He had a huge smile on his face as he drove, excited to show off his new car to his colleagues. The wind blowing through his hair, and the sun on his skin, he felt a sense of freedom and joy as he cruised along the road. He arrived at work in no time, feeling refreshed and energized.'
 >>> s = llm("John got into his new sportscar, and he drove it")
->>> s"around town\n\nJohn drove his new sportscar around town, enjoying the feeling of the wind in his hair. He stopped to admire the view froma scenic lookout, and then sped off to the mall to do some shopping. On the way home, he took a detour down a winding country road, admiring the scenery and enjoying the feel of the car's powerful engine. By the time he arrived back home, he had a huge smile on his face."
+>>> s
+"around town\n\nJohn drove his new sportscar around town, enjoying the feeling of the wind in his hair. He stopped to admire the view froma scenic lookout, and then sped off to the mall to do some shopping. On the way home, he took a detour down a winding country road, admiring the scenery and enjoying the feel of the car's powerful engine. By the time he arrived back home, he had a huge smile on his face."
 ```
 
 Beachte, wie wir bei zweifacher Ausführung des gleichen Eingabeprompts unterschiedliche Ergebnisse erhalten. Durch das Erhöhen der Temperatur in Zeile 3 wird die Zufälligkeit erhöht.
@@ -126,9 +124,7 @@ Population: 83,02 million (est.2019)
 
 ## Embeddings erstellen
 
-Wir beziehen uns auf die [Dokumentation zu Embeddings von LangChain](https://python.langchain.com/en/latest/reference/modules/embeddings.html)[^3]. Mit einer Python REPL können wir ausprobieren, wie Text- zu Vektorraum-Embeddings aussehen könnten:
-
-[^3]: https://python.langchain.com/en/latest/reference/modules/embeddings.html
+Wir beziehen uns auf die [Dokumentation zu Embeddings von LangChain](https://python.langchain.com/en/latest/reference/modules/embeddings.html). Mit einer Python REPL können wir ausprobieren, wie Text- zu Vektorraum-Embeddings aussehen könnten:
 
 {format: console}
 ```
@@ -145,8 +141,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-[^3]: https://langchain.readthedocs.io/en/latest/modules/indexes/examples/embeddings.html
-
 Beachte, dass **doc_embeddings** eine Liste ist, bei der jedes Listenelement das Embedding für ein Textdokument aus der Eingabe ist.
 
 Das **query_embedding** ist ein einzelnes Embedding. Lies dir bitte die oben verlinkte Dokumentation zu Embeddings durch. 
@@ -155,9 +149,7 @@ Wir werden Vektordatenbanken verwenden, um berechnete Embeddings für zukünftig
 
 ## Verwendung von LangChain Vektor Stores zum Durchsuchen von Dokumenten
 
-Hier beziehen wur uns auf die Dokumentation zu [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html)[^4]. Du musst ein paar Bibliotheken installieren:
-
-[^4]: https://python.langchain.com/en/latest/reference/modules/vectorstores.html
+Hier beziehen wur uns auf die Dokumentation zu [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html). Du musst ein paar Bibliotheken installieren:
 
 {format: console}
 ```
@@ -197,6 +189,4 @@ Exiting: Cleaning up .chroma directory
 Für den Rest dieses Buches werden wir weiter LangChain verwenden, ebenso wie die LlamaIndex-Bibliothek, die wir im nächsten Kapitel vorstellen.
 
 Ich behandle nur die Teilmenge von LangChain, die ich in meinen Projekten in diesem Buch verwende. Lies unbedingt auch die LangChain-Dokumentation und schau dir die öffentlichen LangChain-Ketten an, die Benutzer auf
-[Langchain-hub](https://github.com/hwchase17/langchain-hub)[^5] geschrieben haben.
-
-[^5]: https://github.com/hwchase17/langchain-hub
+[Langchain-hub](https://github.com/hwchase17/langchain-hub) geschrieben haben.

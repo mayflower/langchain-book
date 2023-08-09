@@ -6,7 +6,7 @@ Die Verwendung des Zapier-Dienstes ist einfach. Du musst die Dienste, mit denen 
 
 ## Entwicklungsumgebung einrichten
 
-Du benötigst einen Entwickler-Key für die [Zapier Natural Language Actions API](https://nla.zapier.com/get-started/)[^1]. Folge dem Link zur Webseite und suche nach "Dev App" in der Spalte "Provider Name". Wenn kein Schlüssel vorhanden ist, musst du eine Aktion einrichten, um einen Schlüssel zu erstellen. Klicke auf "Set up Actions" (Aktionen einrichten) und folge den Anweisungen. Dein Schlüssel wird in der Spalte "Persönlicher API-Schlüssel" für die "Dev App" angezeigt. Klicke darauf, um deinen Schlüssel zu sehen und zu kopieren. Du kannst hier die [Dokumentation lesen](https://nla.zapier.com/api/v1/dynamic/docs)[^2].
+Du benötigst einen Entwickler-Key für die [Zapier Natural Language Actions API](https://nla.zapier.com/get-started/). Folge dem Link zur Webseite und suche nach "Dev App" in der Spalte "Provider Name". Wenn kein Schlüssel vorhanden ist, musst du eine Aktion einrichten, um einen Schlüssel zu erstellen. Klicke auf "Set up Actions" (Aktionen einrichten) und folge den Anweisungen. Dein Schlüssel wird in der Spalte "Persönlicher API-Schlüssel" für die "Dev App" angezeigt. Klicke darauf, um deinen Schlüssel zu sehen und zu kopieren. Du kannst hier die [Dokumentation lesen](https://nla.zapier.com/api/v1/dynamic/docs).
 
 Als ich mein Zapier-Konto eingerichtet habe, habe ich drei Zapier Natural Language Actions eingerichtet:
  
@@ -17,9 +17,6 @@ Als ich mein Zapier-Konto eingerichtet habe, habe ich drei Zapier Natural Langua
 Wenn du das auch machst, siehst du die von Zapier registrierten Aktionen:
 
 ![](images/zapier1.png)
-
-[^1]: https://nla.zapier.com/get-started/
-[^2]: https://nla.zapier.com/api/v1/dynamic/docs
 
 ## Versenden einer GMail zum Test
 

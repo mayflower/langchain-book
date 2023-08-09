@@ -14,7 +14,7 @@ Du musst zuerst auf **Advanced** und dann auf den Link **Go to GoogleApiExamples
 
 ## Einrichten der Anforderungen
 
-Du musst ein Credential unter https://console.cloud.google.com/cloud-resource-manager erstellen (kopiert aus der [PyDrive-Dokumentation](https://pythonhosted.org/PyDrive/quickstart.html)[^1], wobei der Anwendungstyp auf "Desktop" geändert werden muss):
+Du musst ein Credential unter https://console.cloud.google.com/cloud-resource-manager erstellen (kopiert aus der [PyDrive-Dokumentation](https://pythonhosted.org/PyDrive/quickstart.html), wobei der Anwendungstyp auf "Desktop" geändert werden muss):
 
 - suche nach "Google Drive API", wähle den Eintrag und klicke auf "Aktivieren"
 - wähle "Anmeldedaten" aus dem linken Menü, klicke "Anmeldedaten erstellen", wähle "OAuth-Client ID"
@@ -26,8 +26,6 @@ Du musst ein Credential unter https://console.cloud.google.com/cloud-resource-ma
 - >gib http://localhost:8080/ für "Authorized redirect URIs" ein
 - klicke auf "Speichern"
 - klicke auf "JSON herunterladen" auf der rechten Seite der Client-ID, um client_secret_.json herunterzuladen. Kopiere die heruntergeladene JSON-Anmeldedatei in das Beispielverzeichnis **google_drive_llm** für dieses Kapitel
-
-[^1]: https://pythonhosted.org/PyDrive/quickstart.html
 
 ## Hilfsprogramm, um alle Textdateien aus dem obersten Google Drive-Ordner zu holen
 
@@ -43,35 +41,18 @@ Zum Testen habe ich nur eine Textdatei mit der Dateierweiterung ".txt" auf meine
 $ python fetch_txt_files.py
 Your browser has been opened to visit:
 
-https://accounts.google.com/o/oauth2/auth?client_id=5\
-29311921932-xsmj3hhiplr0dhqjln13fo4rrtvoslo8.apps.googleu
-sercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3B6180
-%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive
-&access_type=offline&response_type=code
+https://accounts.google.com/o/oauth2/auth?client_id=5\29311921932-xsmj3hhiplr0dhqjln13fo4rrtvoslo8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3B6180%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&access_type=offline&response_type=code
 
 Authentication successful.
 
 title: testdata, id: 1TZ9bnL5XYQvKACJw8VoKWdVJ8jeCszJ
 title: sports.txt, id: 18RN4ojvURWt5yoKNtDdAJbh4fvmRpzwb
-title: Anaconda blog article, id: 1kpLaYQA4Ao8ZbdFaXU209h\
-g-z0tv1xA7YOQ4L8y8NbU
+title: Anaconda blog article, id: 1kpLaYQA4Ao8ZbdFaXU209hg-z0tv1xA7YOQ4L8y8NbU
 title: backups_2023, id: 1-k_r1HTfuZRWN7vwWWsYqfssl0C96J2x
 title: Work notes, id: 1fDyHyZtKI-0oRNabA_P41LltYjGoek21
-title:SedonaWritingGroupContactList,id:1zK-5v9OQUf\
-y8Sw33nTCl9vnL822hL1w
+title:SedonaWritingGroupContactList,id:1zK-5v9OQUfy8Sw33nTCl9vnL822hL1w
 
-['sports.txt', '18RN4ojvURWt5yoKNtDdAJbh4fvmRpzwb', 'Spor\
-t is generally recognised as activities based in physical
-athleticism or physical dexterity.[3] Sports are usually
-governed by rules to ensure fair competition and consist
-ent adjudication of the winner.\n\n"Sport" comes from the
-Old French desport meaning "leisure", with the oldest de
-finition in English from around 1300 being "anything huma
-ns find amusing or entertaining".[4]\n\nOther bodies advo
-cate widening the definition of sport to include all phys
-ical activity and exercise. For instance, the Council of
-Europe include all forms of physical exercise, including
-those completed just for fun.\n\n']
+['sports.txt', '18RN4ojvURWt5yoKNtDdAJbh4fvmRpzwb', 'Sport is generally recognised as activities based in physical athleticism or physical dexterity.[3] Sports are usually governed by rules to ensure fair competition and consistent adjudication of the winner.\n\n"Sport" comes from the Old French desport meaning "leisure", with the oldest definition in English from around 1300 being "anything humans find amusing or entertaining".[4]\n\nOther bodies advocate widening the definition of sport to include all physical activity and exercise. For instance, the Council of Europe include all forms of physical exercise, including those completed just for fun.\n\n']
 ```
 
 ## Vektorindizes für Dateien in speziellen Google Drive-Ordnern erstellen
@@ -80,7 +61,6 @@ Das Beispiel-Skript im letzten Abschnitt sollte lokale Kopien der Textdateien in
 
 {format: python}
 ![](code/07/07-index_and_QA.py)
-
 
 Für meine Testdatei sieht der Output so aus:
 
@@ -116,4 +96,4 @@ Other bodies advocate widening the definition of sport to include all physical a
 
 Wenn du Google Drive bereits zum Speichern deiner Arbeitsnotizen und anderer Dokumente verwendest, dann magst du vielleicht das einfache Beispiel in diesem Kapitel erweitern, um dein eigenes Abfragesystem für Dokumente zu erstellen. Zusätzlich zu Google Drive nutze ich auch Microsoft Office 365 und OneDrive für meine Arbeit und persönlichen Projekte.
 
-Ich habe noch keine eigenen Konnektoren für OneDrive geschrieben, aber das ist auf meiner persönlichen Todo-Liste, unter Verwendung der Microsoft Library https://github.com/OneDrive/onedrive-sdk-python.
+Ich habe noch keine eigenen Konnektoren für OneDrive geschrieben, aber das ist auf meiner persönlichen Todo-Liste, unter Verwendung der Microsoft Library <https://github.com/OneDrive/onedrive-sdk-python.>

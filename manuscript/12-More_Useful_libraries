@@ -4,7 +4,7 @@ An dieser Stelle wollen wir uns noch zwei weitere Bibliotheken anschauen, die mi
 
 ## Der EmbedChain-Wrapper für LangChain vereinfacht die Anwedungsentwicklung
 
-Tananjeet Sing hat eine nette Wrapper-Bibliothek, EmbedChain https://github.com/embedchain/embedchain entwickelt, die Anewendungen mit eigenen Daten vereinfacht, idem sie sinnvolle Defaultwerte für die Parameter der LangChain-Methoden setzt.
+Tananjeet Sing hat eine nette Wrapper-Bibliothek, EmbedChain <https://github.com/embedchain/embedchain> entwickelt, die Anewendungen mit eigenen Daten vereinfacht, idem sie sinnvolle Defaultwerte für die Parameter der LangChain-Methoden setzt.
 
 Ich zeige ein einfaches Beispiel, das ich auf meinem Laptop laufen lasse, das alle meine Bücher sowie eine große Anzahl von papers aus der Forschung durchsucht. Das Beispiel kannst du im GitHub-Rpository zu diesem Buch im Verzeichnis **langchain-book-examples/embedchain_test** finden. Wie gewöhnlich brauchst du einen OpenAI API-Account und musst diesen in der Umgebungsvariablen **OPENAI_API_KEY** setzen.
 

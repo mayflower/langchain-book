@@ -1,8 +1,8 @@
 # Überblick über LlamaIndex
 
-Das beliebte LlamaIndex-Projekt hieß früher GPT-Index, wurde aber erweitert, um mit mehr Modellen als nur GPT-3 zu funktionieren. Zum Beispiel können auch [Hugging Face embeddings](https://gpt-index.readthedocs.io/en/latest/how_to/embeddings.html)[^1] verwendet werden.
+Das beliebte LlamaIndex-Projekt hieß früher GPT-Index, wurde aber erweitert, um mit mehr Modellen als nur GPT-3 zu funktionieren. Zum Beispiel können auch [Hugging Face embeddings](https://gpt-index.readthedocs.io/en/latest/how_to/embeddings.html) verwendet werden.
 
-[LlamaIndex](https://github.com/jerryjliu/gpt_index/blob/main/docs/index.rst)[^2] ist ein Projekt, das eine zentrale Schnittstelle zur Verbindung von Sprachmodellen mit externen Daten bereitstellt. Es wurde im Herbst 2022 von Jerry Liu und seinem Team entwickelt. Es besteht aus einer Reihe von Datenstrukturen, [die die Nutzung großer externer Wissensdatenbanken mit Sprachmodellen erleichtern sollen](https://gpt-index.readthedocs.io/en/latest/index.html)[^3]. Anwendungsfälle sind z.B.:
+[LlamaIndex](https://github.com/jerryjliu/gpt_index/blob/main/docs/index.rst) ist ein Projekt, das eine zentrale Schnittstelle zur Verbindung von Sprachmodellen mit externen Daten bereitstellt. Es wurde im Herbst 2022 von Jerry Liu und seinem Team entwickelt. Es besteht aus einer Reihe von Datenstrukturen, [die die Nutzung großer externer Wissensdatenbanken mit Sprachmodellen erleichtern sollen](https://gpt-index.readthedocs.io/en/latest/index.html). Anwendungsfälle sind z.B.:
 
 * Abfrage strukturierter Daten wie Tabellen oder Datenbanken über natürliche Sprache 
 * Abrufen von relevanten Fakten oder Informationen aus großen Textkörpern
@@ -15,10 +15,6 @@ LlamaIndex unterstützt eine Vielzahl von Dokumenttypen, u.a.:
 * JSON-Dokumente sind Textdokumente zur Speicherung von Daten in schlankem Format.
 * HTML-Dokumente sind Textdokumente zur Erstellung von Webseiten.
 * PDF-Dokumente sind Textdokumente zur Speicherung von Dokumenten in einem unveränderlichen Format. 
-
-[^1]: https://gpt-index.readthedocs.io/en/latest/how_to/embeddings.html
-[^2]: https://github.com/jerryjliu/gpt_index/blob/main/docs/index.rst
-[^3]: https://gpt-index.readthedocs.io/en/latest/index.html
 
 LlamaIndex kann auch Daten indizieren, die in einer Vielzahl von Datenbanken gespeichert sind, u.a.:
 
@@ -89,7 +85,7 @@ Mark Watson has 50+ US patents.
 Mark has written 20+ books on AI.
 ```
 
-## Zusammenfassung der LlamaIndex/ GPT-Index-Fallstudie
+## Zusammenfassung der LlamaIndex / GPT-Index-Fallstudie
 
 LlamaIndex ist eine Sammlung von Datenstrukturen und Bibliotheken, die entwickelt wurden, um die Verwendung großer externer Wissensbasen wie Wikipedia zu erleichtern. LlamaIndex erstellt einen vektorisierten Index aus Dokumentendaten, wodurch Abfragen äußerst effizient werden. Es verwendet dann diesen Index, um zu einer Abfrage die relevantesten Abschnitte des Dokuments zu identifizieren.
 
