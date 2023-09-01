@@ -31,7 +31,7 @@ Einfache LangChain-Projekte bestehen oft nur aus einem einfachen Python-Skript. 
 
 ## Grundlegende Anwendung und Beispiele
 
-Ich versuche, das Material in diesem Buch unabhängig und ohne externe Referenzen nutzbar zu gestalten. Du solltest aber auch die ausgezeichnete [Dokumentation](https://python.langchain.com/en/latest/getting_started/getting_started.html) und die detaillierten Anleitungen für Prompts, Chat, das LAden von Dokumenten, Indizes usw. nutzen.
+Ich versuche, das Material in diesem Buch unabhängig und ohne externe Referenzen nutzbar zu gestalten. Du solltest aber auch die ausgezeichnete [Dokumentation](https://python.langchain.com/en/latest/getting_started/getting_started.html) und die detaillierten Anleitungen für Prompts, Chat, das Laden von Dokumenten, Indizes usw. nutzen.
 
 Beachte bitte beim Durcharbeiten der Beipiele, wie die ChatGPT-Webanwendung arbeitet: Du gibst Text ein und erhältst Antworten. Die Art und Weise, wie du ChatGPT "ansprichst", ist offensichtlich wichtig, um nützliche Antworten zu erhalten. In Codebeispielen automatisieren und formalisieren wir diesen Prozess.
 
@@ -149,7 +149,7 @@ Wir werden Vektordatenbanken verwenden, um berechnete Embeddings für zukünftig
 
 ## Verwendung von LangChain Vektor Stores zum Durchsuchen von Dokumenten
 
-Hier beziehen wur uns auf die Dokumentation zu [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html). Du musst ein paar Bibliotheken installieren:
+Hier beziehen wir uns auf die Dokumentation zu [LangChain Vector Stores](https://python.langchain.com/en/latest/reference/modules/vectorstores.html). Du musst ein paar Bibliotheken installieren:
 
 {format: console}
 ```
